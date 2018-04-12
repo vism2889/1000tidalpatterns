@@ -1,0 +1,14 @@
+-- pattern2.tidal
+-- 04/12/18
+
+bps (190/60)
+
+
+-- function
+let dip p =  every 6 (density 4. slow 4) $ whenmod 16 10 ( ifp ((== 0).(flip mod 5))(stut 8 0.25  0.75)(# coarse "6 16 20 27"))  $ sometimes (|*| speed "[0.9 0.8 1.15, 1 0.7 1.0]") p
+
+
+-- pattern
+d1 $ whenmod 16 8 (fuk' (choose[1,2,4,8,1,1,1,1]))$ dip $ sound "[feel:6([5 3]/3,8),~ noiz:1 noiz:2 ~, trp:19*4? trp:13*4?]" # gain 1.69 #speed 1.2 # release 0.5 # pan (discretise 64 $ scale 0.0 1.0 $ slow 16 sine)
+
+hush

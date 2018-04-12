@@ -1,4 +1,5 @@
 -- pattern1.tidal
+-- 04/11/2018
 
 bps (190/60)
 
@@ -10,7 +11,7 @@ let destroy a b c p = within (a, b)(slow 2 . stut c 0.75 0.5 ) p
 
 -- pattern
 
-d1 $ whenmod 64 32 (|*| up (choose[(-3), (5), 1]))$ whenmod 16 8 (destroy') $ stack [ whenmod 16 8 (zoom (0.25, 0.75)) $ every 3 (palindrome) $ every 6 (destroy 0.5 0.75 8)
+d1 $ slow 2 $ whenmod 64 32 (|*| up (choose[(-3), (5), 1]))$ whenmod 16 8 (destroy') $ stack [ whenmod 16 8 (zoom (0.25, 0.75)) $ every 3 (palindrome) $ every 6 (destroy 0.5 0.75 8)
     $ sound "[feel:6([7 [5 3]]/3,8), feel:5/3 ~ feel:8/3 ~, ~ ~ cp/2 ~, glitch:2(3,8)?]",
     whenmod 16 12 ( |*| up 3) $ every 4 (slow 2)$ sound "[stab:9([5 3]/3,8)]" # cut 2,
     chop 16 $ sound "stab:10([7 4]/3,8)" # gain 0.8,
