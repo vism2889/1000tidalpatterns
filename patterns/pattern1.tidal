@@ -6,7 +6,7 @@ bps (190/60)
 -- functions
 let destroy a b c p = within (a, b)(slow 2 . stut c 0.75 0.5 ) p
     destroy' p = within (0.75, 1.0)(slow 4 . rev . stut 16 0.75 0.5) p
-    lit p =  sometimes (|*| up (choose[3, 15, 2, 9, (-3), 11, 17, (-7), (-9), (-2)])) p
+    lit p =  sometimes (|*| up (choose[3, 19, 2, 9, (-3), 11, 27, (-7), (-8), (-3)])) p
 
 
 -- pattern

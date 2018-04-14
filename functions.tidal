@@ -1,0 +1,23 @@
+-- custom functions
+
+-- heavy influence from tidal documentation, Kindohm's github, and the livecode slack/lurk
+
+-- startclock and oneshot functions by digitalohm
+let startclock d p = do
+                        now <- getNow
+                        d $ (pure (nextSam now)) ~> p
+
+let oneshot d p = startclock d $ seqP [(0, 1, p)]
+    sc = startclock
+
+let twist a b c p = within (a, b) (slow 4 . rev . stut c 0.75 0.5) p -- Kindohm rip function
+    faux p =  every 4 (slow 2) $ sometimes (|*| up (choose[3, 15, 2, 9, (-3), 11, 17, (-7), (-9), (-2)])) p
+    faux' a p = every 1 (slow 1 . stut a 0.9 0.5) $ sometimes (|*| up ((scale (-4) 18 sine)*(slow 8 saw))) p
+    pop3 a b p = stut' 3(a) (|*| speed b) p
+    pop4 a b p = stut' 4(a) (|*| speed b) p
+
+let unchained a p = (0.25 ~>) $ every 8(pop4 0.125 a) $ every 6 (twist 0.25 1.0 (choose [16])) p
+    dip p =  every 6 (density 4. slow 4) $ whenmod 16 10 ( ifp ((== 0).(flip mod 5))(stut 8 0.25  0.75)(# coarse "6 16 20 27"))  $ sometimes (|*| speed "[0.9 0.8 1.15, 1 0.7 1.0]") p
+    ladder a b p =  when ((elem a).show)(rev . striate b) p -- EX: $ ladder '2' 16
+    frac a p =  when ((elem a).show)(within (0.25, 1.0) (slow 4 . stut 16 0.75 0.5)) p -- EX: $ frac '2'
+    frac' p = ifp ((== 0).(flip mod 8))(within (0.25, 1.0) (slow 4 . rev . stut 8 0.75 0.25))(# speed "0.75") p

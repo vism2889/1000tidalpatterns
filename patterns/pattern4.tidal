@@ -1,0 +1,26 @@
+-- pattern4
+-- 04/14/2018
+
+bps (175/60)
+
+startclock d1 $every 2 (dip)$ faux $ seqPLoop [
+  (0, 7, ladder '2' 14 $ sound "[bd(4,7),feel:5(3,7)]"),
+  (7, 14, sound "[bd(3,7),feel:5(4,7),glitch:2(5/3,7)]"),
+  (14, 21, sound "[bd(4,7),feel:5(3,7)]"),
+  (21, 28, sound "[bd(3,7)?,feel:5/2,hc(5,7)]")
+]
+
+startclock d1 $every 2 (dip)$ faux $ seqPLoop [
+  (0, 7, ladder '2' 14 $ sound "[bd(4,7),feel:5(3,7), stab:1 ~ cp ~ ~ ~ ~]"),
+  (7, 14, sound "[bd(3,7),feel:5(4,7),glitch:2(5/3,7), ~ hc ~ hc ~ stab:9 ~]"),
+  (14, 21, sound "[bd(4,7),feel:5(3,7), sn:4 sn cp ~ stab:6 ~ ~]"),
+  (21, 28, sound "[bd(3,7)?,feel:5/2,hc(5,7), glitch:2(5/4,7)]")
+]
+
+startclock d2 $ faux $ seqPLoop [
+(0, 28,  whenmod 14 7 (const $ pop3 0.125 1.0 $ sound "crd:3/2" # cut 2 # speed 1.7 ) $ pop3 0.125 0.75$ sound "crd:3/2" # cut 2 # speed 1.7),
+(28, 56, pop3 0.125 0.9 $ sound "crd:3/2" # cut 2 # speed 1.7 )]
+
+startclock d3 $seqP [(0,7, pop3 0.125 1.0 $ sound "feelfx/2" # cut 2 # speed 0.70) ]
+
+hush
