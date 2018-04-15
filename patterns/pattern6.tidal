@@ -1,0 +1,19 @@
+-- pattern6
+-- 04/15/2018
+
+
+
+
+startclock d1 $ ladder '2' 16 $faux $ slowcat [
+  seqPLoop [
+  (0,4, n "1 2 3*2 4" # sound "bd" # speed (run 8) # coarse (run 16)),
+  (4,12, n "[3*2 4, 5(3,8), 6*2]" # sound "trp" # speed (run 4))
+  ],
+  sound "feel:5(3,8)" # speed (run 8),
+  sound "[feel:5(5,8),rm*8]" # room (run 4),
+  sound "[feel:6*4, feel:5(5,8)]" # coarse (run 4)
+  ]
+
+d2 $ faux $ slow 2 $ n "[1 2(3,7) 3 4*2]" # sound "stab:1" # cut 2 # speed (run 4) # gain 1.15
+
+hush

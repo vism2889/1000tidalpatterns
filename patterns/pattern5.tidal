@@ -8,7 +8,7 @@ hush
 
 bps (160/60)
 
-startclock d3 $ seqPLoop [
+startclock d1  $ dip $ pop4 0.125 4 $ slow 2 $ fuk' 2$ seqPLoop [
   (0,8, pop4 0.25 1.0 $ sound "drn3:2/2" # gain 1.5 # speed 0.7 # release 0.1),
   (8,16,pop4 0.25 1.0 $ sound "drn3:2/2" # gain 1.5 # speed 0.8 # cut 2),
   (16,24,pop4 0.25 1.0 $ sound "drn3:2/2" # gain 1.5 # speed 0.9 # release 0.1),
@@ -16,8 +16,8 @@ startclock d3 $ seqPLoop [
 
 
 
-d3 $ silence
+d2 $ silence
 
-startclock d2 $ faux $ seqPLoop [
+startclock d2 $ iter 4$ faux $ seqPLoop [
   (0, 8, whenmod 8 4 (pop4 0.125 0.9) $ sound "[glitch:2([7 [[7 5] 3]]/3,8),~ ~ trip:1 ~ trip:3/2 trip:1 trip:3/3 ~, trip:2(5,8)?]" # gain 1.5 # release 0.0125),
   (8, 16, whenmod 8 4 (pop4 0.125 0.9) $ sound "[trip([7 [[7 5] 3]]/3,8),hc/2 hc trip:1 feel:5 trip:3/2 trip:1 trip:3/3 ~, trip:2(5,8)?]" # gain 1.5 # cut 2) ]

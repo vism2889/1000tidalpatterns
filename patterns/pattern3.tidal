@@ -2,13 +2,13 @@
 -- 04/13/2018
 
 
-bps (175/60)
+bps (20/60)
 
 -- function
 let frac a p =  when ((elem a).show)(within (0.25, 1.0) (slow 4 . stut 16 0.95 0.5)) p -- EX: $ frac '2'
 
 -- pattern
-d1 $ frac '3' $ faux $ ifp ((== 0).(flip mod 8))(within (0.75, 0.95) (slow 8 . stut 4 0.75 0.25))(# coarse "0")
+ startclock d2 $ frac '3' $ faux $ ifp ((== 0).(flip mod 8))(within (0.75, 0.95) (slow 8 . stut 4 0.75 0.25))(# coarse "0")
   $ sound "[feel:6([5 3]/3,8), feelfx noiz:1 noiz:2 hc, trp:19*4? trp:13*4?]" # gain 1.69
 
 hush
