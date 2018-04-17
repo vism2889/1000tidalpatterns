@@ -1,0 +1,18 @@
+-- pattern 7
+-- 04/16/2018
+
+bps (140/60)
+
+startclock d2 $every 3 (slow 1.5)$ whenmod 18 9 (faux) $ stack [
+  whenmod 36 18 (const $ n "[8([9 3]/3,9), 5 6 12]" # sound "noiz" # speed 0.75)
+    $ n "[10([9 3]/3,9), 8 12 13/3]" # sound "noiz" # speed 0.95,
+  whenmod 18 9 (const $ n "[6([9 3]2,9)]" # sound "feel") $ n "[6([9 3]/2,9),5([9 3]/5,9)]" # sound "feel",
+  every 35 (twist 0.66 1.0 18) $ seqPLoop [
+    (0,9, sound "rm([9 3]3,9)"),
+    (9,18, sound "hc(5,9)" # speed 1.4)
+  ],
+  every 6 (slow 3) $ every 17 (wedge (2/9) (sound "[glitch:2*3]" # gain 1.5 # cut 2))
+    $ every 11 (wedge (3/9) (sound "[trp:2*3]" # gain 1.5)) $ sound "hh*9" # speed (run 9)# gain 1.5 # cut 2
+]
+
+hush
