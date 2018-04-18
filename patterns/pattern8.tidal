@@ -1,2 +1,19 @@
 -- pattern 8
 -- 04/17/2018
+
+
+let destroy p = whenmod 16 14 (within (0.25, 1.0) (slow 4 . rev . stut 8 0.75 0.25)) p
+
+d1 $ faux $ stack[
+  slowcat [
+    destroy $ n "[9(3,8),~ 3 ~ 6]" # sound "trp glitch" # speed (run 4),
+    whenmod 6 5 (twist 0.75 1.0 8) $ n "[6(3,8),~ 2, 3 4]" # sound "feel" # cut 2 # coarse (run 8)
+    ],
+  sound "feel:5(5,8)",
+  seqPLoop [
+  (0,16, sound "glitch:2([7 [5 3]]/3,8)" # cut 2 # gain 1.25),
+  (16,32, sound "glitch:3([7 3]/3,8)" # cut 2 # gain 1.25)
+  ]
+  ]
+
+hush
