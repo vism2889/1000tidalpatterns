@@ -2,6 +2,8 @@
 -- 04/17/2018
 
 
+bps (150/60)
+
 let destroy p = whenmod 16 14 (within (0.25, 1.0) (slow 4 . rev . stut 8 0.75 0.25)) p
 
 d1 $ faux $ stack[

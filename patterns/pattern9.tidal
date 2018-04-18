@@ -1,0 +1,13 @@
+-- pattern 9
+-- 04/18/2018
+
+
+bps (190/60)
+
+d1 $whenmod 8 4 (slow 2)$ stack [
+  faux $ "<0 0.5 0.125>" <~ sound ("[glitch:2([5 3]/5,8), hh feel:1, feel:6([7 [5 3]]/3,8),~ feel:5]") # cut 2 # gain 1.25,
+  faux $ sound "[bass2:2([7 5]/5,8)?, trp:1/2 ~, trp:4([7 3]/5,8),hc hc hh ~]" # release 0.1 # cut 2 # speed 0.9,
+  whenmod 16 8 (|*| speed (choose[2,3,4,(-3),(-5)])) $ sound "feelfx/3" # speed 0.5 # gain 1.15
+  ]
+
+hush
