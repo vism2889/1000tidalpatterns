@@ -1,0 +1,28 @@
+
+-- pattern 11
+-- 04/23/2018
+
+-- Hard to Express https://soundcloud.com/morgantics/hard-to-express
+
+bps (95/60)
+
+hush
+
+let burb p = whenmod 8 7 (within (0.5, 1.0)(|=| room 2.0)) p
+    slam p = (0.125 ~>) $ whenmod 16 8 (within (0.75, 1.0)(|=| (delayfeedback 0.5))) $ whenmod 16 12 (within (0.25, 1.0)(|=| (delaytime 0.25))) $ whenmod 16 12 (within (0.25, 1.0)(|=| (delay 1))) $ (|=| delayfeedback 0.125) $ (|=| delaytime 0.0125) $ (|=| delay 1) p
+    ease p = (|=| release (discretise 64 $ scale 0.25 2.0 $ slow 16 sine)) p
+
+d2 $ every 4 (twist 0.25 1.0 16)$ fuk $ slowcat [ s " [noiz:3([5 3]/3,8) ~ rm(3,8) hc(5,8)?,  ~ noiz:8 noiz:2  ~, ~ rm ~ noiz:11 ]/4" # gain 1.5,
+  s "[feel:5(5,8), bd ~ feel:6(3,8) ~, ~ ~ glitch:2*8? ~]/4" # gain 1.5 # speed (run 4)]
+
+do
+  d3 $ fuk$ burb $ every 7 (twist 0.5 1.0 16)$ whenmod 16 8 (|=| speed 0.3)$ fast 2 $ n "[7(3,8),42 ~ 44 45, ~ 48, 49(5,8)?,~ ~ ~ ~ 45/2]/2" # sound "glitch"  # gain 1.25 # room 0 # release 0.1 # speed 0.4
+  d4 $ whenmod 16 12 (slow 2)$ slam $ every 6 (slow 4)$ fuk $ fast 2 $ sound "[research:71([7 3]/3,8),research:73([5 3]/5,8),research:77 trp:1/3 trp:10 ~, glitch:3 glitch:4*4, ]" # gain 1.75 # cut 2 # coarse (run (4))
+  t6 (anticipateIn 2) $ fuk $ sound " [~ ~ ,~ ~ amencutup:3 ~, amencutup:4(3,8)]" # gain 1.5
+
+d7 $ whenmod 32 16 (|=| speed 1.0)$ sound "research:94/8" # gain 1.95 # release 8 # speed 1.7
+
+d5 $ every 6 (twist 0.25 1.0 16)$ ease $ sound "[glitch:2([7 4 5 9]/5,8),hh([7 4 5 3 2]/5,8),feel:6([7 5 4]/7,8/3,8)]" # gain 1.75 # speed 0.9 # coarse (run 8)
+
+d8 $ fuk $ every 3 (twist 0.25 1.0 16)$ sound "hc([4 5 6]/5,8)" # gain 1.5 # release 0.4 # speed 0.8 # n (run 8)
+t6 (xfadeIn 8)$ whenmod 16 10 (slow 2)$ every 4 (twist 0.25 1.0 16)$ fuk $ fast 2 $ n "[1([7 3]/5,8), ~ 2, 3(7,8)?, 4([5 3]/4,8)]" # sound "amencutup" # release 0.5 # gain 1.75 # speed 1.2

@@ -6,7 +6,7 @@ bps (150/60)
 
 let destroy p = whenmod 16 14 (within (0.25, 1.0) (slow 4 . rev . stut 8 0.75 0.25)) p
 
-d1 $ faux $ stack[
+startclock d1 $whenmod 16 15 (pop4 0.125 1.7) $ every 9 (frac '2')$ faux $ stack[
   slowcat [
     destroy $ n "[9(3,8),~ 3 ~ 6]" # sound "trp glitch" # speed (run 4),
     whenmod 6 5 (twist 0.75 1.0 8) $ n "[6(3,8),~ 2, 3 4]" # sound "feel" # cut 2 # coarse (run 8)
@@ -15,7 +15,8 @@ d1 $ faux $ stack[
   seqPLoop [
   (0,16, sound "glitch:2([7 [5 3]]/3,8)" # cut 2 # gain 1.25),
   (16,32, sound "glitch:3([7 3]/3,8)" # cut 2 # gain 1.25)
-  ]
+  ],
+  faux$ every 6 (|=| room 0.8)$ sound "stab:1([7 5 4 3]/3,8)?" # release 0.8 # room 0.0
   ]
 
 hush

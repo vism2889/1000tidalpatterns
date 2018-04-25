@@ -1,0 +1,18 @@
+-- pattern 12
+-- 04/24/2018
+
+bps (175/60)
+
+d1 $ every 7 (pop4 0.125 1.7)$ every 9 (faux)$stack [
+  every 3 (slow 2) $ slowcat [
+    every 4 (twist 0.5 1.0 16)$ every 7 (iter 4)$ n "[1([5 3]/3,8), ~ 2 3 4, 5([7 4 3]/3,8)]" # sound "amencutup" # gain 1.25,
+    every 2 (twist 0.0 0.25 16)$ every 3 (iter 4)$ n "[1([7 5 3]/3,8), ~ 2 3*2 4/2, 5([7 4 3]/3,8)]" # sound "amencutup" # gain 1.25
+    ],
+  whenmod 16 8 (|=| gain 0.0) $ n "[6(3,8)?, 5([7 3]/5,8)]" # sound "feel" # cut 2 # gain 1.0,
+  dip $ iter 4 $ slow 2 $ n "1 2 3 4 5 6 7 8" # sound "noiz"
+]
+
+d2 $ faux $ whenmod 16 10 (|=| speed 1.0)$sound "basst:1([7 [5 3]]5,8)?"  # speed 1.7 # gain 1.25
+d2 $ silence
+
+hush

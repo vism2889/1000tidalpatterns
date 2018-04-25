@@ -1,0 +1,23 @@
+-- pattern 10
+-- 04/22/2018
+-- tidal footwork, uncomment last comm and last line of stack to make a little stranger
+
+bps (160/60)
+
+d1 $ stack [
+  seqPLoop[
+  (0, 14, sound "epiano:30(3,8)" # speed 0.7 # release 0.4 # gain 1.5),
+  (14,15, sound "epiano:30(3,8)" # speed 0.8 # release 0.4 # gain 1.5),
+  (15,16, sound "epiano:30(3,8)" # speed 0.9 # release 0.4 # gain 1.5)
+  ],
+  seqPLoop [
+  (0,14, sound "feel:5*8" # release 0.1),
+  (14,15, sound "feel:5*12" # release 0.1),
+  (15,16, sound "feel:5*6" # release 0.1)
+  ],
+  sound "[feel:6([7 5 3]/3,8), bd(3,8)]" # release 0.8 # gain 1.25 # cut 2,
+  sound "[ ~ ~ cp ~]/2" # gain 1.5 --,
+  --fuk $ burb $ every 7 (twist 0.5 1.0 16)$ whenmod 16 8 (|=| speed 0.3)$ fast 2 $ n "[7(3,8),2 ~ 4 5 ~ ~ ~ ~, ~ 18, 49([7 5 4 3]/3,8)?,~ ~ ~ ~ 45/2]/2" # sound "Morgo"  # gain 1.5 # room 0 # release 0.1 # speed 0.4
+]
+
+hush
