@@ -1,0 +1,17 @@
+-- pattern15
+-- 5/14/2018
+
+bps(100/60)
+
+d1  $ stack [
+  slowcat
+  [
+  whenmod 16 15 (twist 0.5 1.0 32)$ fuk $ sometimes (iter 4)$ ("0.25 0.5 0 0.25 0.75" ~>)$ sound "[feel:6([8 6]/3,8),glitch noiz trp:5 basst*2, feel:5([7 5 4 3]/3,8)]" # cut 2,
+  whenmod 10 9 (const $ sound "[feel:6(3,8), feel:5(5,8)?]" # speed 1.2) $ whenmod 16 8 (const $ sound "feel:6(3,8)") $ sound "feel:6*4"
+  ],
+  whenmod 32 16 (const $ sometimes (pop4 0.125 1.7)$ sound "pad" # cut 2 # gain 1.35 # speed 0.7) $ sound "pad" # cut 2 # gain 1.5
+  ]
+
+d2 $ whenmod 8 7 (const $ sound "hh*12" # gain 1.25 )$ sound "hh*16" # gain 1.25
+
+d3 $ sound "glitch:2([7 4 3]/3,8)" # speed 1.7 # gain 1.2

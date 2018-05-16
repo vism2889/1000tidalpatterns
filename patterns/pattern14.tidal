@@ -1,0 +1,20 @@
+-- pattern14
+-- 05/11/18
+
+d1 $ dip $ fuk $ stack [
+   seqPLoop [
+  (0, 32,  slow 2 $ every 6 (stut 16 0.75 0.25) $ fuk $ whenmod 8 4 (const $ fast 2 $ "[0.125 0.5 0.5 1.0 0.75]/4" <~
+    (sound "[noiz*2 cp hbd:4 hbd:7,feel:6(3,8)?, hh sn, feel:5(5,8)?]") # speed 1.7 # cut 2 # gain 1.5 )
+    $ every 4 (twist 0.25 1.0 16)$ fuk $ "[0 0.25 0.5 0 0.75]/4" <~
+    (sound "[noiz*2 cp hbd:4 hbd:7,feel:6(3,8)?, hh sn, feel:5(5,8)?]") # cut 2 # gain 1.5),
+    (32, 48,  sound "[feel:6(3,8), feel:5(5,8)?]" # gain 1.5 # cut 2)
+    ],
+    whenmod 16 8 (|=| room 0.0) $ sound "basst([7 4 5 3]/3,8)" # gain 1.75 # cut 2 # room 0.8,
+    seqPLoop [
+    (0, 8, sound "hbd:7(3,8)?" # cut 2 # gain 1.5),
+    (8, 16, sound "glitch:6(3,8)?" # gain 1.5)
+    ]
+  ]
+
+
+d1 $ sound "feel:6" # gain 1.5

@@ -1,0 +1,9 @@
+-- pattern 13
+-- 05/10/2018
+
+bps(160/60)
+
+d1 $ fuk $ whenmod 20 18 (within (0.5, 1.0) (|=| speed 0.7))$ whenmod 15 13 (|=| room 1.0)$ whenmod 8 6 (pop3 0.125 1.2) $ whenmod 16 14 (rev . fast 2)
+  $ every 6 (twist 0.25 1.0 16)$ n "[1 2, 3(3,8), 4([7 4 3]/5,8), 6([5 4 3]/3,8)]" # sound "feel" # gain 1.25 # cut 2 # room 0.0
+
+d2 $ twist 0.25 1.0 32 $ slow 4 $ sound "cords:4([7 3 5]/3,8)" # gain 1.5 # cut 2
