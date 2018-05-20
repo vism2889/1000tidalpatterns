@@ -1,7 +1,7 @@
 -- pattern 16
 -- 05/20/2018
 
--- playing with kindohms spike, spike', and gtfo functions 
+-- playing with kindohms spike, spike', and gtfo functions
 
 let spike p = ((|+| delaytime (scale 0.001 0.3 $ slow 7.1 sine1)) . (|+| delayfeedback (scale 0.7 0.99 $ slow 6.71 sine1))) $ p
     spike' p = (|+| delay "0.25") $ spike $ p
@@ -24,19 +24,12 @@ let twist a b c p = within (a, b) (slow 4 . rev . stut c 0.75 0.5) p
 
 bps (180/60)
 
-d1  $ stack [
+d1  $ every 7 (fuk)$ stack [
   seqPLoop [
   (0,14,  realAF $ sound "[bd(4,7),feel:6,feel:5([7 4 2]/5,7),basst:1(3,7),amencutup:7(2,7)]" # cut 2),
   (14,21, whenmod 7 4 (|=| speed 0.7) $ every 4 (twist 0.0 0.74 14) $ realAF $sound "[feel:6(3,7),basst:1(3,7)]"),
   (21,28, realAF $ sound "[ul:9(3,7),feel:5(5,7)]")
   ] # gain 1.25 # speed 1.7,
-  gtfo $sound "rot:2(2,7)" # speed 1.0,
+  gtfo $ sound "rot:(2,7)" # speed 1.0,
   fuk $ sound "feel:8([5 7 4]/3,7)" # gain 1.2
 ]
-
-
-d2 $ sound "crd:1/2" # cut 8 # speed 0.7 # gain 1.2
-
-d2 $ fuk $ sound "feel:8([5 7 4]/3,7)" # gain 1.2
-
-d3 $ sound "rot(4,7)" # speed 1.0
