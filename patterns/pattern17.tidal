@@ -1,2 +1,21 @@
 -- pattern 17
 -- 05/20/2018
+
+
+
+let pop11 a b p = stut' 11(a) (|*| speed b) p
+    pop7 a b p = stut' 7(a) (|*| speed b) p
+
+bps (80/60)
+
+d1 $ whenmod 16 10 (const $ every 3 (pop11 0.125 1.7)$ sound "ul(8,11)")$ sound "ul(5,11)"
+
+d2 $ whenmod 16 10 (const $ sound "[feel:6(7,11),feel:5(4,11)]" # cut 2 )$ sound "[feel:6(4,7),feel:5(3,11)]" # cut 2 # speed ((scale (-4) 27 sine)*(slow 8 saw))
+
+d3 $ fuk $ sound "[trp:2([7 4 3]/7,11)]" # cut 2
+
+d4 $ every 6 (within (0.47, 0.74)(maven 0.125 2 0.4 )) $whenmod 32 16 (pop11 0.125 1.7) $ whenmod 16 10 (|=| speed 0.7)$ loopAt 4 $ chop 16 $ sound "research:11"
+
+d5 $whenmod 16 10 (const $ sound "rm*11" # speed ((scale (-4) 18 sine)*(slow 8 saw)))$ sound "rm*7" # speed ((scale (-4) 18 sine)*(slow 8 saw))
+
+d6 $ every 3 (twist 0.47 0.74 22)$ whenmod 16 10 (const $ sound "~ ~ ~ ~ ~ cp ~ ~ ~ ~ ~") $ sound "~ ~ ~ cp ~ ~ ~"
