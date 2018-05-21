@@ -1,0 +1,13 @@
+-- pattern 18
+-- 05/21/2018
+
+
+-- strange time signature changes
+
+d1 $ dip $ fuk $ stack [
+  sound "[trp(3,8) ~ ~ ~, ~ trp(5,8) ~ ~, ~ ~ feel:5(7,11) ~, ~ ~ ~ feel:6(8,11)]/4" # speed 0.7,
+  sound "[hh*8 ~ ~ ~, ~ hh*16 ~ ~, ~ ~ hh*11 ~, ~ ~ ~ hh*22]/4",
+  sound "[trp:3(5,8) ~ trp:3(3,8) ~ ~ ~ ~ ~, ~ glitch:2*16 ~ ~, ~ ~ glitch:2*11 ~, ~ ~ ~ noiz:2*11]/4",
+  sound "[~ cp(5,8) ~ ~ ~ ~ cp*11 ~ ]/4" # speed 1.7,
+  whenmod 4 2 (const $every 2 (pop11 0.5 2.5) $ sound "bd bd hh hh bd bd rm hh hh hh cp") $ sound "[hh hh hh feel:6]*2" # speed 0.25 # cut 2
+  ]
