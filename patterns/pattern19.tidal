@@ -1,0 +1,11 @@
+-- pattern19
+-- 05/21/2015
+
+bps (160/60)
+
+
+d1 $ slow 2 $ realAF $ every 7 (twist 0.75 1.0 16)$ fuk$ n "45 33 30 31*2" # sound "research" # cut 2
+
+d2 $ realAF $ fuk $whenmod 16 14 (pop4 0.125 1.2)
+  $ every 3 (const $ sound "[feel:6([7 4 3]/3,8), feel:8(5,8), ~ ~ cp ~]")
+  $ sound "feel:6(5,8)" 
