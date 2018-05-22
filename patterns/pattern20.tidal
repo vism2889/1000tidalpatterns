@@ -1,0 +1,8 @@
+-- pattern20
+-- 05/22/2018
+
+
+
+d1 $ whenmod 12 6 (within (0.75, 1.0) (pop4 0.25 1.7)) $ every 4 (slow 2 . fuk)
+  $ filler $ realAF $ every 3 (iter 4)$ n "[1(3,8) ~ 8(5,8) ~,~ 4(5,8) ~ ~,~ ~  5(3,8) ~, ~ ~ ~ 6*8]/4" 
+  # sound "[feel]" # legato 2  # up "{1 -8 -4 3}" # gain 1.2 # cut 2
