@@ -1,0 +1,14 @@
+-- pattern 22
+-- 05/23/2018
+bps (150/60)
+
+
+d1 $ every 7 (twist 0.75 1.0 24)$ every 3 (twist 0.25 0.5 24)$ n "[55([7 4 3]/3,8),1*2? 50*2 20*2? 100]" # sound "ablePRC" # gain 1.5
+
+d2 $ fuk $ every 7 (twist 0.75 1.0 24) $ every 8 (twist 0.37 0.5 32)$ sound "[feel:6([7 5 4 3]/3,8),feel:5([5 3]/3,8)]" # gain 1.5 # cut 2
+
+d4 $ whenmod 16 8 (|=| speed 1.0)$ ease $ sound "guitarloop([5 4]/3,8)" # release 0.4 # gain 1.5 # speed 1.7
+
+d3 $ fuk $ sound "rave2:3([7 5 4 [3 2]]/5,8)" # gain 1.25 # speed 1.7 # room 0.7
+
+d4 $ sound "basst:8([5 4]/3,8)" # gain 1.5 # speed 0.8

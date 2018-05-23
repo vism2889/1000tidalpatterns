@@ -1,0 +1,31 @@
+-- pattern 21
+-- 05/23/2018
+bps (190/60)
+
+d1 $ pop4 0.125 1.2 $ whenmod 16 8 (|=| n (irand(128))) $ every 7 (twist 0.25 1.0 16) $ fuk $ n "[1 ,2(3,8), 3 ,150(5,8)]"
+  # sound "[ablePRC ableDR, feel]" # room (discretise 64 $ slow 16 $ run 2) # speed (discretise 64  $ slow 16 $ run 8) # gain 1.25
+
+d2 $ fuk $ sound "feel:6([7 5 4]/3,8)" # cut 2 # gain 1.35
+
+d2 $ silence
+
+d1 $ seqPLoop [
+    (0,10, whenmod 10 9 (twist 0.0 1.0 20) $ stack [
+              every 6 (|=| room 0.8)$ n "1 4 74 65 89" # sound "ablePRC" # gain 1.25,
+              sound "[feel:6([4 3]/3,5), feel:5*5]" # gain 1.25 # cut 2,
+              sound "rave2:3(3,5)" # gain 1.25 # room 0.8
+              ] ),
+    (10,24, stack [
+              whenmod 7 6 (twist 0.0 1.0 21)$ every 6 (|=| room 0.8)$ n "1 4 74 65 89 100 156" # sound "ablePRC" # gain 1.25,
+              sound "[feel:6([4 3]/3,7), feel:5*7?]" # gain 1.25 # cut 2,
+              sound "rave2:3(3,7)" # gain 1.25 # room 0.4
+              ]),
+    (24,40, whenmod 16 15 (twist 0.0 1.0 16) $ stack [
+              every 6 (|=| room 0.8)$ n "[1 4 74 65 89 4 4 4]" # sound "ablePRC" # gain 1.25,
+              sound "[feel:6([7 5 3]/3,8)?, feel:5([4 3]/5,8)]" # gain 1.25 # cut 2,
+              every 6 (twist 0.25 1.0 16)$ ease $ sound "[glitch:2([7 4 5 9]/5,8),hh([7 4 5 3 2]/5,8),feel:6([7 5 4]/7,8/3,8)]" # gain 1.75 # cut 2 # speed 0.9 # coarse (run 8),
+              fuk $sound "rave2:3([7 5 3]/3,8)" # gain 1.25
+              ])
+    ]
+
+d2 $ sound "rave2:3" # gain 1.25 # room 0.8
