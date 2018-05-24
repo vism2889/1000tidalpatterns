@@ -1,0 +1,31 @@
+-- pattern23
+-- 05/24/2018
+
+-- midi stuff using newer syntax (resources can be found: https://github.com/vism2889/tidal_resources/tree/master/newer_tidal_midi)
+-- adjust latency per your needs in SuperCollider
+
+-- midiChan starts at 0, so midichan 3 is actually 4 in a daw or on a synthesizer.
+-- midiChan 0 != channel 1 in ableton or a daw for some reason.
+-- midichan 3 = drumrack; ctrNum 0 = reverb decay time.
+
+
+bps (160/60)
+
+d1 $ control (_discretise 128 $ slow 16 (scale 0 128 $ (sine1))) # midicmd "control" # ctlNum 1 # midichan 1 # s "midi"
+d4 $ whenmod 8 6 (const $ note "c4 cs3 e3 f2 fs3 e2 g2 ~" # midichan 1 # s "midi")$ note "c3 cs3 e3 f2" # midichan 1 # s "midi"
+
+d2 $ stack [
+  note "[c4([7 4]/3,8,5), g3([7 5]/3,8,6)]" # release 2,
+  note "[fs1]/4",
+  note "as2([7 4 3]/5,8)",
+  note "[c7(3,8)]/2"
+] # midichan 3 # s "midi"
+
+d5 $ sound "[feel:5([7 4 3]/5,8,7), feel:6([5 4]/3,8)]"
+d5 $ silence
+
+-- Below, notice use of '$ sound' and '$ control' in the same line, cool!
+
+d3 $ stack[
+  every 7 (const $ control (_discretise 128 $ slow 2 (scale 0 64 $ (sine1))) # midicmd "control" # ctlNum 0) $ sound "~ ~ ~ ~"
+] # midichan 3 # s "midi"
