@@ -10,14 +10,29 @@ let startclock d p = do
 let oneshot d p = startclock d $ seqP [(0, 1, p)]
     sc = startclock
 
-let twist a b c p = within (a, b) (slow 4 . rev . stut c 0.75 0.5) p -- Kindohm rip function
-    faux p =  every 4 (slow 2) $ sometimes (|*| up (choose[3, 15, 2, 9, (-3), 11, 17, (-7), (-9), (-2)])) p
+-- family freidnly version of the 'fuk' function
+
+let faux p =  every 4 (slow 2) $ sometimes (|*| up (choose[3, 15, 2, 9, (-3), 11, 17, (-7), (-9), (-2)])) p
     faux' a p = every 1 (slow 1 . stut a 0.9 0.5) $ sometimes (|*| up ((scale (-4) 18 sine)*(slow 8 saw))) p
-    pop3 a b p = stut' 3(a) (|*| speed b) p
-    pop4 a b p = stut' 4(a) (|*| speed b) p
 
 let unchained a p = (0.25 ~>) $ every 8(pop4 0.125 a) $ every 6 (twist 0.25 1.0 (choose [16])) p
     dip p =  every 6 (density 4. slow 4) $ whenmod 16 10 ( ifp ((== 0).(flip mod 5))(stut 8 0.25  0.75)(# coarse "6 16 20 27"))  $ sometimes (|*| speed "[0.9 0.8 1.15, 1 0.7 1.0]") p
     ladder a b p =  when ((elem a).show)(rev . striate b) p -- EX: $ ladder '2' 16
     frac a p =  when ((elem a).show)(within (0.25, 1.0) (slow 4 . stut 16 0.75 0.5)) p -- EX: $ frac '2'
     frac' p = ifp ((== 0).(flip mod 8))(within (0.25, 1.0) (slow 4 . rev . stut 8 0.75 0.25))(# speed "0.75") p
+
+let twist a b c p = within (a, b) (slow 4 . rev . stut c 0.75 0.5) p
+    perxrid =  whenmod 16 12 (const $ sound "[glitch:3*4 glitch:9*4 trp:17*4 ~]") $ whenmod 10 6 (const $ sound "[trp:8*4, trp:9]*2") $ sound "[trp:8*4, Morgo:9]" -- mainly an example of how you can use samples and very specific events inside a function
+    fuk p =  every 4 (slow 2) $ sometimes (|*| up (choose[3, 15, 2, 9, (-3), 11, 17, (-7), (-9), (-2)])) p
+    fuk' a p = every 1 (slow 1 . stut a 0.9 0.5) $ sometimes (|*| up ((scale (-4) 18 sine)*(slow 8 saw))) p
+    pop3 a b p = stut' 3(a) (|*| speed b) p
+    pop4 a b p = stut' 4(a) (|*| speed b) p
+    unchained p = (0.25 ~>) $ every 8(pop4 0.125 1.2) $ every 6 (twist 0.25 1.0 (choose [16])) p
+    dip p =  every 6 (density 4. slow 4) $ whenmod 16 10 ( ifp ((== 0).(flip mod 5))(stut 8 0.25  0.75)(# coarse "6 16 20 27"))  $ sometimes (|*| speed "[0.9 0.8 1.15, 1 0.7 1.0]") p
+
+-- function from R&D artist residency
+
+let filler p = every 3 (within (0.0, 0.50)(slow 2 . rev . stut 8 0.95 0.25)) $ every 7 (within (0.5, 0.75)(stut 4 0.95 0.25)) $ someCyclesBy 0.125 (within (0.75, 1.0)(striate 32)) p
+    maven a b c p = stut' 4(a) (|*| coarse b ) $ stut' 4(1) (|*| speed c ) p --ex: $ maven 0.125 0.2 0.4
+    realAF p = every 3 (slow 2) $ someCyclesBy 0.125 (stut 8 0.95 0.25) $ every 16 (within (0.5,0.75)(slow 4 . striate 16)) p
+    verbPat  = room "0.0 0.0 0.8 0.0 0.0 0.0 0.2 0.0"
