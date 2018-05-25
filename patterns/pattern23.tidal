@@ -21,7 +21,7 @@ d2 $ stack [
   note "[c7(3,8)]/2"
 ] # midichan 3 # s "midi"
 
-d5 $ sound "[feel:5([7 4 3]/5,8,7), feel:6([5 4]/3,8)]"
+d5 $ sound "[feel:5([7 4 3]/5,8,7), feel:6([5 4]/3,8)]" # gain 1.5
 d5 $ silence
 
 -- Below, notice use of '$ sound' and '$ control' in the same line, cool!
