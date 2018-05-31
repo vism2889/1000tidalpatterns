@@ -1,0 +1,13 @@
+-- pattern 26
+-- 05/26/2018
+-- midi patterns!
+
+d1 $ fast 2 $ midiFuk $ seqPLoop [
+(0,8, note "g2(3,8)" # midichan 1 # s "midi"),
+(8,16, note "cs3(3,8)" # midichan 1 # s "midi"),
+(16,24, note "f2(3,8)" # midichan 1 # s "midi"),
+(24,32, note "fs2(3,8)" # midichan 1 # s "midi")
+]
+
+d4 $ control (_discretise 128 $ slow 16 (scale 0 128 $ (sine1))) # midicmd "control" # ctlNum 1 # midichan 1 # s "midi"
+d2 $ fuk $whenmod 16 8 (const $ realAF $ sound "[feel:8(5,8),feel:6(3,8,5)]" # gain 1.5 # cut 2)$ every 3 (const $ sound "feel:5*3")$ every 4 (const $ sound "feel:5*6")$ sound "[feel:5*4,feel:6(5,8)]" # gain 1.5 # cut 2

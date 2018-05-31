@@ -1,0 +1,36 @@
+--pattern 28
+-- 05/31/2018
+
+--midi imports 
+import Sound.Tidal.Context
+
+(midicmd, midicmd_p) = pS "midicmd" (Nothing)
+(midichan, midichan_p) = pF "midichan" (Nothing)
+(progNum, progNum_p) = pF "progNum" (Nothing)
+(val, val_p) = pF "val" (Nothing)
+(uid, uid_p) = pF "uid" (Nothing)
+(array, array_p) = pF "array" (Nothing)
+(frames, frames_p) = pF "frames" (Nothing)
+(seconds, seconds_p) = pF "seconds" (Nothing)
+(minutes, minutes_p) = pF "minutes" (Nothing)
+(hours, hours_p) = pF "hours" (Nothing)
+(frameRate, frameRate_p) = pF "frameRate" (Nothing)
+(songPtr, songPtr_p) = pF "songPtr" (Nothing)
+(ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+(control, control_p) = pF "control" (Nothing)
+
+
+d5 $ control (_discretise 128 $ slow 16 (scale 0 127 $ (sine1))) # midichan 3 # s "midi" # midicmd "control" # ctlNum 0
+
+
+d2 $ fuk $ slowcat [
+  every 3 (slow 2) (note "[cs4*4,b3(5,8),<d3(5,8) c3(3,8) as4>]") # release 2,
+  every 7 (brak) (every 3 (fast 2) (note "[fs2*8,g2(3,8)]/2")),
+  every 9 (fast 2) (note "[as2*4, <c4*3  d4*6>,fs2(3,8)]")
+] # midichan 3 # s "midi"
+
+d3 $ silence
+
+d3 $ sound "bd(3,8,5)"
+
+d4 $ realAF $ fuk $ sound "[feel:8*4,<feel:5(5,8,3) ul:2(3,8)>,[~ ~ cp ~]/2]" # gain 1.35

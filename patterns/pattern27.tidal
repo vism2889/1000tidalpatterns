@@ -1,0 +1,37 @@
+-- pattern 27
+-- 05/26/2018
+
+
+-- this can help with latency without messing with SuperCollider settings "$ (0.014 ~>)"
+
+-- note: with new SuperDirt midi, gain maps to midi note velocity (cool!)
+
+bps (160/60)
+
+d1 $ slow 4 $ note "<cs3 c4 fs4 f4>" # release 0.2 # midichan 1 # s "midi" # gain 2.0--pad
+d1 $ whenmod 16 12 (const $ note "cs5 c6 fs6 f6" # midichan 1 # s "midi" # gain 2.0)$ note "<cs3 c4 fs4 f4>" # midichan 1 # s "midi" # gain 2.0
+
+d1 $ silence
+
+d2 $ slow 8 $ note "[<cs4 g3>, <fs3 fs2>]" # release 0.2 # midichan 2 # s "midi" # gain 2.0--pad
+
+d3 $ realAF$ every 3 (slow 2)$ every 4 (slow 2 . realAF) $ every 3 (twist 0.75 1.0 16)$ note "[c3(3,8),f3([7 5]/3,8),g3(5,8),e3([7 4]/3,8,5),a3]" # midichan 3 # s "midi" -- drumrack
+
+
+d4 $ every 5 (const $ control (_discretise 128 $ slow 8 (scale 0 100 $ (sine1))) # midicmd "control" # ctlNum 1 # midichan 3 # s "midi") $ sound " ~ ~ ~ ~" -- drumrack reverb
+d5 $ every 3 (const $ control (_discretise 128 $ slow 8 (scale 0 100 $ (sine1))) # midicmd "control" # ctlNum 1 # midichan 2 # s "midi") $ sound " ~ ~ ~ ~" -- pad filter freq
+
+
+-- audio below
+
+d6 $ (0.014 ~>)$ fuk $ sound "[feel:6(3,8) ~ feel:8*4 ~]/4" # gain 1.5 # speed 2.5 # room 0.2
+d7 $ (0.014 ~>)$ fuk $ every 3 (const $ sound "[hh*6,cp([7 5 4]3,8)?]" # gain 0.8 # room 0.2)$ sound "hh*8" # gain 1.2 # room 0.4
+d7 $ silence
+
+-- Things to mess with (all the lines below sound the same) Mess with spaceOut more, and '@' syntax
+-- snagged from yaxu on the lurk.
+
+d1 $ sound "bd ~ ~ bd ~ ~ bd ~ ~ bd ~ ~ bd ~ ~ ~"
+d1 $ sound "bd(5,16)"
+d1 $ sound "bd@3 bd@3 bd@3 bd@3 bd@4"
+d1 $ fast 16 $ spaceOut [3,3,3,3,4] $ sound "bd"

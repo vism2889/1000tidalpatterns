@@ -1,0 +1,29 @@
+-- pattern 25 // elaboration on pattern 24 with midi and audio mixed
+-- 05/26/2018
+
+-- Midi!!
+
+let midiFuk p = (|*| note (choose[3, 4,(-2), (-4)])) p
+    mRel p =  (|=| release (choose[2,2,1,2,3,4,8,8,8])) p
+
+do
+  d2 $ every 7 (twist 0.75 1.0 16)$ whenmod 16 8 (midiFuk) $ slowcat [
+    note "[c4([7 4]/3,8,5), g3([7 5]/3,8,6)]" # release 2,
+    note "[fs1]/4",
+    note "as2([7 4 3]/5,8)",
+    note "[c3(3,8)]/2"
+    ] # midichan 1 # s "midi" -- bass synth
+  d3 $ note "[<c4 g3 c7>, c1]/8" # release 8 # midichan 2 # s "midi"  -- pad
+  d1 $ filler $ every 7 (realAF) $ whenmod 16 8 (const $dip $ fuk $ sound "[feel:6(3,8),feel:5(5,8)?,feel:8([7 4 5]/5,8)]" # gain 1.5 )$fuk $ sound "[feel:6([7 4 5]/3,8),feel:8(5,8)]" # gain 1.5 # cut 2
+  d4 $ control (_discretise 128 $ slow 16 (scale 0 128 $ (sine1))) # midicmd "control" # ctlNum 1 # midichan 1 # s "midi" -- cutoff on bass synth
+
+do
+  d1 $ filler $ every 7 (realAF) $ whenmod 16 8 (const $dip $ fuk $ sound "[feel:6(3,8),feel:5(5,8)?,feel:8([7 4 5]/5,8)]" # gain 1.5 )$fuk $ sound "[feel:6([7 4 5]/3,8),feel:8(5,8)]" # gain 1.5 # cut 2
+  d2 $ fuk $ sound "[glitch:2(3,8),ul:9([7 4]/5,8)]" # gain 1.5 # cut 2
+  d3 $ silence
+  d4 $ silence
+
+do
+  d1 $ whenmod 16 8 (const $ sound "[feel:6(3,8,5),feel:8*8?,]" # gain 1.5 # cut 2) $ filler $ every 7 (realAF) $ whenmod 16 8 (const $dip $ fuk $ sound "[feel:6(3,8),feel:5([7 4 3]/5,8),feel:8([7 4 5]/5,8)]" # gain 1.5 )$fuk $ sound "[feel:6([7 4 5]/3,8),feel:8(5,8)]" # gain 1.5 # cut 2 # speed 0.5
+  d2 $ dip $ realAF $ fuk $ sound "[glitch:2(3,8),ul:9([7 4]/5,8)]" # gain 1.5 # cut 2
+  d3 $whenmod 32 24 (const $ note "cs3 d3 g3 fs3 f3 g4 cs4 g2" # midichan 1 # s "midi")$ every 4 (slow 2)$every 6 (const $ note "[cs3([7 4]/3,8,5),g3(5,8),c1*8]" # midichan 1 # s "midi") $ note "[cs4(3,8,5),fs2(5,8)]" # release 2 # midichan 1 # s "midi"
