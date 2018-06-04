@@ -1,0 +1,18 @@
+-- pattern 31
+-- 06/03/2018
+
+bps (190/60)
+
+d1 $ sound "[research:62 ~ ~ ~]/8" # gain 1.5 # speed 0.7
+
+d2 $ every 6 (fast 2)$ realAF $ fuk $ n "[1 2 3 4 5 6 7 8]/2" # sound "amencutup" # gain 1.35
+
+d2 $ every 6 (twist 0.25 0.75 16)$ stack
+  [
+  every 5 (0.75 ~>) $ every 2 (0.25 ~>) $ whenmod 32 16 (|=| speed 1.7)$ every 6 (fast 2)$ realAF $ fuk $ n "[1 2 3 4 5 6 7 8,6(3,8),<7(5,8) 8(5,8)>]/2" # sound "amencutup" # gain 1.35,
+  fuk $ every 5 (0.75 ~>) $ every 2 (0.25 ~>) $ sound "[feel:6(3,8), feel:8(5,8,7)]" # gain 1.15 # cut 2
+  ]
+
+do
+  d3 $ sound "<research:87 research:87 research:88 research:88>" # gain 1.35 # speed "[<0.7 0.9 1.5 1.7>]/8"
+  d4 $ sound "research:89(3,8,5)" # gain 1.45 # release 0.3 # speed "[<0.7 0.9 1.5 1.7>]/8"

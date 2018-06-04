@@ -1,0 +1,21 @@
+-- pattern29
+-- 05/31/2018
+
+bps (80/60)
+d7 $ every 3 (iter 4)$ note "[~ ~ cs2 ~,<fs3([5 4]/3,8) f3(3,8) gs2(3,8)>,<fs4 fs4 g3 gs3>]" # midichan 3 # s "midi"
+
+
+d1 $ fast 2 $ pop3 0.125 1.2 $ sound "{feel:8*4}"
+d1 $ whenmod 16 8 (pop3 0.125 1.7)$ fast 2 $ pop3 0.125 0.7 $ sound "{feel:8*4,feel:6 feel:5 feel:6 ul:2 glitch:2}"
+
+d1 $ whenmod 16 8 (# cut 2)$ realAF $ fuk $ whenmod 16 8 (pop3 0.125 1.7)$ fast 2 $ pop3 0.125 0.7
+  $ sound "[noiz:3([4 3]/5,8),{feel:8(3,8),feel:6 feel:5 feel:6 ul:2 glitch:2}]" # gain 1.5
+
+d2 $ every 2 (const $ pop3 0.125 0.9$ sound "guitarloop" # gain 1.25 # cut 2 # release 6)$ pop3 0.0125 0.9$ sound "guitarloop" # gain 1.25 #cut 2 # release 6
+
+d3 $whenmod 16 8 (const $ sound "guitarloop" # release 4 # speed 0.9 # gain 1.15)$ sound "guitarloop" # release 4 # speed 0.75 # gain 1.15
+
+d5 $ every 4 (|+| note (-4))$ note "<[cs3, f3, as3,<f4 a4 cs4>, ~ f2 ~ d2 ~ g4 ~ ~] [cs2,f2,as3, <f4 as4 a4>]>" # midichan 4 # s "midi"
+d6 $ every 3 (|+| note (-2))$ note "[cs3, f3, as3,<f4 a4 cs4 f3 c5 cs3>, < [~ f2 ~ d2 ~ g4 f5 as5] [f2 g2 d3 cs2 a4 as4 d3 d5] >]" # midichan 5 # s "midi"
+
+d4 $ control (_discretise 128 $ slow 8 (scale 0 80 $ (sine1))) # midichan 3 # s "midi" # midicmd "control" # ctlNum 0

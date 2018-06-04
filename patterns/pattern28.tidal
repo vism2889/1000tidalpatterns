@@ -1,7 +1,7 @@
 --pattern 28
 -- 05/31/2018
 
---midi imports 
+--midi imports
 import Sound.Tidal.Context
 
 (midicmd, midicmd_p) = pS "midicmd" (Nothing)
@@ -20,17 +20,29 @@ import Sound.Tidal.Context
 (control, control_p) = pF "control" (Nothing)
 
 
+bps (190/60)
+
 d5 $ control (_discretise 128 $ slow 16 (scale 0 127 $ (sine1))) # midichan 3 # s "midi" # midicmd "control" # ctlNum 0
 
 
 d2 $ fuk $ slowcat [
-  every 3 (slow 2) (note "[cs4*4,b3(5,8),<d3(5,8) c3(3,8) as4>]") # release 2,
-  every 7 (brak) (every 3 (fast 2) (note "[fs2*8,g2(3,8)]/2")),
-  every 9 (fast 2) (note "[as2*4, <c4*3  d4*6>,fs2(3,8)]")
+  every 3 (linger 0.125) (note "[cs4(3,8)?,b3(5,8),<d3(5,8) c3(3,8) as4>]") # release 2,
+  every 7 (realAF) (every 3 (fast 2) (note "[fs2*8,g2(3,8)]/2")),
+  every 9 (fast 2) (note "[as2*4, <c4*8  d4*8>,fs2(3,8)]")
 ] # midichan 3 # s "midi"
+
+d6 $ seqPLoop [
+  (0,8, note "[d2 ~ ~ ~]/1.5" # midichan 2 # s "midi"),
+  (8,16, note "[d2 ~, fs2(3,8)]/2" # midichan 2 # s "midi"),
+  (16,24, note "[g2 fs2 d2 cs2, g3(3,8)]/2" # midichan 2 # s "midi")
+  ]
+
+d7 $ every 3 (iter 4)$ note "[f3(3,8,5),d3 g2 c2 c3,<c4 c6 cs5 d3 g4 f2>]" # midichan 4 # s "midi"
 
 d3 $ silence
 
-d3 $ sound "bd(3,8,5)"
+d3 $ sound "feel:6(3,8)" # gain 1.5 # cut 2
 
-d4 $ realAF $ fuk $ sound "[feel:8*4,<feel:5(5,8,3) ul:2(3,8)>,[~ ~ cp ~]/2]" # gain 1.35
+d4 $whenmod 32 24 (# cut 2)$ whenmod 16 15 (linger 0.125 . rev)$ jux ((# speed "0.5") . rev)
+  $ every 3 (slow 2)$ every 6 (pop4 0.125 1.2)$ realAF $ fuk
+  $ sound "[glitch:7([3 5]/3,8),feel:8*4,<feel:5(5,8,3) ul:2(3,8)>,[~ ~ cp ~]/2]" # gain 1.35 # room 0.0
