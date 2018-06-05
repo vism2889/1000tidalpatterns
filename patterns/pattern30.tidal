@@ -7,6 +7,7 @@ d1 $ sound "{glitch*4, feel:8*6}" # gain 1.25
 
 d1 $whenmod 16 8 (slow 2)$ sound "[<feel:6*4 feel:6*6 feel:6*8>, <feel:8*6 feel:8*12 feel:8*8>]"
 
+--slow this dude down at first ex: $ slow 4
 startclock d2 $ every 7 (slow 2) $ every 6 (twist 0.25 1.0 16)$ fuk $ stack [
   seqPLoop [
   (0,4, sound "[noiz(5,8,6),ul:2(3,8),<trp:1([5 4]/3,8) trp:2*8 >]" # gain 1.25),
@@ -15,7 +16,7 @@ startclock d2 $ every 7 (slow 2) $ every 6 (twist 0.25 1.0 16)$ fuk $ stack [
   (16,24, sound "[feel:6(3,8), amencutup:1([7 4]/5,8),amencutup:4(3,8)?]" # cut 2 # gain 1.25),
   (24,26, fuk $ sound "[noiz(5,8,6), ul:2(3,8),<amencutup:4(3,8,5) amencutup:1(3,8,5)>,[perc ~ rm ~]/2]" # cut 2 # gain 1.25)
   ] # speed 1.7,
-  fuk $ n "[51(3,8)]" # sound "research" # gain 1.75 # release 0.3
+  gtfo $ fuk $ n "[51(3,8)]" # sound "research" # gain 1.75 # release 0.3
   ]
 
   d3 $ slow 4$ chop 16$ sound "<research:99 research:96 research:97 research:98>" # gain 1.80

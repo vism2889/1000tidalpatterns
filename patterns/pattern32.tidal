@@ -1,2 +1,14 @@
 -- pattern 32
 -- 06/03/2018
+
+bps (160/60)
+
+let pat = "1(<3 5 8>)"
+
+d1 $ note "cs3  ~ fs3 g3 a3 g2 cs2 ~" # s "midi" # midichan 1 
+
+d5 $ control (_discretise 128 $ slow 16 (scale 0 127 $ (sine1)))
+  # midichan 1 # s "midi" # midicmd "control" # ctlNum 0 # gain pat
+
+d5 $ control (_discretise 128 $ slow 2 (scale 65 127 $ (sine1)))
+    # midichan 3 # s "midi" # midicmd "control" # ctlNum 0

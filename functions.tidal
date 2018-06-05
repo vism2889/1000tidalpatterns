@@ -1,7 +1,7 @@
 -- custom functions
 
 -- heavy influence from tidal documentation, Kindohm's github, and the livecode slack/lurk
-
+let gtfo p = (const $ sound "~") p -- kindohm's
 -- startclock and oneshot functions by digitalohm
 let startclock d p = do
                         now <- getNow
