@@ -1,0 +1,25 @@
+-- pattern 36
+-- 06/06/2018
+
+
+-- Kindohms tutorial on binary patterns
+-- https://www.youtube.com/watch?v=jhjZuNaKa3w&t=23s
+
+bps (150/60)
+
+let inverse 1 = 0
+    inverse 0 = 1
+
+do
+  let pat = "<[0 1 0*2 1 0 1 1*2 1 0 0*2 1 0 1 1*2 0 0] [1*2 0 0*2 0 1 1 0 1*2 1 0 0 1 0*2 1*2 1 0]>/4"
+      patt = "[1 0 0 0*2 1 0 1 0]/2"
+  d1 $ realAF $ gain pat # sound "stab:7" # release 0.2
+  d2 $ gain (inverse <$> pat) # sound "stab:1" # speed 0.7 # release 0.2
+  d3 $ fuk $ gain pat # sound "[feel:6,ul:6]" # release 0.3 # gain 1.15
+  d4 $ realAF $ gain pat # sound "feel:5" # release 0.2
+  d5 $ fuk $ realAF $ gain (inverse <$> pat) # sound "feel:8"
+  d8 $ every 3 (twist 0.25 1.0 16)$ fuk $ gain pat # sound "cp"
+
+d6 $ sound "crd:1" # gain 1.75 # release 0.9 # speed 0.5 # room 0.2
+
+d7  $ every 2 (|=| speed 2.4)$ pop4 0.125 1.0 $ chop 8 $ sound "bev" # release 1.5 # speed 0.6

@@ -1,0 +1,41 @@
+-- pattern 37
+-- 06/06/2018
+
+
+let inverse 1 = 0
+    inverse 0 = 1
+
+do
+  let pat = "[1 0 1 0 0 1 1 0 1 0 0 1 1 0 0 0]/2"
+  startclock d1 $ every 7 (twist 0.75 0.95 8)$ every 3 (palindrome)$ fuk
+    $ stack
+    [
+    gain pat # sound "feel:6" # release 0.2,
+    gain  (inverse <$> pat) # sound "feel:8" # release 0.5,
+    gain (pat*1.5) # sound "<research:60 research:84>" # release 0.5,
+    gtfo $ stack [
+            sound "rm(3,8,5)" # gain 0.9,
+            gain (inverse <$> pat) # sound "amencutup" # release 0.8,
+            sound "ul:9(3,8)"
+            ],
+    palindrome $ gain (pat*1.25) # sound "glitch:6" # release 0.3
+    ]
+
+do
+  let pat2 = "[[1 0 0 0][0 0 1 0][0 0 0 0][1 0 0 0]]"
+  startclock d2 $ every 7 (twist 0.75 0.95 8)$ every 3 (|=| speed 2.5)$ fuk
+    $ stack
+    [
+    gain (pat2*1.25) # sound "feel:6" # release 0.3,
+    slow 2 $ gain (inverse <$> (pat2)) # sound "hh",
+    fuk $ every 2 (within (0.25,0.75)(|=| gain "1.25*16"))
+      $ seqPLoop
+      [
+      (0,2, gain (pat2*1.25) # sound "ul:2" # release 0.3),
+      (2,4, gain (pat2*1.25) # sound "noiz:2" # release 0.3),
+      (4,5, gain (pat2*1.25) # sound "cp" # release 0.3),
+      (5,8, slow 2 $ gain (pat2*1.25) # sound "noiz:8" # release 0.3 # speed 1.7)
+      ]
+    ]
+
+d3 $realAF$ sound "[<[rot rot:1 rot:2 rot*2] rot:2(3,8) rot:2(5,8)>]"

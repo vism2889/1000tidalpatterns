@@ -1,2 +1,9 @@
 --pattern 35
 --06/05/2018
+
+oneshot d1 $ sound "research" # gain 1.5 # speed 0.8
+
+oneshot d1 $ sound "research:4" # gain 1.5
+
+d2 $ every 3 (slow 2 . iter 4)$every 5 (0.25 ~>)$ fuk $ n "[<4(3,8) 5(3,8) 4(3,8) 6(5,8)>]" # sound "trp" # gain 1.5
+d3 $ every 7 (twist 0.50 0.75 8)$ every 4 (slow 2 . realAF)$ fuk $ n "[8 5 8 5 5 8 5 8, [~ 6 ~ ~ 6 ~ ~ 6 6 ~ ~ ~ ~ 6 ~ ~]/2]" # sound "feel" # gain 1.35 # cut 2
