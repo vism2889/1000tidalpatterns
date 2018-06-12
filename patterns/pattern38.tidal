@@ -1,0 +1,36 @@
+-- pattern 38
+-- 06/09/2018
+bps (150/60)
+
+
+
+startclock d1 $ every 4 (slow 2)$ seqPLoop [
+  (0,6, whenmod 16 8 (|=| speed 1.2)
+  $ every 3 (fast 1.5)$ stack [
+  spread ($) [rev, (|+| accelerate "-1 1"),
+  (|+| speed " 1 2 4 (-3)"), chop 16, stut 2 0.25 0.25]
+  $ slowcat [
+  sound (samples "noiz*6" (irand 50)) # release 0.2,
+  every 3 (twist 0.25 1.0 8) $ sound (samples "feel*8" (irand 7)),
+  sound (samples "ul*8" (irand 7))# speed "1 0.7 1.3 2",
+  sound (samples "glitch*16" (irand 32))
+  ] |+| unit "c" |+| speed "8",
+  sound "noiz:7" # gain 1.25 # release 0.2 # speed 0.5
+  ]),
+  (6,8, n "<[1 2 3 [4 5 6 8] ~ ~ 4 3] [3 4 [7 5 8 9] 5 4 3 5 7]>" # sound "[amencutup,ul]" # speed 2.5 # gain 1.15),
+  (8,16, every 2 (fast 2) $ every 7 (twist 0.75 0.95 4) $ whenmod 16 8 (within (0.25,5.0) (pop4 0.25 1.5))$ fuk
+  $ stack [
+  fuk $ slowspread ($) [rev, (|+| accelerate "-1 1"),
+  chop 16]
+   $ fuk $ slowcat [
+  every 3 (fuk) $ sound (samples "[research*8, noiz]" (irand 50)) # release 0.2,
+  every 3 (twist 0.25 1.0 8) $ sound (samples "research*8" (irand 70)) # release 0.5,
+  sound (samples "ul*8" (irand 5)),
+  sound (samples "glitch*8" (irand 32))
+  ] |+| unit "c" |+| speed "8",
+  sound "feel:6(3,8)" # gain 1.25 # release 0.2
+  ])
+  ] # speed "<[1 0.7 1.3 2.5] [1 2 0.5 0.25]>"
+
+d2 $ every 3 (fuk . slow 4)$ every 5 (twist 0.5 1.0 8)$ every 3 (iter 4)
+  $ sound "[[feel:6(3,8,5)]/2,feel:8(5,8),glitch:2([5 4]/3,8), house:5(3,8)]" # release 0.5 # gain 1.25 # speed 0.7
