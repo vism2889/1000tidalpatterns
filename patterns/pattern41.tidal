@@ -1,0 +1,14 @@
+-- pattern 41
+-- 06/13/2018
+
+
+
+bps (150/120)
+
+d1 $ slow "<0.75 1.5>" $ sound "[noiz:3 noiz:4 noiz:5*2 noiz:8 noiz:7,feel:6(3,5),hh(2,5)]" # release 0.2 # gain 1.5
+
+d1 $ slow "<0.75 1.5>" $ every 5 (0.25 ~>)$ every "[7 9]" (twist 0.25 0.75 16) $ sound "[noiz:3 noiz:5/2 noiz:5*2 noiz:8 noiz:9*2 noiz:10 noiz:9 noiz:9,feel:6([5 4 3]/3,8)]" # release 0.2 # gain 1.5
+
+d2 $ slow "<0.75 1.5>" $ sound "basst:9" # gain 1.35 # speed 1.7 # release 0.2
+
+d3 $ sound "bd(3,8)"

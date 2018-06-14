@@ -20,7 +20,7 @@ do
     (8,12, n " [[4 7 10*2 4 5*2 ~ 7 5*2]/2 ,7([3 5]/3,8),12(5,8)]" # sound "ul" # gain 1.25 # release 0.5),
     (12,16, n " [[1 7 ~ 4 5*2 7 7 5*2]/2 ,2([5 4]/3,8),8(5,8)]" # sound "trp" # gain 1.25)
     ] # release 0.3 # speed 2
-  d4 $ slow 0.75 $ every 2 (slow 0.75) $ sound "[cords:1*8]" # release 0.2 # speed "1.2 0.7" # gain 1.25
+  d4 $ slow 0.75 $ every 2 (slow 0.75) $ sound "[cords:1]" # release 0.2 # speed "1.2 0.7" # gain 1.25
 
 
 

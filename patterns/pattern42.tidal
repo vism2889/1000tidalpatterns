@@ -1,0 +1,21 @@
+-- pattern 42
+-- 06/14/2018
+
+let inverse 1 = 0
+    inverse 0 = 1
+    nice p = every 2 ((twist (2/13) (6/13) 13 <$> (|*| speed 2.0) . slow 2)) p
+
+d1 $ every 7 (|=| speed 1.7)$ every 3 (slow 2) $ every 5 (twist (7/13) (10/13) 13)$ sound "[feel:6(5,13),trp:4(7,13),feel:5(2,13),noiz:2*13] " # release 0.2
+
+d2 $ sound "[909(9,13),basst:2(4,13)]" # gain 1.25 # release 0.2
+
+
+do
+  let pat = "[1 1 0 1*2 1 0 1 1 0 1 0 1 0]"
+  d3 $ stack
+    [
+    gain pat # sound "feel:8",
+    nice $ gain pat # sound "feel:6" # release 0.2 # speed 1.7,
+    whenmod 26 13 (const $ gain pat # sound "glitch:2" # release 0.2) $ sound "<glitch:2*26 glitch:2*13 glitch:3(9,13) glitch:2(9,13)>" # release 0.2,
+    every 3 (0.25 ~>)$ sound "cp(2,13)"
+    ]
