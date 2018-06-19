@@ -1,0 +1,30 @@
+-- pattern 44
+-- 06/19/2018
+
+bps (150/60)
+
+d1 $ fuk $ sound "[feel:6(4,7), glitch:2(5,7)]" # release "[0.2 0.4 0.6 1.0]/7" # gain 1.15
+
+--d2 $ sound "[research:68]" # release "[0.2 0.4 0.6 2.0]/14" # gain 1.75 # speed "2.0"
+
+--d4 $ every 7 (const $ sound "[ul:3*14, feel:8(3,7)]")$ sound "ul:3*7"
+
+d5 $ fuk $ dip $ seqPLoop
+  [
+  (0,1, sound "[feel:6*7 ~ ~ ~]/2"),
+  (1,2, sound "~ ~ ~ ~"),
+  (2,3, sound "[feel(4,7) ~ ~ ~, ~ noiz*7 ~ ~]/4"),
+  (3, 3.75, sound "~ ~ ~ ~"),
+  (3.75,4, sound "[ul:7*14]" # speed 2.5),
+  (4,7, sound "ul:7(4,7)"),
+  (7,7.75, sound "~ ~ ~ ~"),
+  (7.75, 8, sound "[cp*14]" # speed 2.5 # release 0.2),
+  (8,12, sound "[feel(4,7), [~ ~ cp ~]/2, hh*7]"),
+  (12,14, sound "[~ ~ ~ feel:6]/4"),
+  (14,15, sound "feel:5*7"),
+  (15,15.75, sound "[feel:8*7, feel:6(3,7)]"),
+  (15.75,16, sound "noiz:7*7")
+  ] # gain 1.15
+
+d6  $ fuk $ sound "[<[research:82 research:17 research:29 research:35 ~ research:83 research:84]*2 [research:82(5,7)]>]/2"
+  # release "[0.1 0.5 1.0 0.2 0.2 0.4 0.7 0.8]" # gain 1.5 # speed 1.7 # room 0.0

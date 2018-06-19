@@ -1,0 +1,41 @@
+-- pattern 43
+-- 6/15/2018
+
+d1 $ fast 2 $ every 7 (fast 2)$ every 3 (twist 0.25 0.5 8)$ fuk
+  $ sound "[feel:6 feel:2 [<[hh feel:6 trp:4 noiz:3] [feel:8 feel:6*2 feel:5 feel:5] [~ ~ feel:8 ~, feel:6(4,8)]>] ~,noiz:3*4 ~ glitch:2*2 ~]/4" # gain 1.25 # release 0.2
+
+d5 $ every 7 (pop4 0.125 2.5)$ every 5 (|=| speed 0.5)$ whenmod 16 8 (const $ sound "<[rot(3,8)]/2 rot:1 rot:2>")$ fuk $ fast 2$ realAF $ sound "[rot(3,8) ~ ~,~ ~rot:1 rot:2]/2"
+d5 $ sound "[rot:2(3,8)]/4" # speed 0.5
+
+do
+  d2 $ fuk $ every 3 (iter 4 . slow 2 )$ seqPLoop
+    [
+    (0, 2, sound "[feel:8*2, amencutup:5(5,8)]"),
+    (2, 3, sound "feel:8*8"),
+    (3, 4,  sound "feel:8(3,8)"),
+    (4, 7.5, sound "[feel:8(5,8),amencutup:7(3,8)]"),
+    (7.5, 8, twist 0.25 0.5 16 $ sound "feel:8(3,8)"),
+    (8, 12, sound "feel:8*([5 4 3]/3,8)")
+    ]  # release 0.2
+  d3 $ every 7 (twist 0.25 0.5 8)$ seqPLoop
+    [
+    (0, 2, sound "feel:6(3,8)"),
+    (2, 3, sound "feel:6*4"),
+    (3, 4, sound "feel:6(3,8)"),
+    (4, 7.5, twist 0.75 1.0 16 $ sound "feel:6(5,8)"),
+    (7.5, 8, sound "feel:6*16"),
+    (8, 12, sound "feel:6*([5 4 3]/3,8)")
+    ] # release 0.2
+  d4 $ whenmod 16 8 (const $ seqPLoop
+      [
+      (0,1, sound "pad:1*16" # release 0.2 # speed 0.7),
+      (1,2, sound "pad:1(5,8)" # release 0.3 # speed 0.4),
+      (2,3, sound "pad:1(5,8)" # release 0.4 # speed "0.4 0.44 0.47 0.5"),
+      (3,4, sound "pad:1(5,8)" # release 0.5),
+      (4,5, twist 0.25 0.5 16 $ sound "pad:1(5,8)" # release 0.75),
+      (5,6, sound "pad:1([5 3]/5,8)" # release 1.0),
+      (6,7, sound "pad:1(5,8)" # release 1.25),
+      (7,8, sound "pad:1" # release 2.0 # speed "2.0")
+      ]
+      )$ every 4 (within(0.25,0.5) (pop4 0.125 2.0))
+    $ sound "pad:1(3,8)" # release 0.2 # gain 1 # speed "[0.5 0.53 0.40 0.47]/4"

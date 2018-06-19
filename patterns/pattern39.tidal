@@ -6,22 +6,27 @@ bps (150/60)
 do
   let grad = (within(0.75, 1.0))(slow 8 . (stut 16 0.75 0.5). (|=| speed 2.5))
       gradd = (within(0.25, 0.50))(slow 8 . (stut 8 0.75 0.5). (|=| speed 0.8))
-  d1 $ slow 1.5$ every 7 (0.25 ~>)$ every 5 (iter 4)$ gradd $ grad $ sound "[feel:6(3,8),feel:8(5,8),ul:3([5 4 3]/3,8), glitch:2*8]" # release 0.3 # speed "1.1 0.9 0.7 1.2" # gain 1.25
-  d2 $ slow 1.5$ whenmod 16 8 (slow 4)$ every 4 (stut 3 0.75 0.25) $ every 3 (iter 4)$ sound "[feel:6(3,8),feel:5(3,8,5)]" # speed 0.95 # gain 1.25 # speed "[1.1 1.9 0.7 2.5]/2"
+  d1 $ slow 1.5$ every 7 (0.25 ~>)$ every 5 (iter 4)$ gradd $ grad
+    $ sound "[feel:6(3,8),feel:8(5,8),ul:3([5 4 3]/3,8), glitch:2*8]" # release 0.3 # speed "1.1 0.9 0.7 1.2" # gain 1.25
+  d2 $ slow 1.5$ whenmod 16 8 (slow 4)$ every 4 (stut 3 0.75 0.25) $ every 3 (iter 4)
+    $ sound "[feel:6(3,8),feel:5(3,8,5)]" # speed 0.95 # gain 1.25 # speed "[1.1 1.9 0.7 2.5]/2"
   d3 $ slow 1.5$ silence
-  d4 $ slow 0.75 $ every 3 (slow 2) $ sound "[cords:1*8]" # release 0.2 # speed "1.2 0.7" # gain 1.25
+  d5 $ silence
+  d4 $ slow 0.75 $ every 3 (slow 2) $ sound "[cords:1]" # release 0.2 # speed "1.2 0.7" # gain 1.25
 
 do
-  d1 $ slow 0.75 $ every 7 (0.25 ~>)$ every 5 (iter 4)$ gradd $ grad $ sound "[feel:6(3,8),feel:8(5,8),ul:3([5 4 3]/3,8), glitch:2*8]" # release 0.3 # speed "1.1 0.9 0.7 1.2" # gain 1.25
-  d2 $ slow 0.75 $ whenmod 16 8 (slow 4)$ every 4 (stut 3 0.75 0.25) $ every 3 (iter 4)$ sound "[feel:6(3,8),feel:5(3,8,5)]" # speed 0.95 # gain 1.25 # speed "[1.1 1.9 0.7 2.5]/2"
-  d3 $ slow 0.75 $ whenmod 16 8 (slow 2 . frac')$ every 7 (fuk . slow 2)$ every 3 (twist 0.25 0.75 16)$ seqPLoop [
+  d1 $ iter 4 $ slow 0.75 $ every 7 (0.25 ~>)$ every 5 (iter 4)$ gradd $ grad
+    $ sound "[feel:6(3,8),feel:8(5,8),ul:3([5 4 3]/3,8), glitch:2*8]" # release 0.3 # speed "1.1 0.9 0.7 1.2" # gain 1.25
+  d2 $ slow 0.75 $ whenmod 16 8 (slow 4)$ every 4 (stut 3 0.75 0.25) $ every 3 (iter 4)
+    $ sound "[feel:6(3,8),feel:5(3,8,5)]" # speed 0.95 # gain 1.25 # speed "[1.1 1.9 0.7 2.5]/2"
+  d3 $ every 7 (|*| speed 2.5) $ slow 0.75 $ whenmod 16 8 (slow 2 . frac')$ every 7 (fuk . slow 2)$ every 3 (twist 0.25 0.75 16)$ seqPLoop [
     (0,4, n " [[1 7*2 ~ 4 5*2 ~ 7 5*2]/2 ,2([5 4]/3,8),8(5,8)]" # sound "amencutup" # gain 1.25),
     (4,8, n " [[1 7*2 ~ 4 5*2 ~ 7 5]/2 ,30([5 4]/3,8),25(5,8)]" # sound "noiz" # gain 1.25 # release 0.2),
     (8,12, n " [[4 7 10*2 4 5*2 ~ 7 5*2]/2 ,7([3 5]/3,8),12(5,8)]" # sound "ul" # gain 1.25 # release 0.5),
     (12,16, n " [[1 7 ~ 4 5*2 7 7 5*2]/2 ,2([5 4]/3,8),8(5,8)]" # sound "trp" # gain 1.25)
     ] # release 0.3 # speed 2
-  d4 $ slow 0.75 $ every 2 (slow 0.75) $ sound "[cords:1]" # release 0.2 # speed "1.2 0.7" # gain 1.25
-
+  d4 $ slow 0.75 $ every 2 (slow 0.75) $ sound "[cords:1]/2" # release 0.2 # speed "1.2 0.7" # gain 1.25
+  d5 $ slow "<1.5 0.75>" $ fuk $ every 3 (twist 0.25 0.5 8 )$ every 2 (pop4 0.125 2.5)$ sound "basst:7([5 3]/3,8)/2" # gain 1.5 # speed 0.8 # cut 2
 
 
   d4 $ sound ""

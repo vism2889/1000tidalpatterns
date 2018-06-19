@@ -11,7 +11,7 @@ d2 $ sound "[909(9,13),basst:2(4,13)]" # gain 1.25 # release 0.2
 
 
 do
-  let pat = "[1 1 0 1*2 1 0 1 1 0 1 0 1 0]"
+  let pat = "[1 1 0 1 0 0 1 1 0 1 0 1 0]"
   d3 $ stack
     [
     gain pat # sound "feel:8",
