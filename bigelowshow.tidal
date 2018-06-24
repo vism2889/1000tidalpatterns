@@ -1,0 +1,308 @@
+
+let pop11 a b p = stut' 11(a) (|*| speed b) p
+    pop7 a b p = stut' 7(a) (|*| speed b) p
+
+bps (80/60)
+
+d1 $ whenmod 16 10 (const $ every 3 (pop11 0.125 1.7)$ sound "ul(8,11)")$ sound "ul(5,11)"
+
+d2 $ whenmod 16 10 (const $ sound "[feel:6(7,11),feel:5(4,11)]" # cut 2 )$ sound "[feel:6(4,7),feel:5(3,11)]" # cut 2 # speed ((scale (-4) 27 sine)*(slow 8 saw))
+
+d3 $ fuk $ sound "[trp:2([7 4 3]/7,11)]" # cut 2
+
+d4 $ every 6 (within (0.47, 0.74)(maven 0.125 2 0.4 )) $whenmod 32 16 (pop11 0.125 1.7) $ whenmod 16 10 (|=| speed 0.7)$ loopAt 4 $ chop 16 $ sound "research:11"
+
+d5 $whenmod 16 10 (const $ sound "rm*11" # speed ((scale (-4) 18 sine)*(slow 8 saw)))$ sound "rm*7" # speed ((scale (-4) 18 sine)*(slow 8 saw))
+
+d6 $ every 3 (twist 0.47 0.74 22)$ whenmod 16 10 (const $ sound "~ ~ ~ ~ ~ cp ~ ~ ~ ~ ~") $ sound "~ ~ ~ cp ~ ~ ~"
+
+
+--
+bps (160/60)
+
+d1 $ fuk $ every 2 (slow 2 . twist 0.25 0.75 16)$ stack [
+   seqPLoop [
+  (0, 32,  slow 2 $ every 6 (stut 16 0.75 0.25) $ fuk $ whenmod 8 4 (const $ fast 2 $ "[0.125 0.5 0.5 1.0 0.75]/4" <~
+    (sound "[noiz*2 cp hbd:4 hbd:7,feel:6(3,8)?, hh sn, feel:5(5,8)?]") # speed 1.7 # cut 2 # gain 1.5 )
+    $ every 4 (twist 0.25 1.0 16)$ fuk $ "[0 0.25 0.5 0 0.75]/4" <~
+    (sound "[noiz*2 cp hbd:4 hbd:7,feel:6(3,8)?, hh sn, feel:5(5,8)?]") # cut 2 # gain 1.5),
+    (32, 48,  sound "[feel:6(3,8), feel:5(5,8)?]" # gain 1.5 # cut 2)
+    ],
+    whenmod 16 8 (|=| room 0.0) $ sound "basst([7 4 5 3]/3,8)" # gain 1.75 # cut 2 # room 0.8,
+    seqPLoop [
+    (0, 8, sound "hbd:7(3,8)?" # cut 2 # gain 1.5),
+    (8, 16, sound "glitch:6(3,8)?" # gain 1.5)
+    ]
+  ]
+
+t1 (anticipateIn 32) $ sound "[research]" # gain 1.45 # speed 1.7 # release 1.0
+--
+bps (160/60)
+
+d1 $ sound "research" # gain 1.45 # speed 1.7 # release 1.0
+
+d4 $ dip $ sound "[~ research:16*2 ~ ~ ~ research:75*2 ~ research:75]/2" # gain 1.45 # speed 0.7 # release 0.2
+
+d2 $ every 3 (slow 2 . iter 4)$every 5 (0.25 ~>)$ fuk $ n "[<4(3,8) 5(3,8) 4(3,8) 6(5,8)>]" # sound "trp" # gain 1.5
+d3 $ every 7 (twist 0.50 0.75 8)$ every 4 (slow 2 . realAF)$ fuk $ n "[8 5 8 5 5 8 5 8, [~ 6 ~ ~ 6 ~ ~ 6 6 ~ ~ ~ ~ 6 ~ ~]/2]" # sound "feel" # gain 1.45 # cut 2
+
+
+
+--
+bps (150/60)
+
+do
+  let grad = (within(0.75, 1.0))(slow 8 . (stut 16 0.75 0.5). (|=| speed 2.5))
+      gradd = (within(0.25, 0.50))(slow 8 . (stut 8 0.75 0.5). (|=| speed 0.8))
+  d1 $ slow 1.5$ every 7 (0.25 ~>)$ every 5 (iter 4)$ gradd $ grad
+    $ sound "[feel:6(3,8),feel:8(5,8),ul:3([5 4 3]/3,8), glitch:2*8]" # release 0.3 # speed "1.1 0.9 0.7 1.2" # gain 1.25
+  d2 $ slow 1.5$ whenmod 16 8 (slow 4)$ every 4 (stut 3 0.75 0.25) $ every 3 (iter 4)
+    $ sound "[feel:6(3,8),feel:5(3,8,5)]" # speed 0.95 # gain 1.25 # speed "[1.1 1.9 0.7 2.5]/2"
+  d3 $ slow 1.5$ silence
+  d5 $ silence
+  d4 $ slow 0.75 $ every 3 (slow 2) $ sound "[cords:1]" # release 0.2 # speed "1.2 0.7" # gain 1.25
+
+do
+  d1 $ iter 4 $ slow 0.75 $ every 7 (0.25 ~>)$ every 5 (iter 4)$ gradd $ grad
+    $ sound "[feel:6(3,8),feel:8(5,8),ul:3([5 4 3]/3,8), glitch:2*8]" # release 0.3 # speed "1.1 0.9 0.7 1.2" # gain 1.25
+  d2 $ slow 0.75 $ whenmod 16 8 (slow 4)$ every 4 (stut 3 0.75 0.25) $ every 3 (iter 4)
+    $ sound "[feel:6(3,8),feel:5(3,8,5)]" # speed 0.95 # gain 1.25 # speed "[1.1 1.9 0.7 2.5]/2"
+  d3 $ every 7 (|*| speed 2.5) $ slow 0.75 $ whenmod 16 8 (slow 2 . frac')$ every 7 (fuk . slow 2)$ every 3 (twist 0.25 0.75 16)$ seqPLoop [
+    (0,4, n " [[1 7*2 ~ 4 5*2 ~ 7 5*2]/2 ,2([5 4]/3,8),8(5,8)]" # sound "amencutup" # gain 1.25),
+    (4,8, n " [[1 7*2 ~ 4 5*2 ~ 7 5]/2 ,30([5 4]/3,8),25(5,8)]" # sound "noiz" # gain 1.25 # release 0.2),
+    (8,12, n " [[4 7 10*2 4 5*2 ~ 7 5*2]/2 ,7([3 5]/3,8),12(5,8)]" # sound "ul" # gain 1.25 # release 0.5),
+    (12,16, n " [[1 7 ~ 4 5*2 7 7 5*2]/2 ,2([5 4]/3,8),8(5,8)]" # sound "trp" # gain 1.25)
+    ] # release 0.3 # speed 2
+  d4 $ slow 0.75 $ every 2 (slow 0.75) $ sound "[cords:1]/2" # release 0.2 # speed "1.2 0.7" # gain 1.25
+  d5 $ slow "<1.5 0.75>" $ fuk $ every 3 (twist 0.25 0.5 8 )$ every 2 (pop4 0.125 2.5)$ sound "basst:7([5 3]/3,8)/2" # gain 1.5 # speed 0.8 # cut 2
+
+do
+  t1 (anticipateIn 16)$ sound "~ ~ ~ ~"
+  t2 (anticipateIn 16)$ sound "~ ~ ~ ~"
+  t3 (anticipateIn 16)$ sound "~ ~ ~ ~"
+  t4 (anticipateIn 16)$ sound "~ ~ ~ ~"
+  t5 (anticipateIn 16)$ sound "~ ~ ~ ~"
+
+--
+
+do
+  d1 $ whenmod 16 8 (|=| speed 1.7)$ sound "research:43" # gain 1.5 # speed 2.5 -- # release "[0.1 0.5 1.0 2.5]/32"
+  d6 $ sound "feel:6(3,8)" # gain 1.5 # release 0.2
+  d2 $ sound "[feel:6 ~ [~ ~ feel:8 < feel:8 feel:5 ~ >] ~ < noiz:6 trp:9 > ~ ~ <[~ ~ feel:6 glitch:2*2] [glitch:2*3] [[feel:7 feel:6 ~ feel:6],[~ ~ ~ ~]]> ]/4" # gain 1.5
+  d5 $ slow 2$ fuk $ every 7 (slow 2 . stut 16 0.75 0.5) $ n "[3 2 4 3 2 5 4 6]" # sound "noiz" # release 0.2 # gain 1.5
+  d3 $ sound "[basst:5]/2" # gain 1.5 # speed 0.95 # release 1.5
+  d4 $ every 3 (|*| up (choose[2,3,(-3),9,(-2)])) $ sometimes (slow 2)$ dip $ whenmod 8 6 (const $ sound "[feel:6([4 7 5]/3,8,3), feel:5(5,8,4), ~ cp*2? ~ ~]") $ sound "~ ~ ~ ~" # coarse "4" # gain 0.95
+  -- d3 $ sound "[~ ~ cp ~]/2" # gain 1.5 # speed 1.0
+
+do
+  d1 $ whenmod 16 8 (|=| speed 0.5)$ sound "research:43" # gain 1.5 # speed 0.25
+  d2 $ slow 2 $ sound "feel:6(3,8)" # gain 1.5 # release 0.2
+  d3 $ whenmod 16 8 (|=| speed 1.7)$ sound "research:43" # gain 1.5 # speed 2.5
+  d4 $ silence
+  d5 $ silence
+  d6 $ silence
+
+do
+  d1 $ sound "research:43" # speed 0.25 # gain 1.5
+  d2 $ every 3 (iter 4)$ sound "feel:6(3,8)" # gain 1.5 # release "[0.2]/4"
+  d3 $ silence
+  d4 $ silence
+  d5 $ slow 2 $ fuk $ every 7 (slow 2 . stut 16 0.75 0.5) $ n "[3 2 4 3 2 5 4 6]" # sound "noiz" # release 0.2 # gain 1.5
+  d6 $ silence
+
+
+do
+  d1 $ pop4 0.125 1.1$ slow 2 $ sound "research:53" # gain 1.5 # speed 0.5
+  d2 $ every 3 (iter 4)$ sound "feel:6(3,8)" # gain 1.5 # release "[0.2]/4"
+  d5 $ slow 2 $ fuk $ every 7 (slow 2 . stut 16 0.75 0.5) $ n "[3 2 4 3 2 5 4 6]" # sound "noiz" # release 0.2 # gain 1.5
+
+do
+  d1 $ slow 2 $ sound "research:53" # gain 1.5 # speed 0.5
+  t2 (anticipateIn 8)$ sound "~ ~ ~ ~"
+  t5 (anticipateIn 8)$ sound "~ ~ ~ ~"
+
+
+
+d2 $ sound "[research:67(4,7), research:74(5,7)]" # release 1.0 # gain 1.25
+d3 $ every 3 (slow 2)$ sound "feel:6(3,7)" # gain 1.5 # release "[0.2]"
+
+d1 $ slow 2 $ stut 14 0.95 0.5 $ sound "research:53" # gain 1.5 # speed 0.5
+
+t4 (xfadeIn 14) $ sound "cords(3,7)" # release 1.0 # speed 1.2
+
+do
+  d1 $ slow 2 $ sound "research:53" # gain 1.5 # speed 0.5
+  d2 $ sound "[research:67(4,7), research:74(5,7)]" # release 1.0 # gain 1.25
+  d3 $ every 3 (slow 2)$ sound "feel:6(3,7)" # gain 1.5 # release "[0.2]"
+  d1 $ slow 2 $ stut 14 0.75 0.5 $ sound "research:53" # gain 1.5 # speed 0.5
+  d4 $ sound "cords(3,7)" # release 1.0 # speed 1.2
+
+do
+  d1 $ slow 2 $ sound "research:53" # gain 1.5 # speed 0.5
+  d2 $ sound "[research:67(4,7), research:74(5,7),feel:8([5 3 4]/3,7)]" # release 1.0 # gain 1.25
+  d3 $ every 3 (slow 2)$ sound "feel:6(3,7)" # gain 1.5 # release "[0.2]"
+  d1 $ slow 2 $ stut 14 0.75 0.5 $ sound "research:53" # gain 1.5 # speed 0.5
+  d4 $ whenmod  8 4 (|=| speed 0.7)$ sound "cords(3,7)" # release 1.0 # speed 1.2
+
+do
+  d1 $ slow 2 $ sound "research:53" # gain 1.35 # speed 0.5
+  d2 $ fuk $ sound "[research:67(4,7), research:74(5,7),feel:8([5 3 4]/3,7)]" # release 1.0 # gain 1.25 # cut 2
+  d4 $ every 4 (# cut 2)$ sound "cords(3,7)" # release 1.0 # speed 0.7
+  d5 $ sound "feel:6([5 4 3]/3,7)" # gain 1.35 # release 1.0 # cut 2
+
+--
+
+bps (150/60)
+
+do
+  d1 $ fuk $ every 3 (iter 7)$ sound "[glitch:7(4,7), feel:6(3,7),feel:8(5,7),hh*7]" # gain 1.5 # speed 0.8 # release 0.2
+  d2 $ fuk $every 4 (iter 7)$ n "1 2 3 4 5 6 7" # sound "noiz" # gain 1.35 # speed "<0.9 1.2 1.7 1.9 2.5>/7"
+  d3 $ iter 7 $ sound "cords:2(4,7,5)" # release 0.5 # gain 1.5 # speed "0.7 1.7 1.2 0.7 0.7 1.5 1.2"
+
+
+
+do
+  startclock d1 $ every 3 (twist 0.25 0.5 8)$ fuk $ whenmod 8 4 (slow "<1.5 1.75 2.0 2.0>") $ stack [
+    fuk $ every 3 (iter 4)$ sound "[glitch:7(5,8), feel:6(3,8,7),feel:8(5,8),hh*8]" # gain 1.5 # speed 0.8 # release 0.2,
+    fuk $every 4 (iter 4)$ n "1 2 3 4 5 6 7 8" # sound "noiz" # gain 1.35 # speed "<0.9 1.2 1.7 1.9 2.5>/8",
+    iter 4 $ sound "cords:2(3,8)" # release 0.5 # gain 1.75 # speed "0.7 1.7 1.2 0.7 0.7 1.5 1.2 1.7"
+    ]
+  d2 $ silence
+  d3 $ silence
+
+
+
+
+--
+bps (150/60)
+
+do
+d1 $ fuk $ sound "[feel:6(4,7), glitch:2(5,7)]" # release "[0.2 0.4 0.6 1.0]/14" # gain 1.15
+
+d2 $ every 7 (stut 7 0.75 0.5)$ every 3 (twist 0.75 1.0 14)$ n "1 2 3 4 5 6 7 8" # sound "amencutup" # gain 1.25 # release 0.2
+d2 $ silence
+--d2 $ sound "[research:68]" # release "[0.2 0.4 0.6 2.0]/14" # gain 1.75 # speed "2.0"
+
+--d4 $ every 7 (const $ sound "[ul:3*14, feel:8(3,7)]")$ sound "ul:3*7"
+
+d5 $ fuk $ dip $ seqPLoop
+  [
+  (0,1, sound "[feel:6*7 ~ ~ ~]/2"),
+  (1,2, sound "~ ~ ~ ~"),
+  (2,3, sound "[feel(4,7) ~ ~ ~, ~ noiz*7 ~ ~]/4"),
+  (3, 3.75, sound "~ ~ ~ ~"),
+  (3.75,4, sound "[ul:7*14]" # speed 2.5),
+  (4,7, sound "ul:7(4,7)"),
+  (7,7.75, sound "~ ~ ~ ~"),
+  (7.75, 8, sound "[cp*14]" # speed 2.5 # release 0.2),
+  (8,12, sound "[feel(4,7), [~ ~ cp ~]/2, hh*7]"),
+  (12,14, sound "[~ ~ ~ feel:6]/4"),
+  (14,15, sound "feel:5*7"),
+  (15,15.75, sound "[feel:8*7, feel:6(3,7)]"),
+  (15.75,16, sound "noiz:7*7")
+  ] # gain 1.15
+
+d6  $ fuk $ sound "[<[research:82 research:17 research:29 research:35 ~ research:83 research:84]*2 [research:82(5,7)]>]/2"
+  # release "[0.1 0.5 1.0 0.2 0.2 0.4 0.7 0.8]" # gain 1.35 # speed 1.7 # room 0.0
+
+do
+  t1 (anticipateIn 4) $ fuk $ sound "[feel:6(3,8), glitch:2(5,8)]" # release "[0.2 0.4 0.6 1.0]/8" # gain 1.15
+  t6 (anticipateIn 4) $ fuk $ sound "[<[research:82 research:17 research:29 research:35 ~ ~ research:83 research:84]*2 [research:82(5,8)]>]/2"
+    # release "[0.1 0.5 1.0 0.2 0.2 0.4 0.7 0.8]" # gain 1.5 # speed 1.7 # room 0.0
+  d5 $ silence
+
+
+--
+bps (150/60)
+
+
+
+let knut p = (slow 2 . stut "8 16" 0.75 0.5 . (|*| speed 2)) p
+    withinn a p= ((within(0.125,0.25)(stut a 0.75 0.5)) . (within(0.375,0.5)(stut a 0.75 0.5)) . (within(0.75,1.0)(stut a 0.75 0.5))) p
+--(within (0.0, 0.50)(slow 2 . rev . stut 8 0.95 0.25)
+
+d5 $ slow "1 2 4 1 1 8"$ withinn 4 $ fuk $ every 7 (knut) $ stack
+  [
+    every 6 (slow 2) $ seqPLoop
+    [
+      (0,4, sound "[feel:5*4 ~ cp ~ ~ ~ ul:8 ~ cp ~ feel:8*4 noiz:2 trp:6*2 hbd:5 feel:7 feel:9]/4" # release 0.2),
+      (4,8, sound "bd(5,8)")
+    ],
+    seqPLoop
+    [
+      (0,4, sound "[hh(5,8),feel:6(3,8)]" # release 0.2),
+      (4,8, sound "hh(3,8)")
+    ]
+  ] # gain 1.25
+
+d2 $ slow " 1 2 4 1 8" $ whenmod 16 8 (withinn "4 8")$ every 5 (twist 0.75 1.0 16)$ every 7 (slow 2 . fuk)
+  $ sound "[feel:6([7 5 4]/3,8),ul:12([3 4]/5,8)]" # release 0.1 # gain 1.25
+
+d1 $ whenmod 16 7 (const $ n "<[1 2 3 4 5 6 7 8] [6 6 6*2 4 5 6 7*2 1] [6 5 6 4 5 6*2 7*2 1]/2 >" # sound "noiz" # release 0.1 # gain 1.25 # speed "0.5 1.2 1.0 2.0 1.0 1.0 1.0")
+$ fuk $ every 6 (slow 2)$ n "<[1 2 3 4 5 6 7 8] [3 2 4*2 4 5 6 7*2 1]>" # sound "noiz" # release 0.1 # gain 1.25 # speed 0.7
+
+
+--
+bps (190/60)
+
+d1 $ slow 4$ whenmod 32 20 (pop4 0.125 1.5)$ whenmod 16 8 (const $ loopAt 8 $ sound "research:30" # speed 0.5)$ loopAt 8 $ chop 32 $ sound "research:30"
+
+d1 $ dip $ slow 2 $ whenmod 16 8 (|=| speed 1)$ sound "research:30([7 5 4 3]/3,8,8)?" # cut 2 # speed 1.3
+
+d5 $ dip $ slow 2 $ every 6 (const $ sound "glitch(3,8)" # gain 1.2) $ sound "glitch:2*8" # gain (every 3 (rev) $ "1 0.8 0.5 0.7 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.8 0.8") # room 0.2
+
+d2 $ fuk $ realAF $ every 9 (twist 0.25 1.0 16)$ sound "noiz:4(3,8,5)" # gain (every 3 (rev) $ "1 0.8 0.5 0.7 1 1 0.8 0.8") # room 0.2
+
+d4 $ slow 2 $ fuk $ realAF $ every 7 (iter 4) $ dip $ whenmod 16 8 (fuk) $ sound "[feel:6(3,8)?, feel:5([7 4 3]/5,8)]" # cut 2 # gain 1.1
+
+d6 $ dip $ slow 2 $ fuk $ realAF $ whenmod 32 16 (const $ every 7  (stut 16 0.75 0.5)  $ sound "[~ ~ cp ~]/2" # gain 1.2)
+  $ every 7  (stut 16 0.75 0.5)  $ sound "[~ ~ cp ~, hh(5,8)?]" # gain 1.2 # speed 1.7
+
+--
+bps (190/60)
+
+d1 $whenmod 8 4 (slow 2)$ stack [
+  faux $ "<0 0.5 0.125>" <~ sound ("[glitch:2([5 3]/5,8), hh feel:1, feel:6([7 [5 3]]/3,8),~ feel:5]") # cut 2 # gain 1.25,
+  faux $ sound "[bass2:2([7 5]/5,8)?, trp:1/2 ~, trp:4([7 3]/5,8),hc hc hh ~]" # release 0.1 # cut 2 # speed 0.9,
+  whenmod 16 8 (|*| speed (choose[2,3,4,(-3),(-5)])) $ sound "feelfx/3" # speed 0.5 # gain 1.15
+  ]
+
+--
+bps (120/60)
+
+d1 $ striate 16 $ sound "{research:4(3,8), research:50(4,7,3)}" # release 2 # speed 0.5
+
+d2 $ loopAt 16 $ chop 32 $ sound "[research:4, research:1]" # gain 0.90 # speed 0.5 # room 0.0
+
+d5 $ sound "glitch:2*8" # gain (every 3 (rev) $ "1 0.8 0.5 0.7") # room 0.2
+
+d3 $ silence
+
+d4 $ every 3 (|*| up (choose[2,3,(-3),9,(-2)])) $ sometimes (slow 2)$ dip $ whenmod 8 6 (const $ sound "[feel:6([4 7 5]/3,8,3), feel:5(5,8,4), ~ cp*2? ~ ~]") $ sound "~ ~ ~ ~" # coarse "4" # gain 0.95
+
+
+d1 $ striate 4 $ slow 8 $ sound "[research:3,research:4]" # speed 0.5 # gain 1.5 # room 0.2 # coarse 8
+
+
+
+--
+
+
+
+
+
+
+
+--
+
+d1 $ every 5 ((within(0.25, 0.75))(stut 4 0.85 0.5))$ every 7 (slow 2)$ every 3 (0.25 ~>)
+    $ sound "[[feel:6 hh feel:8 feel:5] [hh hbd:8 feel:6 feel:5] [hh feel:8 feel:5 glitch:2] [feel:6 ~ [trp:9] ~] feel:6*4 ~ [~ ~ ~ cp*2] [~ ~ feel:6? ~]]/4" # release 0.5 # gain 1.5
+
+d2 $ sound "[[research:79(3,8)]/2,noiz:12(5,8)]" # speed "0.5" # gain 1.5 # cut 2
+
+d3 $ sound "ul:9([7 3]/5,8)" # release 0.8 # gain 1.15
+d3 $ silence
+
+d4 $ sound "research:95" # speed 0.5 # gain 1.5
+
+d4 $ realAF $ whenmod 16 7 (const $ every 3 (pop4 0.125 2.5)$ n (irand 8) # sound "amencutup" # release 0.2 # gain 1.5 # coarse 5)$ every 3 (pop4 0.125 1.5)$ iter 4 $ slow 2$ n (irand 16) # sound "noiz" # gain 1.5  # release 0.2

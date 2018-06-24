@@ -2,3 +2,29 @@
 -- 06/19/2018
 
 bps (150/60)
+
+
+
+let knut p = (slow 2 . stut "8 16" 0.75 0.5 . (|*| speed 2)) p
+    withinn a p= ((within(0.125,0.25)(stut a 0.75 0.5)) . (within(0.375,0.5)(stut a 0.75 0.5)) . (within(0.75,1.0)(stut a 0.75 0.5))) p
+--(within (0.0, 0.50)(slow 2 . rev . stut 8 0.95 0.25)
+
+d1 $ slow "1 2 4 1 1 8"$ withinn 4 $ fuk $ every 7 (knut) $ stack
+  [
+    every 6 (slow 2) $ seqPLoop
+    [
+      (0,4, sound "[feel:5*4 ~ cp ~ ~ ~ ul:8 ~ cp ~ feel:8*4 noiz:2 trp:6*2 hbd:5 feel:7 feel:9]/4" # release 0.2),
+      (4,8, sound "bd(5,8)")
+    ],
+    seqPLoop
+    [
+      (0,4, sound "[hh(5,8),feel:6(3,8)]" # release 0.2),
+      (4,8, sound "hh(3,8)")
+    ]
+  ] # gain 1.25
+
+d2 $ slow " 1 2 4 1 8" $ whenmod 16 8 (withinn "4 8")$ every 5 (twist 0.75 1.0 16)$ every 7 (slow 2 . fuk)
+  $ sound "[feel:6([7 5 4]/3,8),ul:12([3 4]/5,8)]" # release 0.1 # gain 1.25
+
+d3 $ whenmod 16 7 (const $ n "<[1 2 3 4 5 6 7 8] [6 6 6*2 4 5 6 7*2 1] [6 5 6 4 5 6*2 7*2 1]/2 >" # sound "noiz" # release 0.1 # gain 1.25 # speed "0.5 1.2 1.0 2.0 1.0 1.0 1.0")
+$ fuk $ every 6 (slow 2)$ n "<[1 2 3 4 5 6 7 8] [3 2 4*2 4 5 6 7*2 1]>" # sound "noiz" # release 0.1 # gain 1.25 # speed 0.7

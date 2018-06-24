@@ -1,0 +1,26 @@
+-- pattern 46
+-- 06/23/2018
+
+bps (160/60)
+
+
+let fukd p =  every 3 (withinn 4) $ every 4 (slow 2) $ sometimes (|*| up (choose[(-7), (0.5), 2, 9, (-3), 12, 15, (-7), (-9), (-2)])) p
+
+let knut p = (slow 2 . stut "8 16" 0.75 0.5 . (|*| speed 2)) p
+    withinn a p= ((within(0.125,0.25)(stut a 0.75 0.5)) . (within(0.375,0.5)(stut a 0.75 0.5)) . (within(0.75,1.0)(stut a 0.75 0.5))) p
+--(within (0.0, 0.50)(slow 2 . rev . stut 8 0.95 0.25)
+
+d1 $ fukd $ every 3 (0.25 ~>)$ sound "feel:6([5 3]/3,8)" # release 0.2 # gain 1.25
+
+d2 $ every 7 (knut)$ fukd $ every 3 (const $ sound "<feel:5*6 feel:5*12>")$ sound "<feel:8*8 glitch:2*8 feel:8*16>" # release 0.2
+
+d3 $ every 3 (knut)$ fuk $ every 3 (fast 2)$ sound "[rot(3,8),~ rot:1 rot:2 rot:2]" # release 0.2 # gain 1.25 # speed 0.5
+
+d4 $ sound "feel:6(3,8)" # gain 1.35 # release "[0.2 1.0]/4"
+
+d6 $ sound "cords:2" # gain 1.35 # speed "[0.7 1.7]/8"
+
+d5 $ every 7 (stut 8 0.95 0.5)$ every 4 (knut)$ sound "base:1 base:2 base:3 base:4 base:5 base:6 base:7 base:8" # release 0.5 # gain 1.5
+
+d7 $ sound "[~ ~ cp ~]/2" # release 0.2 # gain 1.5
+d6 $ silence
