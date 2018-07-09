@@ -1,0 +1,26 @@
+-- pattern 51
+-- 06/28/2018
+
+
+let rattles p = ((slow 2) . (|=| delay "1 0.9 0.8 0.7 0.6 0.5") . (|=| delaytime "<0.125 0.25 0.5 0.75 1.0>") . (|=| delayfeedback "0.75") . (|*| speed "1.25 1.5 1.75 2.0")) p
+    rattle p = ((slow 2) . (|=| delay "1 0.9 0.8 0.7 0.6 0.5") . (|=| delaytime "<0.125 0.25 0.5 0.75 1.0>") . (|=| delayfeedback "0.75")) p
+    foreva p = every "3 5 7 13" (iter 4) $ whenmod 16 8 (0.25 ~>) p
+
+
+startclock d1 $foreva $ every "13 17" (slow 2)$ juxBy 1.00 (fukd)
+  $ whenmod 32 24 ( const $ sound (samples "<amencutup*8  ~ amencutup*16>" (irand 32)) # release 0.3 # speed 2.5)
+  $ sound (samples "<amencutup*8  ~  amencutup*16 amencutup*4>" (irand 32)) # release 0.5 # speed 1.5 # gain 1.2
+
+d2 $ foreva $ every 10 (rattle)$ fukd $ every 7 (iter 4)
+  $ sound "<[hbd:1([7 5]/3,8,5),feel:8([7 5 4]/5,8)] [hbd:6(3,8,5),feel:6(3 5,8), feel:5(5,8)] [hbd:6(5,8,5)?] ~ [feel:6(3,8,5),hbd:5(5,8)]>" # release 0.2 # gain 1.25
+
+d3 $ every 7 (withinn "4 8" . slow 2)$ whenmod 16 8 (const $ every 3 ((twist 0.75 1.0 8) . (|=| release 0.2))
+  $ sound "[feelfx/2]" # speed "<0.6>" # gain 1.25)
+  $ every 9 ((|=| release 0.2) . fast 8) $ sound "[feelfx]" # speed "<0.5 0.6 0.55 0.9 0.85 0.75 0.6 0.45 0.3 0.3/2 0.45 0.85>" # gain 1.25
+
+startclock d3  $ pop4 0.125 1.5$ whenmod 16 8 ((|=| release 0.2) . (fast 2))$ every 7 (|=| coarse 7)$ sound "[feelfx([7 4]/3,8,5)]" # speed "[< <0.5 0.6 0.55 0.575 0.9, 0.925 0.85 0.75 0.6 0.45> 0.45 0.3 0.3/2 0.45 0.85>]*8"  -- # release 0.2
+
+d3 $ sound "[<stab:8 stab(6,8)>, feelfx/2]" # speed 0.5 # gain 1.15
+
+
+d4 $ rattle $ sound "feel:8" # release 0.2

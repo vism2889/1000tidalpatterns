@@ -1,0 +1,23 @@
+-- pattern 48
+-- 06/24/2018
+
+bps (160/60)
+
+let pop13 a b p = stut' 13(a) (|*| speed b) p
+
+
+do
+  t1 (anticipateIn 13) $ every 7 (slow 4 . stut 13 0.95 0.5)$ n "<[21 22 35 44 53 63 73 83 93 10 11 12 13] [54(3,13),76(8,13)] [103 29 34*2 45 56 67 78 89 90 58 70 12 13] [76(8,13),57(5,13),]>" # sound "research" # release 0.1 # gain 1.15 # speed 1.5
+  t2 (anticipateIn 13) $ every 8 ((5/13) ~>)$ fuk $ sound "[<feel:6(6,13) feel:6(8,13)>]/2" # release 0.2 # gain 1.5
+  t3 (anticipateIn 13) $ every 6 (slow 2)$ within((7/13),(13/13))(stut 3 0.95 0.5)$ sound "<feel:8([7 5]/8,13,7) feel:5(9,13)>" # release 0.1 # gain 1.15 # speed 1.2
+  t4 (anticipateIn 13) $ fuk $ every 7 (slow 8)$ within((7/13),(13/13))(stut 3 0.95 0.5) $ every 13 (within((1/13),(5/13))(slow 2 . stut 6 0.95 0.5))  $ sound (samples "<amencutup*13 feel*13 glitch*13>" (irand 32)) # release "0.2 0.5 0.2 0.1 0.1 0.2 0.2 0.5 0.8" # speed 1.9 # gain 1.25
+  t5 (anticipateIn 13) $ every 5 (within((7/13),(13/13))(stut 3 0.95 0.5))$ slow 2 $ sound "<rave:7(2,13) ~ ~ ~ >" # release 0.6 # gain 1.25
+
+
+
+do
+  t2 (xfadeIn 7) $ fuk $ sound "[<feel:6(4,7,13) feel:6(5,7,13)>]" # release 0.2 # gain 1.5
+  t1 (xfadeIn 7) $ sound "[rave:7(3,7)]/2" # release 0.2 # gain 1.25
+  t3 (xfadeIn 7) $ every 6 (slow 2)$ every 9 (within((4/7),(7/7))(slow 2 . stut 7 0.95 0.5))$ sound "<feel:8([7 5]/5,7) feel:5(3,7)>" # release 0.1 # gain 1.15 # speed 1.2
+  t4 (xfadeIn 7) $ fuk $ every 7 (fast 2)$ every 14 (within((2/7),(5/7))(stut 7 0.95 0.5)) $ every 9 (within((1/7),(5/7))(slow 2 . stut 14 0.95 0.5))  $ sound (samples "<amencutup*7 feel*7 glitch*7>" (irand 32)) # release "0.2 0.5 0.2 0.1 0.1 0.2 0.2 0.5 0.8" # speed 1.9 # gain 1.25
+  t5 (xfadeIn 7) $ sound "~ ~ ~ ~"

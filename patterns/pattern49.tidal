@@ -1,0 +1,20 @@
+-- pattern 49
+-- 06/26/2018
+
+
+d1 $ every 9 (|=| speed "1.5")$ whenmod 32 30 (const $ sound "[feel:6*3 feel:6*6]/2") $ sound "feel:6(3,8,5)" # release 0.2 # gain 1.5
+
+d2 $ fuk $ every 9 (|=| speed "1.5")$ stack
+  [
+  whenmod 32 30 (const $ sound "~ ~ ~ ~") $ whenmod 16 14 (const $ sound "~ ~ ~ ~")$ whenmod 14 12 (slow 4)$ every 7 (fast 2)$ every 4 (within((4/8),(8/8))(slow 2 .  stut 8 0.95 0.5)) $ sound "[<feel:8(3,8) feel:8(5,8)>, <feel:5*4 feel:5*8>, <feel:6(5,8,3) feel:6*8 [feel:6*4, glitch:2(3,8,5)]>]" # release 0.1 # room 0.0,
+  whenmod 32 30 (const $ sound "~ ~ ~ ~") $ whenmod 16 14 (slow 1.5)$ every "7 13" (fast 2)$ every "3 7 8" (within((4/8),(8/8))(slow 2 .  stut 8 0.95 0.5))$ sound (samples "<amencutup*8 hbd*8 glitch*8>" (irand 32)) # release 0.2 # speed 1.7 # gain 1.25,
+  whenmod 32 30 (const $ sound "research:77*3 noiz:8*6" # gain 1.2 # release 0.3) $ sound "~ ~ ~ ~",
+  whenmod 32 30 (const $ sound "noiz:11*6" # speed (run 8)) $ every 3 (twist 0.25 0.75 16) $ sound "<noiz:11(3,8,5) uniq:2(5,8,3) ~ >" # release 0.1 # gain 1.5 # speed "1.6",
+  whenmod 32 30 (const $ sound "[feel:6*3 feel:6*6]/2") $ sound "feel:6(3,8,5)" # release 0.2 # gain 1.5
+  ] -- # room "[0.5 0.0 0.2 0.0 0.0 0.5]/3" # release 0.1
+
+
+d3 $ fuk $ whenmod 32 30 (const $ sound "cords" # gain 1.5 # release 0.5 # speed 1.7) $ fast 2 $ sound "[<[cords ~ ~ cords ~ ~ ~ ~ ~] [cords*2 ~ cords? cords:1 ~ ~ cord*4 ~ ]>]/2" # release 0.1 # gain 1.5 # speed 1.7
+
+d4 $ sound "feel:6(3,8,5)" # gain 1.5 # release 0.2
+d4 $ silence
