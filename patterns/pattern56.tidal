@@ -1,0 +1,24 @@
+-- pattern 56 // livecodepgh meetup #2 code snippets
+-- 07/15/2018
+
+d1 $ fuk $ seqPLoop [
+  (0,7, stack[
+    sound "feel:6(3,8,5)" # release 0.2,
+    sound "feel:8(<3 4>,8,5)" # release 0.2
+  ]),
+  (7,14, slowcat[
+    sound "feel:5(3,8)" # release 0.5,
+    sound "feel:6(3,8)" # release 0.2,
+    sound "feel:8(5,8,3)" # release 0.2
+  ]),
+  (14,28, seqPLoop [
+  (0,7, sound "[<feel:5(3,8) feel:5(3,8,5)>, feel:6(3,8)]"),
+  (7,14, sound "<feel:5(5,8) feel:8(3,8)>")
+  ])
+  ] # release 0.2 # orbit 0
+
+let morgansfunction  = (every 5 (slow 2) . (|=| speed 1.8) . (every 3 (twist 0.25 0.75 16)))
+
+d1 $ sound "[feel:5(3,8),feel:6(4,8)]" # release 0.2 # orbit 1
+
+d2 $ sound "feelfx" # speed 0.7 # orbit 1

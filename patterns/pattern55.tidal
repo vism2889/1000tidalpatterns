@@ -1,0 +1,32 @@
+-- pattern 55
+-- 07/15/2018
+
+
+d3 $ stack [
+  every 3 (slow 2) $ (note ("[<[cs4, gs4, d4] [cs3, g4, fs4]>]/2"))
+  # release 2
+] # midichan 3 # s "midi" -- synth
+
+d4 $ stack [
+  every 3 (slow 2) $ (note ("[<[cs1 gs1 [d cs5 ds1 ~] c1] [gs2 [cs2 ~ c3 ~] gs3 [fs4 f3 cs3 ~]?]>]"))
+  # release 0.2
+] # midichan 4 # s "midi" -- bass
+
+d5 $ jux (iter 4)$ fuk $ every 7 (slow 2 . (within(0.75, 1.0)(stut 8 0.75 0.25)))
+  $ every 4 (iter 4)
+  $ sound (samples "<amencutup*8 amencutup*4 amencutup*8  amencutup*8? amencutup*8 amencutup*8? amencutup*8 >" (irand 32))
+  # release "0.2 0.5 0.2 0.1 0.1 0.2 0.2 0.5 0.8" # speed 2.95 # gain 1.5 # orbit 1 # room 0.2
+
+d2 $ every 3 (slow 2)$ fuk $ every 12 (twist 0.75 1.00 8)$ seqPLoop
+  [
+  (0,0.5, sound "hh*8" ),
+  (0.5,2, sound "feel:6 ~ cp ~"),
+  (2,2.75, sound "hh*8"),
+  (2.75,3.0, sound "feel:8*8"),
+  (3.0,5, sound "[hh hh feel:8 feel:8] ~ cp ~"),
+  (5,8, sound "feel:6 ~ cp [hh hh rm rm]"),
+  (8,10, sound "[hh hh feel:8 feel:8] ~ [feel:8 feel:8 feel:5 hh] ~"),
+  (10,31,sound "feel:6 ~ [~ feel:6] [glitch:2 noiz:2 feel:8 feel:5]" # release 0.2),
+  (31,32, sound "hh*16" # release 0.1 ),
+  (32,40, sound "[feel:8(2 3 4 5 6 7,8), glitch:6(3,8,5)]" # release 0.2)
+  ] # gain 1.75 # orbit 0 # room 0.0

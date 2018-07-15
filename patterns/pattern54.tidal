@@ -1,11 +1,14 @@
 
 
+bps (150/60)
+
 do
-  let fukkd = slow 4
-  d1 $ slow 4 $ sound (samples "noiz*7" (irand 32)) # release 0.2 # gain 1.5 # cut 2
-  d2 $ every 3 ((1/7) ~>)$ sound (samples "rave2(4,7)" (irand 32)) # gain 1.75 # release 0.8 # speed 0.7
-  d3 $ every 3 ((1/7) ~>)$ every 5 (slow 2)$ sound (samples "<amencutup*14 feel*7 feel*14 amencutup*7>" (irand 32)) # release 0.2 # gain 1.5 # speed 1.95 # cut 2
-  d4 $ sound "feel:6(3,7)" # release 0.2 # gain 1.75
+  let fukkd = slow 2
+  d1 $ fukkd $ sound (samples "noiz*7" (irand 32)) # release 0.2 # gain 1.5 # cut 2
+  d2 $ fukkd $ every 3 ((1/7) ~>)$ sound (samples "rave2(4,7)" (irand 32)) # gain 1.75 # release 0.8 # speed 0.7
+  d3 $ fukkd $ every 3 ((1/7) ~>)$ every 5 (slow 2)$ sound (samples "<amencutup*14 feel*7 feel*14 amencutup*7>" (irand 32)) # release 0.2 # gain 1.5 # speed 1.95 # cut 2
+  d4 $ fukkd$ sound "feel:6(3,7)" # release 0.2 # gain 1.75
+  --d5 $ silence
 
 
 do
@@ -14,10 +17,3 @@ do
   d3 $ every 3 ((1/7) ~>)$ every 5 (slow 2)$ sound (samples "<amencutup*14 hardcore*7 feel*7 feel*14 hardcore*14 amencutup*7>" (irand 32)) # release 0.2 # gain 1.5 # speed 1.95 # cut 2
   d4 $ sound "feel:6(3,7)" # release 0.2 # gain 1.75
   d5 $ sound (samples "research*14" (irand 99)) # release 0.5 # gain 1.75
-
-
-do
-  d3 $ every 3 ((1/7) ~>)$ every 7 (slow 4)$ every 5 (slow 2)$ sound (samples "<amencutup:2(3,7) feel*7 amencutup:1(5,7) feel*14 amencutup*7>" (irand 32)) # release 0.2 # gain 1.5 # speed 1.95 # cut 2
-
-
-d1 $ jux (iter 4) $ sound "[feel:6(3,7) feel:8*7 ~ feel:6(3,7)? ~ ~ < noiz:4(3,8) feel:8*2> ,~ ~ hh ~ ~ cp ~]/4" # room 0.2 # gain 1.7
