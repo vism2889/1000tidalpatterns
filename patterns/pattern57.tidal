@@ -1,0 +1,19 @@
+-- pattern 57
+-- 07/15/2018
+
+
+d1 $ fuk $ every 3 (slow 2)$ every 9 (slow 2)$ every 7 (iter 4)$ every 4 (pop4 0.125 4) $ sound "<[feelfx:5, feelfx:9] [<feel(3,8) feel(5,8,3) ~ ~ > ~ ~ <feel:6 feel:6*2>]>" # release 0.2  # orbit 0
+d2 $ every 9 (twist 0.25 0.5 8)$ fuk $ sound (samples "< amencutup*8 amencutup*8? >" (irand 32)) # speed 1.95 # release 0.2 # orbit 0 # gain 1.5
+
+d3 $ fuk $ every 5 (slow 2)$ every 3 (gtfo)$ sound (samples "gab*8" (irand 32)) # release 0.2 # gain 1.25 # speed 1.95 # orbit 0
+
+d4 $ every 3 (slow 2)$ every 9 (twist 0.75 1.0 8 . (|=| speed 2.5))$ every 5 (twist 0.25 0.5 8)$ every 6 (const $ sound "rot([7 4]/3,8,5)" # orbit 0 # gain 1.25)$ sound "rot rot:1 rot:2 ~" # orbit 0 # gain 1.25
+
+d5 $ sound "crd(3,8)" # gain 1.9 # release 0.2 # speed 1.5 # orbit 0
+
+do
+  d1 $ silence
+  d2 $ silence
+  d3 $ silence
+  d4 $ silence
+  d5 $ sound "crd(3,8)" # gain 1.9 # release 0.4 # speed 2.5 # orbit 0
