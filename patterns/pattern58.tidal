@@ -1,1 +1,13 @@
 -- pattern 58
+-- 08/03/2018
+
+
+ let gainPop7 a b p = stut' 7(a) (|*| gain b) p
+
+ bps (150/60)
+
+d1 $ jux (fuk)$ sound "rainn:2([4 5 3]/3,7,5)" # speed 2.0 # release 0.5 # room 0.0
+
+d2 $ jux (iter 7)$ gainPop7 0.0125 0.9 $ sound "rainn:5(3,7)" # release 0.2 # gain 1.12
+
+d3 $ jux (iter 7)$ every 7 (twist 0.5 0.750 7)$ fuk $ every 3 (gainPop7 0.5 0.75)$ sound "[feel:6(4,7),feel:5([7 5]/3,7)]" # release 0.2

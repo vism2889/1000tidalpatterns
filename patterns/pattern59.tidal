@@ -1,0 +1,50 @@
+-- pattern 59
+-- midi to midi_receive.py then to processing_udp_receive.pde
+
+bps (80/60)
+
+do
+  d2 $whenmod 16 8 (fuk)$ every 3 (0.25 ~>)$ fuk $ slow 2 $ stack [
+    every 3 (slow 2) (note "[c([7 4]/3,8,5), g2/2]") # release 2,
+    every 7 (brak) (every 3 (fast 2) (note "[fs6*8]/2")),
+    every 9 (fast 2) (note "as8(3,8)")
+    ] # midichan 5 # s "midi"
+  d1 $ (0.1 ~>)$whenmod 16 8 (fuk)$ every 3 (0.25 ~>)$ every 7 (twist 0.25 1.0 8)$ stack [
+    every 3 (slow 2) (sound "[feel:6([7 4]/3,8,5), cp/2]") # release 2 # gain 1.75 # speed 1.5,
+    every 7 (brak) (every 3 (fast 2) (sound "[feel:8*8]/2")) # cut 2,
+    every 2 (# s "research:12") $ every 9 (fast 2) (sound "research:33([4 7]/3,8)") # release 0.5 # gain 1.5 # speed 1.5,
+    sound "research:56" # release 1.5 # gain 1.5
+    ] # speed 1.0
+
+do
+  d1 $ whenmod 32 16 (fast 2)$whenmod 16 8 (jux (iter 4))$every 3 (slow 2)$ stack [
+    note "[c g2 fs6 as8]" # midichan 5 # s "midi",
+    sound "[bd hh glitch:2  noiz:1]" # release 0.2,
+    every 3 (# speed 1.7) $ sound "gravitate:3" # release 1.5
+    ]
+
+
+bps (80/60)
+
+
+-- cubes_spheres_smallspheres.pde processing filename
+do
+  startclock d1 $ every 4 (fast 2)$ whenmod 16 8 (iter 4 )$ every 6 (iter 4 )$ every 5 (twist 0.5 1.0 32)$ fuk $ every 3 (0.25 ~>)$ stack
+    [
+      note "[<[c [g3 c] [fs6 c] as8 ] <[c2 d2 e2 f2] [g2 c2]> [a9 b9 c9 cs9 d9 e9 f9 g9]>]" # midichan 5 # s "midi",
+      sound "<[research:57 [aud:2 oulg:2] [hh rm] feel:6 ] <[glitch:3 glitch:2 glitch glitch:4] [hbd:6 hbd:7]> [hh*8] >" # release 0.1 # room 0.0 # gain 1.5,
+      sound "<[rocc [rocc:1*2] [rocc:2*2] rocc:3 ] <[plucc plucc:1 plucc:2 plucc:3] rocc:4> [plucc:10*8] >" # release 0.1 # room 0.0 # gain 1.5,
+      gtfo $ every 4 (const $ sound "gravitate:3" # speed 0.5) $ sound "gravitate(3,8)" # release 2.0 # speed 0.75,
+      gtfo $ note "[a9 b9 c9 cs9 d9 e9 f9 g9]/3" # midichan 5 # s "midi",
+      gtfo $ sound "[hh*8]/3" # speed 1.5 # gain 1.25,
+      every 3 (# speed "<0.5 0.75>") $ every 7 (# speed "<0.675 0.75>") $ sound "[ostext:37, ostext:41]" # release 2.0 # gain 1.75 # speed 0.5
+    ]
+
+  do
+    d1 $ slow 1.5 $ jux (iter 4)$ every 3 (0.25 ~>)$ stack
+      [
+        note "[<[c [g3 c] [fs6 c] as8 ] <[c2 d2 e2 f2] g2>>]" # midichan 5 # s "midi",
+        sound "<[research:57 [bd glitch:2] [hh rm] feel:6 ] <[glitch:3 glitch:2 glitch glitch:4] gravitate>>" # release 0.1 # gain 1.25,
+        sound "gravitate:1(3,8)"  # release 1.0,
+        sound "feel:6"
+      ]

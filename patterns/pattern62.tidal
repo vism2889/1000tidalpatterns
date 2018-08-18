@@ -1,0 +1,34 @@
+-- pattern 62
+-- 08/17/2018
+
+
+-- Messing around with pure haskell in tidal programs (basic AF)
+
+
+d1 $ sound
+
+doubleUs x y = x*2 + y*2
+
+doubleUs 4 9
+
+doubleSmallNumber x = if x > 100
+                        then x
+                        else x*2
+
+doubleSmallNumber 5
+
+d1 $ sound (samples "feel*8" (sayMe 5))
+
+
+
+sayMe :: (Integral a) => a -> Pattern Int
+sayMe 1 =  (irand 1)
+sayMe 2 = (irand 2)
+sayMe 3 = (irand 3)
+sayMe 4 = (irand 4)
+sayMe 5 = (slow 2)(irand 5)
+sayMe x = (irand 6)
+
+sayMe 3
+
+take 10 (cycle 4)

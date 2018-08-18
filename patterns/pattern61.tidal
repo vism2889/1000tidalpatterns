@@ -1,0 +1,29 @@
+-- pattern 61
+-- 08/11/2018
+
+
+
+d1 $ every 7 (const $ pop4 0.125 0.65$ sound "atmos(3,8)" # release 0.5 # begin 0.5 # gain 1.5)
+  $ sound "atmos([7 4]/3,8)" # release 1.5 # begin 0.75 # gain 1.25
+
+d2 $ every 7 (# speed 1.5)$ every 3 (# speed 1.25)$ sound "basst:5([5 3]/3,8)" # gain 1.75 # release 0.5
+
+d4 $ stack
+  [
+  sound "[basst:5 ~ basst:5 ~ ~ ~ ~ ~]/2" # gain 1.75 # release 1.0 # speed 0.85,
+  sound "<[~ basst:5 ~ ~ ~ ~ ~ ~] [~ ~ ~ basst:5 ~ ~ ~ ~]>/2" # gain 1.5 # release 0.5 # speed 1.25,
+  sound "<[~ ~ ~ ~ basst:5 ~ basst:5 ~] [~ ~ ~ ~ ~ ~ basst:5 basst:5]>/2" # gain 1.5 # release 0.5 # speed 1.75,
+  sound "<[~ ~ basst:5  ~ ~ ~ ~ ~ ~ basst:5 ~ ~ ~ ~ ~ ~] ~ ~ [~ ~ basst:5  ~ ~ ~ ~ ~ ~  ~ basst:5 ~ ~ ~ ~ ~]>/2" # gain 1.5 # release 0.5 # speed 2.5
+  ]
+
+
+d3 $ whenmod 16 8 (jux (iter 4))$ every "3 5" (fast 2)$ sound (samples "amencutup*4" (irand 32)) # release 0.2 # gain 1.75 # speed 1.5
+
+d5 $ every 7 (jux (iter 4))$ fuk $ sound "glitch:2([7 4 5]/3,8,5)" # release 0.2 # gain 1.95
+
+d2 $ sound "<[endbass:2(3,8)] [endbass:2([7 4]/3,8)]>/2" # release 2.0 # gain 1.75
+
+
+d7 $ sound "rocc rocc:1 rocc:2 ~ " # release 0.2 # gain 2.0
+
+startclock d8 $ every 7 (const $ sound "rocc(3,8)" # gain 1.75 # speed 1.75 # release 1.0)$ slow 4 $ sound "rocc" # gain 1.75 # speed 1.5

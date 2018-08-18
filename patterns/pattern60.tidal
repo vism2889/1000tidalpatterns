@@ -1,0 +1,22 @@
+-- pattern 60
+-- 08/08/2018
+
+bps (190/60)
+
+d1 $ jux (iter 7)$whenmod 32 16 (# release 0.5)$ sound (samples "amencutup*7" (irand 32)) # gain 1.25 # release 0.5
+
+d1 $ whenmod 32 16 (slow 2)$ every 5 (slow 2)$ every 11 ((2/7) ~>)$ every "5 3" (# speed 2.5)$ every 7 (twist (4/7) (7/7) 28) $ every 3 (# speed 1.5)$every 9 (const $whenmod 32 16 (# release 0.5)$ sound (samples "amencutup*7" (irand 32)) # gain 1.75 # speed 1.5)
+  $whenmod 32 16 (# release 0.2)$ sound (samples "<[amencutup(3,7),amencutup(5,7)] [<amencutup*7 amencutup(4,7) amencutup(3,7)>]>" (irand 32)) # gain 1.75 # speed 1.5 # release 0.2
+
+d2 $ every 13 (fast 7)$ sound ( samples "oszip:12*7" (irand 3)) # speed "<2.76 4.26 3.76 <1.46 1.14 1.26 0.96>>"  # gain 1.75 # release "<0.2 1.0 0.2 0.2 0.2>"
+d2 $ sound (samples "gravitate:5(3,7)" (irand 32)) # speed 1.18  # gain 1.75  # release 0.5
+
+
+
+
+d3 $ every 4 (slow 2)$ every 7 ((1/7) ~>)$ every 6 (twist (2/7) (7/7) 7)$ sound "feel:6([7 4]/3,7,5)" # release 0.07 # gain 1.75
+d4 $ sound "glitch:2([3 5 7]/4,7)" # release 0.092 # gain 1.75
+d5 $ fuk $ sound "feel:8([4 7]/5,7)" # gain 1.5 # release 0.09
+d6 $ fuk $ sound "feel:5([4 5 6]/4,7)" # gain 1.75 # release 0.08
+
+d1 $ silence
