@@ -1,0 +1,22 @@
+-- pattern 67
+-- 08/25/2018
+
+d1 $ pop4 "[0.25 0.125 0.5 0.33 0.66 0.165]/6" "<0.75 1.5 1.75 2.5 0.5 1.0>/4"
+  $ sound (samples "gravitate([<7 4> 3]/3,8)" (irand 32)) # release "<0.5 0.2 0.1 0.1>/4"
+  # gain 1.5 # room "[0.5 0.0 0.0 0.2]/4"
+
+
+d2 $ every 4 (twist 0.25 1.0 32)$ every 7 (iter 4) $ every 9 (0.25 ~>)
+  $ every 3 (within(0.5,1.0)(fast 2))$ whenmod 16 8 (gtfo)
+  $ sound "[feel:6([7 4]/3,8), feel:5(5,8,3)]" # release 0.2 # room "[0.5 0.0 0.0 0.2]/4"
+
+d3 $ whenmod 32 16 (# s "ostext:31(5,8)")$ every 7 (|=| speed 0.75)
+  $ every 4 (pop4 0.125 1.5) $ sound "ostext:22" # release 1.0 # gain 1.5
+
+d4 $ every 7 (twist 0.75 1.0 32)$ every 3 (iter 4) $ every 7 (0.25~>)
+  $ sound "[<hbd:5 hbd:7 hbd:10 hbd:13>([<7 4> 3 5]/3,8,5),glitch:2([<7 4> 3]/5,8,3),oulg:2(3,8,7)]"
+  # gain 1.5 # release "[0.5 0.2 1.0 0.1 0.15 0.18]/6" # speed "[1.0 2.5]/8"
+
+d5 $ sound "ostext:4" # gain 1.25 # speed 4.5 # release 1.5
+
+d5 $ silence

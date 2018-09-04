@@ -1,0 +1,10 @@
+-- pattern 65
+-- 08/25/2018
+
+
+bps (120/60)
+
+
+d1 $ whenmod 16 8 ( jux (pop4 0.125 0.75))$ sound "[<ostext:23(13,7) ostext:27(13,7)>]/4" # gain 1.25 # release "<1.0 0.1>" # begin 0.75 # speed 2.5
+d2 $ sound "[feel:6*7 feel:8*13]/2" # release 0.2 # gain 1.5 # speed 1.5
+d3 $ every 6 (# s "amencutup")$ sound (samples "<oulg*7 aud*14>" (irand 32)) # release 0.2 # gain 1.25 # speed "<1.5 2.5>/4"

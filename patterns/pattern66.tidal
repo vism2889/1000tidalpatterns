@@ -1,0 +1,10 @@
+-- pattern 66
+-- 08/25/2018
+
+do
+  d1 $ jux (every 4 (pop4 0.25 1.5))
+    $ sound "<[ostext:5([<7 5 9> 4]/<4 3>,<7 8>) cp bd bd] [ostext:20]>/2"
+    # release 1.0 # begin "0.75 0.0" # gain 1.5
+  d2 $ jux (fast 2)
+    $ sound "ostext:31([<7 5 9> 4]/<4 3>,<7 8>) cp glitch:2 noiz:3"
+    # release 0.75 # begin "0.5 0.0" # gain 1.25

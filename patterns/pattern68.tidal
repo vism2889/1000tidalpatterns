@@ -1,0 +1,50 @@
+-- pattern 68
+-- 09/02/2018
+
+bps (120/60)
+
+
+d1 $ slow 2 $ sound "ostext:25" # speed 0.70
+
+d2 $ every 3 (slow 2)$ fuk $ every 5 (twist 0.25 0.75 26)$ slow 2 $ sound "[feel:6([5 3 4 7]/7,13), noiz:2(9,13),feel:5(8,13)]"
+
+d3 $ every 3 (slow 2)$ every 3 ((3/13)~>)$ slow 2 $ sound (samples "<aud*13 aud*26 oulg*26>" (irand 32)) # release 0.1 # gain 1.25
+
+d4 $ every 2 ( pop4 "<0.125 0.25>" 0.5)$ sound "cords:3" # speed 1.5 # gain 1.25
+
+d5 $ sound "[feel:6 ~ ~ ~ ~ ~ cp ~ ~ ~ ~ ~ ]/2" # gain 1.5
+
+
+d1 $ sound "<[cp, bd] [cp, bd] [cp*2, bd] [cp*3, bd] [cp*5, bd] [cp*8, bd] [cp*13, bd] [cp*21, bd]>/[<1 1 2 3 5 8 13 21>]"
+
+
+
+d2 $ sound "bd*13"
+
+
+bps (160/60)
+
+startclock d1 $ every 2 (slow 2)$ fuk $ fast 2 $ seqPLoop [
+  (0,1, sound "[cp, bd, feel:6]"),
+  (1,2, sound "[cp, bd, feel:6]"),
+  (2,4, sound "[cp*2, bd, feel:6, hh*4]/2"),
+  (4,7, sound "[cp*3, bd, feel:6(2,3),~ feel:5*2 feel:5,hh*9]/3"),
+  (7,12, sound "[cp*5, bd, feel:6(3,5), feel:5*5 feel:5*10 feel:8*10 feel:8*5 feel:8*3,hh*25]/5"),
+  (12,20, sound "[cp*8, bd,hh*64]/8"),
+  (20,33, sound "[cp*13, bd, hh*169]/13"),
+  (33,44, sound "[cp*21, bd, hh*441]/21")
+  ]
+
+do
+  d1 $ whenmod 16 8 (jux (iter 4))$ every 3 (0.25 ~>)$ sound "[bd ~ ~ bd bd ~ ~ bd ~ ~ ~ ~ <bd ~> ~ <~ bd> ~]/2" # gain 1.15
+  d2 $ every 5 (slow 4)$ fuk $ every 3 (0.25 ~>)$ sound "[~ cp cp ~ ~ cp ~ ~ cp ~ ~ ~ <~ cp> ~ ~ ~]/2" # speed 2.75
+  d3 $ fuk $ every "<3 5>" (0.25 ~>)$ sound "[basst:9, ostext:32]/1.5" # release 0.7
+  d4 $ every 3 (0.25 ~>)$ whenmod 16 8 (jux (# speed "< 1.0 1.5 2.5 1.0  2.5 0.5>"))$ sound "ostext:41/1.5" # release "<2.0 0.2>"
+  d5 $ every 3 (|=| speed 0.75)$ sound "[research:1,research, ~ ~ ~ ~]/4" # release 2.0 # gain 1.5
+  d6 $ every 9 (slow 4)$ every 7 (iter 4)
+    $ every 5 (twist 0.5 0.75 32)$ every "7 8" (|=| speed 2.5)
+    $ sound (samples "<amencutup*4 amencutup*8 <amencutup*4 amencutup*2 amencutup*8>>" (irand 32))
+    # release "<0.2 1.0 0.1 1.0>" # speed "<2.5 1.5>/2"
+  d7 $ every 7 (slow 2)$ fuk $ every 3 (fast 2)
+    $ sound (samples "aud(3,8)" (irand 32 ))
+    # release 0.2 # speed 2.5

@@ -17,7 +17,7 @@ doubleSmallNumber x = if x > 100
 
 doubleSmallNumber 5
 
-d1 $ sound (samples "feel*8" (sayMe 5))
+d1 $ sound (samples "feel*8" (irand (doubleUs 4 9)))
 
 
 

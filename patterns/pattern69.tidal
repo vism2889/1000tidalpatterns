@@ -1,0 +1,11 @@
+-- pattern 69
+-- 09/02/2018
+
+
+do
+  let mu' = (every 2 (slow 1.5)) . (every 3 (jux (fuk) )) . (every 7 ((within(0.5, 0.75)) (fast 2)))
+  d1 $ mu' $ every "3" ( pop4 "<0.0125 0.125 0.25 0.125>" "<1.5 1.75 0.5 0.25>")$ every 7 (0.25~>)$ every 4 (iter 4)$ sound "<ostext:31(3,8) ostext:35*4>" # release "<1.0 0.2 0.3 0.4 0.2>" # gain 1.75 # speed "<1.5 1.5 1.5 0.5 0.75>/5" # begin 0.25
+  d2 $ mu' $ every 5 (gtfo)$ fuk $ sound "[feel:6(3,8),feel:8(5,8), ~ ~ cp*2? ~,<feel:5*8 feel:5*16 ~ feel:5*6>]" # release "<0.01 0.05 0.02 0.03 0.04 0.05 0.01 1.0>" # gain 1.5 # speed 2.5
+  d3 $ mu' $ whenmod 16 8 ( # speed 1.75)$ sound "basst:5(3,8)" # gain 1.5 # speed 1.5 # release 0.75
+  d4 $ mu' $ slow 2$ striate 2$ every 4 (fast 2)$ sound (samples "amencutup*8" (irand 32)) # release 0.07 # gain 1.75 # speed 0.5
+  d5 $ sound "ostext:28*4" # gain 1.5 # speed 1.85 # begin 0.75 #release 1.0
