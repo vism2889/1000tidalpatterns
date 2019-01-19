@@ -1,0 +1,53 @@
+-- pattern 77
+
+
+
+
+
+d2 $ note "[as4 [f4 as5] ~ fs3 ~ ~ [~ fs3 ~ as5] ~ [fs6 as6 fs6 as6]]/8" # midichan 6 # s "midi"
+
+d3 $ every 8 (const $ note "as5 fs6 f7 as4 as6 fs7 f8 as5" # midichan 8 # s "midi")$ note "as5 fs6 f7 sa4" # midichan 8 # s "midi"
+
+d4 $ sound (samples "amencutup*8" (irand(32))) # gain 1.5 # orbit 3 # delayfeedback 0.75 # delay 1
+  |+| lpf (slow 8 $ scale 50 6000 sine)  |+| speed (slow 8 $ scale 2.5 1.0 sine)
+  |+| delaytime (slow 8 $ scale 0.0 0.70 sine) |+| release (slow 16 $ scale 0.2 1.0 sine)
+
+d5 $ fuk $ sound "feel:6([4 7 ]/3,8,4)" # orbit 3
+
+d7 $ control "[1 1 20 100]/8" # midicmd "control" # ctlNum 1 # midichan 3 # s "midi"
+d6 $ control "[1 50 1 [75]/2]/8" # midicmd "control" # ctlNum 2 # midichan 3 # s "midi"
+
+let spike p = ((|+| delaytime (scale 0.001 0.3 $ slow 8.1 sine1)) . (|+| delayfeedback (scale 0.7 0.99 $ slow 7.71 sine1))) $ p
+
+let shift' x p = (x <~) p
+    one' p = rarely (stut' 1 (0.125/2) (|*| gain "1")) $ shift' 1024 $ p
+    rep'' n p = stut' (n-1) (0.125/4*3) (|*| gain "1") $ p
+    rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
+    slip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
+
+
+bps(190/80)
+-- throw stack blcok inside the block below
+
+d4  $ every 2 (0.125~>)$ whenmod 32 28 (|+| lpf (slow 8 $ scale 50 6000 sine) )$ every 3 (0.25~>)$ fuk $ whenmod 16 14
+  (const $whenmod 2 1 (rip 0.25 0.125)$ sound (samples "[<feel:6([4 7]/3,8) feel:6([4 5]/3,8,5)>,amencutup*8]" (irand(32))) # release 0.2 # speed 2.5 # orbit 0 # gain 1.5)
+  $ every 7 (rip 0.25 0.125) $ every 4 ((within(0.5, 0.75))(rep'' 4))
+  $ sound (samples "<[amencutup(3,8),feel:5([4 7]/3,8,4),feel:8(5,8), cp/2] amencutup*4>" (irand(32))) # orbit 0 # delay 1 # release 0.2 # speed "<2.0 2.5>/2" # gain 1.5
+
+d3 $ whenmod 16 8 (fuk)$ every 7 (rip 0.25 0.125) $ sound "[feel:6([4 7]/3,8,4), mutantE:66(3,8,4), [mutantE:65 glitch:2*4 mutantE:63 cp*2]/2]" # orbit 0 # gain 1.5 # release 0.2
+
+
+d1  $ every 3 (0.125~>)$ fuk $ whenmod 16 14
+  (const $whenmod 2 1 (rip 0.25 0.125)$ sound (samples "[<feel:6([4 7]/3,8) feel:6([4 5]/3,8,5)>,aud*8]" (irand(32))) # release 0.2 # speed 2.5 # orbit 3 # gain 1.5)
+  $ every 7 (rip 0.25 0.125) $ every 4 ((within(0.5, 0.75))(rep'' 4))
+  $ sound (samples "[feel:6([4 7]/3,8),aud*4,gab*2]" (irand(32))) # orbit 0 # delay 1 # release 0.2 # speed 2.5 # gain 1.5 # cut 2
+
+
+
+
+
+d2 $ every 5 (iter 4)$ jux (# accelerate 2)$ fuk $ every 7 (0.125~>)$ every 3 (rip 0.25 0.125)$ sound "[rainn:2([4 7]/3,8),rainn:3([4 7]/5,8,5)]" # orbit 0 # gain 1.85 # release 0.5 # cut 2 # begin "<0.25 0.5>/4"
+
+d2 $ sometimes (|=| speed 2.0)$ sound "rainn:2/1.5" # gain 1.5 # orbit 0
+
+d4 $ silence

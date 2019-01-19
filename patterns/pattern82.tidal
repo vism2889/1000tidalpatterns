@@ -1,0 +1,40 @@
+-- pattern 82
+
+
+bps (95/60)
+
+d1 $ every 6 (0.125 ~>)$ whenmod 16 8 (# accelerate "<0.5 4>/2")$ whenmod 16 8 (iter 4 )$ every 5 (0.25 ~>)$ every 4 (slip 0.25 0.125)
+  $ every 3 (const $ within(0.5,0.75)(slip 0.25 0.125)$ sound "oulg:3 oulg:5 <[~ oulg:4] [oulg:6 aud:3]> [aud:2 oulg:6]")
+  $ every 4 (const $ sound "[amencutup:1 ~ [[amencutup:4 amencutup:8]] amencutup:8 mutantE:6/2 mutantE:7 [amencutup:5 amencutup:6] ~, ~ cp*2 ~ ~ ~ cp ~ ~,feel:8(5,8,3)]"
+  # release 0.2 # gain 1.5 # speed "<1.0 1.5 2.0 2.5>/2")
+  $ every 3 ((within(0.25,0.75))((slow 2).(iter 4).(0.25 ~>)).(|=| speed 2.5))
+  $ sound (samples "[amencutup*16,feel:5(3,8,4)]" (irand(32))) # release 0.2 # gain 1.5 # speed 1.5
+
+d1 $ every 6 (slip 0.25 0.125)$ every 3 (0.25~>)
+  $ sound "[<feel:6 [feel:6 aud:5]> < ~ aud:6> < ~ amencutup:4*2> hh amencutup:2 [amencutup:3 amencutup:4] cp [feel:6 hh],amencutup:1 amencutup:6 aud:5 ~]" # gain 1.55 # release 0.2 # speed 2.5
+
+d4 $ whenmod 16 8 (slow 2)$ sound "hh*16" # gain 1.5 # release 0.1 # speed 1.25
+d4 $ silence
+startclock d2 $ whenmod 8 6 (const $ sound "<rainn:4 ~ >" # gain 1.25 # begin 0.0)$ every 3 (0.25~>)$ sound "rainn:4(3,8)" # gain 1.25 # release 1.0 # begin "<0.0 0.25 0.52 0.75>/2"
+
+
+
+d2 $ sound "rainn:4(5,8)" # release 0.2 # gain 1.5
+startclock d2 $ sound "[rainn:4]" # release 0.75 # gain 1.35 # begin "<0.0 0.25 0.5 0.75>"
+
+d2 $ sound "<rainn:5 rainn:2>" # gain 1.25
+d2 $ stut 16 0.5 0.75$ sound "<rainn:5(3,8) rainn:2>" # gain 1.5 # cut 2 # speed "<0.7 0.9 1.2 1.0>/4"
+startclock d2 $ every 2 (|=| release 1.5)$ every 2 (|=| s "rainn:4(3,8)")$ sound "<rainn:3(3,8)>" # gain 1.25 # begin "<0.0 0.25 0.5 0.75>"
+
+d3 $ sound "basst:5(3,8,4)" # release 0.5 # speed "<0.7 0.8 0.9 1.2>" # gain 1.5
+
+do
+  d1 $ silence
+  d4 $ silence
+  d3 $ silence
+
+
+
+d1 $ every 5 (pop4 "<0.25 0.125>" 1.0)$ every 6 (slip 0.25 0.125)$ every 3 (0.25~>)$ sound "[oulg:6([7 4]/3,8,5),<feel:6 [feel:6 aud:5]> < ~ aud:6> < ~ amencutup:4*2> hh amencutup:2 [amencutup:3 amencutup:4] cp [feel:6 hh],amencutup:1 amencutup:6 aud:5 ~]" # gain 1.55 # release 0.2 # speed 2.5
+startclock d2 $ stut "<[4 8 16 2 2] 16 8>" 0.5 0.72 $ sound "[rainn:0]" # release 0.75 # gain 1.5 # begin "<0.0 0.25 0.5 0.75>" # cut 2
+d4 $ whenmod 16 8 (slow 2)$ sound "hh*16" # gain 1.5 # release 0.1 # speed 1.25

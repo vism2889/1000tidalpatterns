@@ -1,0 +1,18 @@
+-- pattern 73
+-- 11/25/2018
+
+
+bps (160/60)
+
+d1 $ every 4 (jux(iter 4))$ fuk $ sound (samples "<[mutantE*4,feel:6([4 7]/3,8,5)] mutantE*3>" (irand 99)) # gain 1.5 # release "<0.2 0.5>"
+
+d2 $ pop4 0.125 0.5 $ fuk $ every 3 (slow 2)$ sound "mutantE:57(3,<8 9 10 11 12 13 14 15>)" # gain 1.75 # speed "<1.0 1.2 1.0 1.7>"
+
+
+
+d3 $ every 7 (const $ fuk $ sound "[bd([7 9]/3,<8 9 10 11 12 13 14 15>,5), hh*8]")$ sound "[bd([3 4]/3,<8 9 10 11 12 13 14 15>,7), glitch:2 ~ aud:5/3 cp" # gain 1.35
+
+d4 $ sound "rm(5,8)" # release 0.2 # gain 1.15
+
+
+d5 $ whenmod 16 8 ((pop4 0.125 0.5))$ sound "[feel:8([3 4]/5,<8 9 10 11 12 13 14 15>,7), feel:5([7 9]/3,<8 9 10 11 12 13 14 15>,5)]" # gain 1.25 # release 0.2

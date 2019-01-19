@@ -1,0 +1,21 @@
+-- pattern 71
+
+
+d2 $ slowcat [
+  note "[cs4(3,8)?,b3(5,8),<d3(5,8) c3(3,8) as4>]" # release 0.2,
+  every 7 (every 3 (fast 2)) (note "[fs2*8,g2(3,8)]/2")),
+  every 9 (fast 2) (note "[as2*4, <c4*8  d4*8>,fs2(3,8)]")
+] # midichan 3 # s "midi"
+
+
+bps (190/60)
+
+do
+  d1 $ every 2 (|*| note 1.5)$ every 3 (fast 2)$ every 7 (0.125~>)$ note "[c(3,8) ,~ d*2 e*2 f*2 g*2 a*2 <b b*2> c1*2]/4" # midichan 3 # s "midi" # sus 0.2
+  d2 $ every 5 ((slow 2).(0.125~>))$ every 3 (slow 2)$ every 5 (slip 0.25 0.125) $ every 2 (stut 2 0.5 0.25) $ every 5 (0.25~>) $ note  "[<c3(3,8,5) c3([4 7]/3,8)>, c4(3,8), b3*4, <d3/2>,f3([4 7]/3,8),fs3*8,ds4(3,8)]" # midichan 2 # s "midi" # sus 1.0 # velocity 2.0 # cut 2
+  d3 $ slow 2 $ every 3 (0.125~>)$ every 2 (|*| note 1.5)$ note "a3 b2 d1 c3 fs1 f1 b2 f3" # midichan 4 # s "midi" # sus 2.2 # cut 2
+  d3 $ silence
+
+  d2 $ (0.2 ~>)$ slow 2$ sound "[bd ~ cp*3 cp*9 bd bd*3 bd*3 bd*3 ]/4" # gain 1.5 # release 0.2 # speed 0.5 # room 0.1
+
+d2 $ slow 2 $ sound (samples "<[atrp*12, feel:6(7,12)] [atrp*6,feel:6(5,9),hh*9] [atrp*8,feel:6(3,8,5),feel:8*16]>" (irand 32)) # release 0.1 # gain 1.5

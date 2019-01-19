@@ -1,0 +1,20 @@
+
+
+bps (160/60)
+
+d1 $ fuk $ pop4 0.125 2 $ sound "oulg(3,8)" # speed 0.5
+
+d2 $ fuk $ jux (iter 4)$ every 4 (pop4 0.25 2.5)$ sound "[feel:6(3,8,5),feel:8(5,8)]" # release 0.01 # gain 1.4 # speed 0.9
+
+d3 $ fuk $ every 6 (fast 2)$ slow 2$ sound "gravitate:3(3,8)" # release 0.5 # gain 1.5
+
+
+do
+  d1 $ fuk $ pop4 0.125 2 $ sound "oulg:2(3,8)" # speed 0.5
+  d2 $ sound "~"
+  d3 $ sound "gravitate:4/2" # release 1.5 # gain 1.75 # speed 1.5
+  d4 $ every 7 (0.25~>)$ sound "bd*2" # room 0.3 # gain 1.75
+
+
+  d1 $ every 4 (|=| s "<aud oulg basst>")$ every 7 (0.25~>)$ whenmod 32 16 (slow 2 . striate 2)$ sound (samples "amencutup*8" (irand 32)) # speed 1.5 # release 0.2
+  d2 $ sound "[research:44([4 3 9 2 12]/3,8),~ research:37 research:79 research:29]" # release 0.10 # gain 1.5 # speed 1.8

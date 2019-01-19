@@ -1,0 +1,51 @@
+-- pattern 78
+-- 10/10/2018
+
+
+
+d1 $ sound "bd" # orbit 1 # gain 1.25
+
+
+
+d1 $ fuk
+  $ every 3 (jux (# accelerate 8))
+  $ every 7 ((within(0.25,0.75))(spin 8))
+  $ every 5 (superimpose ((# delaytime "< 0.0 0.25 0.0 0.75>/4") . (0.125 <~)))
+  $ whenmod 4 3 (fast 1.5)
+  $ sound (samples "[research([7 4]/3,8), hh*4, feel:5([4 7]/5,8)]" (irand(99))) # orbit 0 # speed 2.5 # release 0.2 # delay 1
+
+d2 $ whenmod 4 3 (const $ sound "feel:6*3" # orbit 1 # release 0.2) $ sound "feel:6([7 4]/3,8)" # orbit 0 # release 0.2
+
+
+d3 $ sound "basst:7/1.5" # orbit 2
+
+
+
+
+
+
+
+-- retrig functions https://blog.mikehodnick.com/using-retrig-in-tidalcycles-0-9-4/
+
+do
+    now' <- getNow
+    let now = nextSam now'
+    let retrig = (now `rotR`)
+    d1 $ retrig $ slowcat [
+        sound "bd*8",
+        sound "feel:2*6",
+        sound "ul(5,8)",
+        sound "cp*8",
+        s "arpy*5" # n (run 30),
+        sound "bass(3,8)" ] # orbit 1
+
+do
+    now' <- getNow
+    let retrig' = (now' `rotR`)
+    d1 $ retrig' $ slowcat [
+        sound "cp bd*8",
+        sound "feel:2*6",
+        sound "ul(5,8)",
+        sound "cp*8 bd",
+        s "arpy*5" # n (run 30),
+        sound "bass(3,8)" ] # orbit 1

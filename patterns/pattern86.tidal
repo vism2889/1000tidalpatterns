@@ -1,0 +1,41 @@
+-- pattern 86
+-- 01/01/2019
+
+
+
+d1 $ sometimes (spaceOut [1,0.5, 0.4, 0.3, 0.2, 0.1])$ sound "[ bd*8, cp*4 ]"
+
+
+
+
+bps (95/60)
+
+d1 $ whenmod 16 8 ( (# nudge (scale 0 1 $ slow 8 sine)).(# hpf (scale 40 1000 $ slow 4 sine)).(# room (scale 0.1 1 $ slow 7 saw)) )
+  $ sound "[mutantE:65*4, feel:6 feel:5,hh*8, rainn:5*2 rainn:3]" # release 0.2 # gain 1.5 # speed 0.7 # hpq "0.1"
+
+d1 $ sound "[mutantE:65(3,8), feel:6(3,8) feel:5]" # release 0.2 # gain 1.5 # speed 0.7 # hpq "0.1" # room 0.0
+
+d1 $ sound "[mutantE:65, feel:6(3,8), bd feel:5,hh*8, rainn:5 rainn:3]" # release 0.2 # gain 1.5 # speed 0.7 # hpq "0.1" # room 0.0
+
+
+d1 $ whenmod 28 14 (slow "1.428")$ every 6 ((within((3/7),1.0))(slip 0.125 (1/7)))$ every 4 (slow 2)$ every 5 ((1/14)<~)$ every 3 ((fast 2).(# release 0.1))$ sound (samples "[atrp*7,rm*7, ~ hh ~ amencutup <amencutup*2 feel:6> amencutup <amencutup*2 amencutup>,<glitch:2*14 glitch:2(4,7)>]" (irand(32))) # release 0.2 # gain 1.25 # speed 1.7
+
+d2 $ whenmod 28 14 (slow "1.428")$ fuk $ every 6 ((within((3/7),1.0))(slip 0.125 (1/7)))$ sound "<rocc:1(3,7) rocc:1([3 5]/3,7)>" # gain 1.75 # release 0.5
+
+d3 $ whenmod 28 7 (slow "1.428")$ sound "basst:5(4,7)" # release 0.5 # gain 1.65 # speed "<0.8 0.9 1.2>"
+
+d4 $ whenmod 28 14 (slow "1.428")$ sound "<bd([3 5]/4,7) bd(3,7) ~ bd(4,7)>" # gain 1.5 # speed "<0.7 0.9 1.0 1.2>"
+
+d5 $ whenmod 28 14 (slow "1.428") $ every 4 (fast 2)$ every 5 ((within((3/7),1.0))(slip 0.125 (1/7)))$ sound "<hh*7 ~ hh(4,7) hh*7 [hh hh ~ ~ hh hh ~ ]>" # release 0.2 # gain 1.5
+
+d6 $ whenmod 28 14 (slow "1.428") $ sound "rocc:2" # release 1.5 # gain 1.25
+
+
+
+do
+  d1 $ silence
+  d2 $ silence
+  d3 $ silence
+  d4 $ silence
+  d5 $ silence
+  d6 $ silence

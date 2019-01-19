@@ -1,0 +1,37 @@
+-- pattern 76
+
+
+
+
+
+
+
+bps (190/60)
+
+d3 $ note "fs(3,8)" # midichan 5 # s "midi"
+
+d7 $ every 2 (fast 2)$ whenmod 8 4 (# midichan 5)$ every 5 (iter 4)$ note "<[a9 b9 c9 cs9 d9 e9 f9 g9] c(3,8)>" # midichan 6 # s "midi"
+
+
+d2 $ every 7 (fast 2)$ every 5 (0.25~>)$ every 2 (|*| note 2.0)$ every 2 (0.25~>)$ note "as3 f4 g4 cs6" # midichan 6 # s "midi"
+
+d2 $ every 3 (0.25~>)$ note "[as4 [f4 as5] ~ fs3 ~ ~ [~ fs3 ~ as5] ~ [fs6 as6 fs6 as6]]/8" # midichan 6 # s "midi"
+
+d8 $ whenmod 64 32 (# s "amencutup")$ fuk $ whenmod 32 16 (slow 2)$ every "7 13" (slow 2)$ every 3 (0.25~>)$ whenmod 15 12 ((slow 16).(stut "<64 32>/2" 0.25 0.125).(|=| speed 2.5))
+  $ sound (samples "amencutup*8" (irand 32)) # release 0.12 # orbit 0 # gain 1.5 # speed "<2.5 1.75>/2"
+
+d1 $ every "7 13" (slow 2)$ slow 2 $ sound "basst:5([7 4 2]/3,8,7)" # orbit 1 # gain 1.25 # release 0.50 # speed "<1.0 0.9 1.2 1.5>/3"
+
+d9 $ every 3 (pop4 0.125 "<0.50 0.75 2.0 3.0>/4")$ fuk $ sound "[feel:8*8,feel:6([4 7 ]/3,8,4)]" # orbit 3 # gain 1.5 # release 0.2
+
+
+d5 $ every 3 (|=| speed 0.5)$ fuk $ whenmod 32 16 (slow 2)$ every "7 13" (slow 2)
+  $ every 2 (0.25~>)$ sound "[mutantE:60 mutantE:61 mutantE:64 ~,mutantE:65([4 7]/3,8,4)]" # orbit 2 # gain 1.5 # release 0.2
+
+d4 $ every 3 (const $ control (_discretise 128 $ slow 8 (scale 0 127 $ (sine1))) # midicmd "control" # ctlNum 1 # midichan 3 # s "midi") $ sound " ~ ~ ~ ~" -- drumrack reverb
+
+d4 $ control "[1 1 20 100]/8" # midicmd "control" # ctlNum 1 # midichan 3 # s "midi"
+d6 $ control "[1 50 1 [75]/2]/8" # midicmd "control" # ctlNum 2 # midichan 3 # s "midi"
+
+
+d2 $ every 9 (const $ sound "rainn(3,8)" # release 1.0 # room 0.5)$ every 6 (# s "rainn:3")$ sound "rainn:2" # orbit 3 # speed "<1.0 1.0 1.0 1.5>"

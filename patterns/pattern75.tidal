@@ -1,0 +1,47 @@
+-- pattern 75
+-- 12/06/2018
+
+
+
+
+
+
+
+let stitch7 p = ( (within ((1/7), (7/7))) (stut "<14>" 0.5 0.125)) p
+
+
+bps (190/60)
+
+d3 $ every 7 (|=| s "gabba")
+  $ slow "<1.0 2.0>/3.5"
+  $ whenmod 15 12 ((slow 32).(stut "<64 32>/2" 0.25 0.125).(|=| speed 2.5))
+  $ sound (samples "amencutup*8" (irand(32)))
+  # release 0.12
+  # gain 1.25
+  # orbit 1
+  # speed 2.5
+
+
+d1 $ slow 2 $ every 13 ((slow 2).(striate 2).(|=| speed 2.5))
+  $ fuk
+  $ every 4 ((slow 2).(pop4 0.25 "<0.75 1.0>/3"))
+  $ every 7 (|=| delaytime 0.025)
+  $ sound "[feel:6([4 7]/5,8,4),bd/2, atrp:10([3 5 7]/4,8), <glitch:2([5 8]/3,8,4) feel:8([5 8]/3,8,4)>/2]"
+  # orbit 1
+  # delay 1
+  # delayfeedback "< 0.75 >"
+  # delaytime "<0.0>"
+  # room "<0.0 0.0 0.0 0.2 0.0 0.5>/6"
+  # speed "<1.0 1.0 1.5 2.0>/4"
+  # release "<0.2 1.0>/2"
+
+d2 $ whenmod 16 8 (const $ every 3 (0.25~>) $ jux (iter 4) $ sound "<[mutantE:36([9 7 5]/3,8,4)] mutantE:42([4 3 2]/5,8,7)>" # release 0.2 # orbit 2 # gain 1.5)
+  $ sound "<mutantE:56 mutantE:38 mutantE:39 ~ >/2" # orbit 2 # gain 1.5
+
+d3 $ sound "gravitate:1" # orbit 3 # gain 1.5
+
+d2 $ jux(iter 4)$ sometimes (|=| speed 1.5)$ sound "<rainn:3 rainn:2>/4" # orbit 3 # gain 1.25
+
+d4 $ sound "gravitate:6" # orbit 3 # release 0.7 # gain 1.25
+
+d3 $ silence

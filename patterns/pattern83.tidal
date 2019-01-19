@@ -1,0 +1,35 @@
+-- pattern 83
+
+-- 12/21/2018
+
+bps (95/60)
+
+
+d1 $ every 3 ((2/12) ~>)$ sound "bd:6*6" # gain 1.25 # release "<0.2 0.2 0.2 1.0>"
+d2 $ sound "rainn:5*1.5" # release 3.0 # gain 1.25 # speed 0.83 # begin "<0.0>"
+d2 $ every 2 (# accelerate 2)$ every 2 (slip 0.25 0.125)$ sound "rainn:2*1.5" # release 3.0 # gain 1.25 # speed 0.83
+
+d3 $ sound "hh*12" # release 0.2 # gain 1.15 # speed 1.5
+d4 $ every 6 (slip 0.25 0.125)$ sound "<[~ ~ ~ cp ~ ~] bd>" # gain 1.25
+d5 $ sound "basst:5" # speed "<1.5 0.9 0.8 1.0>"
+d6 $ every 7 ((within((1/3), 1.0))(rev . jux(iter 3)))$ every 2 (0.25~>)$ every 5 (slip 0.25 0.125)$ sound "rot rot:1 rot:2 rot rot:1 rot:2" # cut 2
+-- d7 $ whenmod 16 8 (rev)$ sound (samples "<basst:6(2,6) basst:6*6> <basst:7(3,6) basst:7*6>" (irand(32))) # release 0.3 # gain 1.25 # speed "<1.2>"
+d8 $ every 5 (iter 3)$ every 3 (0.25 ~>)$ sound "[feel:8([3 12 1 6]/3,6,3), feel:5([3 12 6]/2,6,4)]" # gain 1.2 # cut 2 # release 0.2
+
+
+do
+  d1 $ jux (iter 4)$ stack [
+    every 3 (0.25 ~>)$ sound "bd:6(4,6)" # gain 1.25 # release "<0.2 0.2 0.2 1.0>",
+    every 2 (# release 0.2)$ every 2 (slip 0.25 0.125)$ sound "rainn:2*1.5" # release 3.0 # gain 1.25 # speed 0.83,
+    every 7 ((within((1/3), 1.0))(rev . jux(iter 3)))$ every 2 (0.25~>)$ every 5 (slip 0.25 0.125)$ sound "rot:2*1.5" # cut 2,
+    every 6 (slip 0.25 0.125)$ sound "<[~ ~ ~ cp ~ ~] bd>" # gain 1.25,
+    sound "hh*12" # release 0.2 # gain 1.15 # speed 1.5,
+    every 5 (iter 3)$ every 3 (0.25 ~>)$ sound "[feel:8([3 12 1 6]/3,6,3), feel:5([3 12 6]/2,6,4)]" # gain 1.2 # cut 2 # release 0.2
+    ]
+  d2 $ silence
+  d3 $ silence
+  d4 $ silence
+  d5 $ silence
+  d6 $ silence
+  d7 $ silence
+  d8 $ silence

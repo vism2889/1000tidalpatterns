@@ -1,0 +1,16 @@
+-- pattern 81
+
+
+
+
+
+bps (95/60)
+
+do
+  d1 $ whenmod 21 19 (const $ sound "~ ~ ~ ~")$ every 3 (iter 7)$ sound "[feel:6([5 7]/4,7)]"
+  d2 $ whenmod 21 19 (const $ sound "~ ~ ~ ~")$ sound "[~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ [<cp*2 cp>] ~ ]/2" # speed 1.5 # gain 1.25 # room "<0.5 0.0>/2"
+  d3 $ every 9 (slip (2/7) 0.125)$ sound "rocc:5(4,7)" # release 0.5
+  d4 $ whenmod 21 19 (const $ sound "~ ~ ~ ~")$ sound "[hh:8([5 7]/3,7),hh*7]"
+  d5 $ whenmod 21 19 (const $ slip (1/7) 0.125$ sound (samples "<[amencutup*7,amencutup:4(4,7)]>/2" (irand(32))) # release 0.2 # speed 2.5 # gain 1.25)$ sound "~ ~ ~ ~"
+  d6 $ sound "basst:5([5 7]/4,7)" # speed "<0.8 0.9 1.2>" # release 0.5 # gain 1.2
+  d7 $ every 3 (iter 7)$ sound "glitch:2(4,7)" # gain 1.35 # speed 0.95 # release 0.5

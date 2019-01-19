@@ -1,2 +1,156 @@
 -- pattern 64
 -- 08/18/2018
+
+
+-- black forge coffe house set
+
+let pop11 a b p = stut' 11(a) (|*| speed b) p
+    pop7 a b p = stut' 7(a) (|*| speed b) p
+    grad = (within(0.75, 1.0))(slow 8 . (stut 16 0.75 0.5). (|=| speed 2.5))
+    gradd = (within(0.25, 0.50))(slow 8 . (stut 8 0.75 0.5). (|=| speed 0.8))
+
+let knut p = (slow 2 . stut "8 16" 0.75 0.5 . (|*| speed 2)) p
+    withinn a p= ((within(0.125,0.25)(stut a 0.75 0.5)) . (within(0.375,0.5)(stut a 0.75 0.5)) . (within(0.75,1.0)(stut a 0.75 0.5))) p
+
+
+bps (80/60)
+
+
+do
+  d1 $ whenmod 16 10 (const $ every 3 (pop11 0.125 1.7)$ sound "atink(8,11)")$ sound "atink(5,11)"
+  d2 $ whenmod 16 10 (const $ sound "[feel:6(7,11),feel:5(4,11)]" # cut 2 )$ sound "[feel:6(4,7),feel:5(3,11)]" # cut 2 # speed ((scale (-4) 27 sine)*(slow 8 saw)) # gain 1.25
+  d3 $ fuk $ sound "[atrp:2([7 4 3]/7,11)]" # cut 2
+  d4 $ jux (iter 4)$ every 6 (within (0.47, 0.74)(maven 0.125 2 0.4 )) $whenmod 32 16 (pop11 0.125 1.7) $ whenmod 16 10 (|=| speed 0.7)$ loopAt 4 $ chop 16 $ sound "research:11"
+  d5 $whenmod 16 10 (const $ sound "rm*11" # speed ((scale (-4) 18 sine)*(slow 8 saw)))$ sound "rm*7" # speed ((scale (-4) 18 sine)*(slow 8 saw))
+  d6 $ every 3 (twist 0.47 0.74 22)$ whenmod 16 10 (const $ sound "~ ~ ~ ~ ~ cp ~ ~ ~ ~ ~") $ sound "~ ~ ~ cp ~ ~ ~"
+
+d1 $ silence
+--
+
+bps (150/60)
+
+d1 $ fuk $ pop4 0.125 0.4$ sound "feelfx/3" # speed 0.1 # orbit 0
+d2 $ every 4 (slow 3)$ jux (fuk)$ sound "feelfx/1.5" # speed 0.1 # orbit 0
+
+d1 $ silence
+
+d2 $ every 9 (slow 4)$ every 5 (twist 0.75 1.0 32)$ every 7 (0.25 ~>) $ every 3 (iter 4)$ jux (fuk )$whenmod 8 4 (slow 2)$ stack [
+  faux $ "<0 0.5 0.125>" <~ sound ("[glitch:2([5 3]/5,8), hh feel:1, feel:6([7 [5 3]]/3,8),~ feel:5]") # cut 2 # gain 1.25,
+  faux $ sound "[bass2:2([7 5]/5,8)?, atrp:1/2 ~, atrp:4([7 3]/5,8),hc hc hh ~]" # release 0.1 # cut 2 # speed 0.9,
+  whenmod 16 8 (|*| speed (choose[2,3,4,(-3),(-5)])) $ sound "feelfx/3" # speed 0.1 # gain 1.35
+  ] # orbit 0
+
+t2 (anticipateIn 16) $ sound "feel:6 ~ ~ ~"
+
+bps (75/60)
+
+d1 $ every 3 (fast 1.5 . (|=| release 0.02))$ sound (samples "mutantE*4" (irand 32)) # release 0.5 # gain 1.75 # speed 0.5 # speed 0.8
+
+d2 $ slow 2 $ sound "mutantE:38 mutantE:34 mutantE:35 mutantE:44 mutantE:47" # speed 0.8 # gain 1.75 -- add one more to make 6 # speed 0.75
+
+d2 $ fuk $ slow 2 $ sound "mutantE:38 mutantE:34/5 mutantE:35 mutantE:44 mutantE:47 mutantE/6 mutantE:5/4 mutantE:7/3" # gain 1.75  # speed "[1.5 2.0 0.70 1.0]/4" # speed 0.5
+
+d5 $ fuk $ sound "mutantE:35/5" # gain 1.75 # speed 1.7
+
+d3 $ every 3 (fast 2)$ whenmod 32 16 (|=| room 0.0)$ every 3 (|=| room 0.2)$ slow 2$ every 6 (slow 2)$every 3 (twist 0.25 1.0 16)$ fuk $ sound (samples "amencutup*8" (irand 8)) # release 0.02 # speed 2.5 # gain 1.25 # room 0.8
+
+d4 $ fuk $ every 4 ( slow 2)$ every 7 (fast 2)$ every 6 (stut 4 1.75 0.5) $ every 7 (|=| s "atrp")$ sound "[feel:6(3,8), feel:8([4 7]/5,8,3),feel:5([5 3]/3,8,5)]/2" # release 0.2 # gain 1.25 # speed 1.0 # room 1.5
+
+do
+  d1 $ silence
+  d2 $ silence
+  d3 $ silence
+  d4 $ silence
+  d5 $ silence
+  d6 $ silence
+  d7 $ silence
+  d8 $ silence
+  d2 $ silence
+
+d1 $whenmod 16 8 (pop4 0.125 0.5)$ slow 8 $ sound "mutantE:11 mutantE:12" # gain 1.75 # speed "<1.0 0.7 0.5 0.4>"
+
+d2 $ fuk $ every 4 (iter 3)$ sound "mutantE:15*2  mutantE:16 mutantE:25" # gain 1.75
+d1 $ silence
+
+d3 $ whenmod 64 32 (|=| speed "<0.75 1.5>/4")$ sound "<mutantE:26 mutantE:36 mutantE:38 [mutantE:43 mutantE:44]>" # gain 1.75
+
+
+d4 $ slow 4 $ sound "mutantE:32" # gain 1.75
+
+d5 $ every 7 ((2/7) ~>) $ every 9 ((3/7) ~>) $ sound "[<glitch:2([3 5]/3,7) glitch:2(3,7)>, feel:6(4,7)]" # release 0.2 # gain 1.17
+
+t5 (anticipateIn 16) $ sound "~ ~ ~ ~"
+
+bps (150/60)
+
+
+d1 $ sound "mutantE:36(3,8)" # gain 1.75 # release "<0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0>"
+
+d4 $ sound "<mutantE:52 mutantE:50 mutantE:53 mutantE:56>/4" # gain 1.75
+
+d3 $ fuk $ every 4 (fast 2)$ every 7 (fast 2)$ slow 2 $ sound "basst:4([3 7]/3,8)" # release 0.5 # speed "<0.7 1.0 1.22 0.78>" # room 0.2 # gain 0.9 # gain 1.1
+
+d2 $ fuk $ every 5 (twist 0.75 1.0 16)$ sound "[oulg:8([1 4]/3,8), oulg:2/2, aud:2([3 4]/5,8,3), hh*8]" # release 0.2 # speed 1.0 # gain 1.1
+
+d5 $ fuk $ every 3 (slow 2)$ every 3 (0.25 ~>)$ sound (samples "<[amencutup*4 ~] [amencutup*4 ~] [amencutup*4 ~] [~ amencutup*4 amenutup*2 ~][~ amencutup*4]>" (irand 32)) # release 0.2 # speed 2.5 # gain 1.15
+
+d5 $ silence
+
+
+
+
+
+bps (190/60)
+d6 $ slow 8 $ sound "<research:44 research:43>" # gain 1.75 # speed 0.70
+
+d1 $ slow 2 $ sound "[gabba:5(3,8), feel:6([1 5]/5,8,3), hbd:5([3 4]/3,8)]" # gain 1.17
+
+d2 $ whenmod 16 8 (slow 2)$ sound (samples "<amencutup*8 amencutup*4 amencutup*4 >" (irand 32))  # gain 1.20
+
+
+do
+  d6 $ whenmod 16 8 (|=| speed "<1.0 0.5>")$ slow 2 $ sound "<research:44 research:43>" # gain 1.75 # speed 1.5 # begin 0.25
+  d1 $ every "4 5" (const $ sound "~")$ every 5 (iter 4) $ every 7 (0.25 ~>)$ sound "[gabba:5(3,8), feel:6([1 5]/5,8,3), hbd:5([3 4]/3,8)]" # gain 1.5
+  d2 $ every 7 (twist 0.75 1.0 32)$ every 9 (slow 4)$ every 3 (0.25 ~>)$ sound (samples "<amencutup*8 amencutup*4 amencutup*4 <amencutup*4 amencutup*8>>" (irand 32))  # gain 1.5 # speed 1.5
+
+
+do
+  oneshot d6 $ sound "<research:45*16 research:45*8 research:45*4 research:45*2 research:45*1 research:45 ~ ~ ~>" # gain 1.75
+  d1 $ silence
+  d2 $ silence
+  d5 $ silence
+  d5 $ silence
+
+do
+  d6 $ slow 4 $ fuk $ pop4 0.125 1.5$ slow 4$ whenmod 16 8 (|=| speed "<0.5>")$ slow 2 $ sound "<research:44 research:43>" # gain 1.75 # speed 0.75
+  d1 $ every 7 (pop4 0.125 1.5)$ every 5 (twist 0.5 0.75 32)$ slow 2$ every 5 (iter 4) $ every 7 (0.25 ~>)$ sound "[gabba:5([3 5]/3,8), feel:6([4 5]/5,8,3),<feel:8*8 feel:8*4>]" # gain 1.5
+  d2 $ every 5 (pop4 0.125 1.5)$ fuk $slow 4 $ every 3 (0.25 ~>)$ sound (samples "<amencutup*8 amencutup*4 amencutup*4 <amencutup*4 amencutup*8>>" (irand 32))  # gain 1.5 # speed 1.5
+  d5 $ fuk $ every 3 (iter 4) $ every 7 (0.25 ~>)$ sound "<basst:4([7 3]/<3 5>,8) basst:4([3 5]/5,8,3)>" # release 0.5 # gain 1.5 # speed "<1.0 1.2 0.9 0.7>"
+
+do
+  d5 $ slow 4 $ every 3 (iter 4) $ every 7 (0.25 ~>)$ sound "<basst:4([7 3]/<3 5>,8) basst:4([3 5]/5,8,3)>"  # gain 1.5 # speed "<1.0 1.2 0.92 0.7>" # release 1.0
+  d6 $ pop4 0.125 0.7$ slow 4$ whenmod 16 8 (|=| speed "<0.5>")$ slow 2 $ sound "<research:44 research:43>" # gain 1.75 # speed 0.75
+  d2 $ whenmod 16 8 ((|=| speed 2.75) . (|=| release 0.1))$ every 7 (twist 0.75 1.0 32)$ every 9 (slow 4)$ every 3 (0.25 ~>)$ sound (samples "<amencutup*8 amencutup*4 amencutup*4 <amencutup*4 amencutup*8>>" (irand 32))  # gain 1.5 # speed 1.5
+  d1 $ every "4 5" (const $ sound "~")$ every 5 (iter 4) $ every 7 (0.25 ~>)$ sound "[gabba:5(3,8), feel:6([3 4]/5,8,3), hbd:5([3 4]/7,8)]" # gain 1.5
+
+
+bps (160/60)
+
+d1 $ whenmod 32 20 (pop4 0.125 1.5)$ whenmod 16 8 (const $ loopAt 8 $ sound "research:30" # speed 1.5)$ loopAt 8 $ chop 32 $ sound "research:30" # speed 1.5
+
+d1 $ slow 1$ whenmod 16 8 (|=| speed 1)$ sound "research:30([7 5 4 3]/3,8,8)?" # cut 2 # speed 1.3
+
+d5 $ slow 1 $ every 6 (const $ sound "glitch(3,8)" # gain 1.2) $ sound "glitch:2*8" # gain (every 3 (rev) $ "1 0.8 0.5 0.7 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.8 0.8") # room 0.2
+
+d2 $ fuk $ realAF $ every 9 (twist 0.25 1.0 16)$ sound "noiz:4(3,8,5)" # gain (every 3 (rev) $ "1 0.8 0.5 0.7 1 1 0.8 0.8") # room 0.2
+
+d4 $fuk $ realAF $ every 7 (iter 4) $ dip $ whenmod 16 8 (fuk) $ sound "[feel:6(3,8)?, feel:5([7 4 3]/5,8)]" # cut 2 # gain 1.1
+
+d6 $ jux (iter 4)$ dip $ slow 2 $ fuk $ realAF $ whenmod 32 16 (const $ every 7  (stut 16 0.75 0.5)  $ sound "[~ ~ cp ~]/2" # gain 1.0)
+  $ every 7  (stut 16 0.75 0.5)  $ sound "[~ ~ cp ~, hh(5,8)?]" # gain 1.2 # speed 1.7
+
+
+t1 (anticipateIn 16) $ sound "~"
+
+
+d1 $ sound (samples "amencutup*8" (irand 32)) # release 0.2

@@ -1,0 +1,59 @@
+-- pattern 74
+-- 12/01/2018
+
+
+let pop7 a b p = stut' 7(a) (|*| speed b) p
+
+d1 $ every 7 (slow 2 . (pop7 0.25 0.75))$ sound "mutantE:5(4,7,5)" # release 0.2
+d2 $ fast 4 $ every 7 (twist (3/7) (7/7) 14)$ sound "<feel:6(4,7,5) bd(3,7,5) gabba(5,7,5)>/3" # release 0.4
+d3 $ every 2 (twist 0.51 1.0 16)$ sound "cp/2" # release 0.2
+d4 $ sound (samples "feel:8*7" (irand(32))) # release 0.2
+d3 $ sound "research:47(2,7,5)" # release 1.0 # gain 1.65 # speed 2.5
+
+
+let inverse 1 = 0
+    inverse 0 = 1
+
+do
+  let pat = " [0 0 0 1 0 1 1 1 0 1 0 0 1 1]/2"
+  d1 $ gain pat # sound "bd"
+  d2 $ every 7 (twist (4/7) 1.0 14)$ fuk $ gain (inverse <$> (pat)) # sound "cp" # release 0.2
+  d3 $ sound "feel:5(4,7)"
+  d4 $ sound "gabba(<5 3 4>/2,7)"
+
+
+bps (95/120)
+
+do
+  let pat = "[1*2 0 1*2 1 0 1 0*2 1 0*4 1 0 0*2 1 1]/2"
+      func  p = every 60 (jux((slow 2).(# accelerate 4))) p
+  d1 $ every 3 ((1/14)~>)$ func $ fuk $ every 3 (slip (3/7) (1/7))
+    $ jux ( every 4 ( iter 7))$ fuk $ seqPLoop
+    [
+    (0,3,
+      fast 2 $ fuk $ stack
+      [
+      gain pat # sound "bd",
+      every 7 (twist (4/7) 1.0 14)$ fuk
+      $ gain (inverse <$> (pat)) # sound "cp" # release 0.2,
+      every 2 (# gain pat) $ sound "feel:5(4,7)",
+      sound "gabba(<5 3 4>/2,7)" # release "<0.1 0.5>/2"
+      ]),
+    (4,8, every 7 (twist (4/7) 1.0 14)$ fuk
+    $ gain (inverse <$> (pat)) # sound "cp" # release 0.2),
+    (9,12,
+      stack
+      [
+      sound "feel:5(4,7)",
+      sound "gabba(<5 3 4>/2,7)" # release "<0.1 0.5 1.0 1.0>/4",
+      sound "glitch:2(6,7,5)" # release 0.2
+      ])
+    ]
+  d2 $ every 3 ((1/14) ~>)$ func $ every 7 (slip 0.25 0.125)$ every 5 ( (within ((4/7), (7/7))) (stut "<14>" 0.5 0.25)) $ every 4 (fast 2)$ sound "[research:38(3,7), research:40(5,7)]" # release "< 1.0 0.2 0.2 0.5>" # gain 1.75
+  d3 $ every 7 (slow 2)$ every 4 ((1/14) ~>)$ func $ every 12 (slip 0.25 0.125)$ fuk $ sound "[mutantE:39 mutantE:43 mutantE:41 ~ mutantE:52*2 ~ hh,mutantE:50(3,7)]" # release 2.0 # gain 1.9 # release "<[1.0 0.1 0.3 0.5 0.9 0.2 0.1] 0.2 0.5 1.0>/4" # cut 2
+
+d4 $ every 9 (slip (1/7) (1/14))$ every 4 ((1/14)~>)$ fast 2
+  $ sound "bd <bd [~ bd]> ~ <cp [~ cp] [~ cp*2] ~ >/4 <~ cp [~ cp]>/3 ~ <~ [~ bd] bd>/3" # gain 1.30
+  --d2 $ whenmod 21 7 ( const $ sound "~ ~ ~ ~ ")
+    -- $ every 4 (fuk)
+    -- $ sound (samples "amencutup*28" (irand(32))) # release 0.2 # speed 1.5
