@@ -1,0 +1,17 @@
+
+
+d1 $ every 7 (0.25~>)
+  $ every 4 (0.125~>)
+  $ every 5 (#s "research:44(3,8)")
+  $ sound "<research:48(3,8) research:49(3,8)>" # release 0.8 # begin "<0.25 0.75>" # gain 1.5 # speed "<[1.5 1.0] [1.0]>/2"
+  # room 0.5
+
+d2 $ sound "<feel(3,8) feel(5,8)>"
+
+d2 $ every 3 (slip 0.25 0.125)$ every 3 (0.125~>) $ every 5 (0.25~>)$ sound "<feel:6(3,8) feel:6(5,8) feel:6(7,8) feel:6([4 7]/3,8,5)>" # speed 0.8 # release 0.4
+
+d3 $ slip 0.25 0.125 $ every 4 (0.125 ~>)$ sound "<hh([4 7]/3,8) hh(7,8) hh([5 4]/5,8)>"
+
+d4 $ every 6 (const $ sound "~ ~ [~ cp*2] ~" # release 0.2 # room 0.75)$ every 5 (const $ slip 0.25 0.125 $ sound "~ ~ cp ~")$ sound "~ ~ ~ ~"
+
+d5 $ sound "bd ~ cp ~"

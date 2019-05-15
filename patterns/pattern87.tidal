@@ -11,7 +11,7 @@ d1 $ whenmod 32 16 (const $fuk $ sound "[<feel:6(3,8,4) bd([3 4 7]/3,8,4)>,~ ~ c
   $ every 16 (const $ slip 0.125 0.25$ sound "rm(3,8,4)" # speed 0.75)
   $ every 7 ((slow 2).(# speed 0.75).(pop4 0.25 2))$ every 6 (slow 2)
   $ every 4 (within(0.5,1.0)(slow 2))$ every 5 (0.25 ~>)$ slip 0.125 0.25
-  $ sound "[<feel:6(3,8,4) bd([3 4 7]/3,8,4)>,~ ~ cp ~,<feel:5(3,8) feel:5(5,8) glitch:2(5,8)>]" # speed 1.7 # release 0.52 # gain 1.15
+  $ sound "[<feel:6(3,8,4) bd([3 4 7]/3,8,4)>,~ ~ cp ~,<feel:5(3,8) feel:5(5,8) glitch:2(5,8)>]" # speed 1.7 # release 0.52 # gain 1.15 # obit 1
 
 d2 $ every 4 (slip 0.125 0.25)$ sound "<mutantE:51 mutantE:45 <[mutantE:40, mutantE:55(3,8)] mutantE:44> <mutantE:42(3,8) mutantE:41>>" # gain 1.75 # release 1.65
 

@@ -1,0 +1,23 @@
+-- patter 94
+-- 03/25/2019
+
+
+d1 $ sound (samples "[gravitate*8, <feel:6 cp> ~ ~ ~,feel:8(3,8)]" (irand(32))) # release 0.8 # cut 2 # gain 1.5
+
+d2 $ every 6 (const $ sound "~ ~ ~ [~ feel:6*2]" # release 0.2)$ sound "<feel:6(5,8) feel:6([4 7]/3,8)>" # gain 1.35
+
+d3 $ sound "basst:5(5,8)" # speed "<1.0 1.2 1.9 1.36>" # release 0.7
+
+d4 $ slow 2$ every 4 (0.25~>)$ every 3 (slow 2)$ sound "feel:8*16 feel:8(3,8)" # gain 1.5
+
+
+
+do
+  d1 $ silence
+  d2 $ silence
+  d3 $ silence
+  d4 $ silence
+  d5 $ silence
+  d6 $ silence
+  d7 $ silence
+  d8 $ silence

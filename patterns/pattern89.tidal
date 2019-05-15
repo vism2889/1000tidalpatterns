@@ -1,0 +1,53 @@
+-- pattern 89
+-- 02/20/2019
+
+
+-- time signature experiments
+
+
+let slip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
+    slip' c d e a b p = within (d, e) (slow 2 . rev . stut c a b) p
+
+bps (95/60)
+
+do
+  d1 $ every 7 (slow 1.5)$ every 5 (slow 2)$ every 6 (jux(fuk))$ every 4 (# speed 1.5)
+    $ whenmod 10 5 ((slip' 5 0.4 1.0 0.25 0.125).(# s "[feel:6([3 5]/3,5), hh:6*5, feel:6(3,5), ~ ~ cp ~ ~]"))
+    $ every 3 ((slip 0.25 0.125).(# s "[hh:7*5, feel:6([4 7]/3,5), ~ ~ cp ~ ~]"))
+    $ sound "<[hh*4, feel:6([5 3 7]/3,8,5), ~ ~ cp ~ ]>" # gain 1.25 # release 0.5
+  d2 $ whenmod 16 8 (# speed 0.75)$ every 7 (slow 1.5)
+    $ whenmod 10 5 ((slip' 5 0.4 1.0 0.25 0.125).(# s "rocc:2*5"))
+    $ sound "rocc:2*2" # begin "<0.0 0.2 0.3 0.5 0.7>" # gain 1.25 # cut 2 # orbit 1
+
+d4 $ whenmod 10 7 (slip' 5 0.4 1.0 0.25 0.125)$ every 4 (slip 0.25 0.125)$ every 3 (0.20 ~>)$ every 7 (slow 1.5)$ every 5 (slow 2)$ sound "[bd:6(3,5), feel:8*10]" # gain 1.5 # orbit 1
+
+do
+  d1 $ every 6 (slow 1.75)$ every 7 (slow 1.5)
+    $ every 5 (slow 2)
+    $ every 6 (jux(fuk))$ every 4 (# speed 1.5)
+    $ whenmod 10 5 ((jux(iter 5)).(slip' 5 0.4 1.0 0.25 0.125).(# s "[feel:6([3 5]/3,5), hh:6*5, feel:6(3,5), ~ ~ cp ~ ~]"))
+    $ every 3 ((slip 0.25 0.125).(# s "[hh:7*5, feel:6([4 7]/3,5), ~ ~ cp ~ ~]"))
+    $ sound "<[hh*4, feel:6([5 3 7]/3,8,5), ~ ~ cp ~ ]>" # gain 1.25 # release 0.5
+  d2 $ every 6 (slow 1.75)$ every 7 (slow 1.5)
+    $ every 5 (slow 2)
+    $ every 6 (jux(fuk))$ every 4 (# speed 1.5)
+    $ whenmod 16 8 (# speed 0.75)$ every 7 (slow 1.5)
+    $ whenmod 10 5 ((slip' 5 0.4 1.0 0.25 0.125).(# s "rocc:1*5"))
+    $ sound "<rocc:1*4 rocc:4*2>" # begin "<0.0 0.2 0.3 0.5 0.7>" # gain 1.25 # orbit 1
+
+
+do
+  d1 $ every 9 (slow 1.75) $ every 10 (slow 0.75)$ every 6 (slow 1.75)$ every 7 (slow 1.5)
+    $ every 5 (slow 2)
+    $ every 6 (jux(fuk))$ every 4 (# speed 1.5)
+    $ whenmod 10 5 ((jux(iter 5)).(slip' 5 0.2 0.6 0.25 0.125).(# s "[feel:6([7 5 3]/3,5), hh:6*5, feel:6([4 7]/3,5), ~ ~ cp glitch:2 [~ glitch:2]]"))
+    $ every 3 ((slip 0.25 0.125).(# s "[hh:7*5, feel:6([4 7]/3,5), ~ ~ cp ~ ~]"))
+    $ sound "<[hh*4, feel:6([5 4 3 7]/3,8,5), glitch:2*2 ~ cp ~ ]>" # gain 1.25 # release 0.5 # orbit 1
+  d2 $ every 9 (slow 1.75) $ every 10 (slow 0.75)$ every 6 (slow 1.75)$ every 7 (slow 1.5)
+    $ every 5 (slow 2)
+    $ every 6 (jux(fuk))$ every 4 (# speed 1.5)
+    $ whenmod 16 8 (# speed 0.75)$ every 7 (slow 1.5)
+    $ whenmod 10 5 ((slip' 5 0.2 0.6 0.25 0.125).(# s "rocc:1(2,5)"))
+    $ sound "<rocc:1(3,8) rocc:4*2>" # begin "<0.0 0.2 0.3 0.5 0.7>" # gain 1.25 # orbit 1
+
+d3 $ sound "[~ ~ cp ~ ~]" # orbit 1 # gain 1.25

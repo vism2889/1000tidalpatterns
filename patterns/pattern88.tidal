@@ -1,0 +1,20 @@
+-- pattern 88
+-- 01/26/2019
+
+
+
+
+
+bps (60/60)
+
+-- messing with {} brackets
+
+do
+  d1 $ fuk $ every 9 (slow 2.5)$ every 3 ((2/5)<~)
+    $ sound (samples "{glitch*7 glitch:2*5 <glitch:6*4 glitch:7(3,4)>, amencutup*7 amencutup:5*5 feel:7*4,hh(4,7) hh:1(3,5) hh:1(3,4),~ [bd ~ ~ ~ cp] [~ ~ glitch:2*2 ~]}" (irand(32))) # release 0.2 # speed 2.9 # gain 1.5
+  d2 $ gtfo $ every 9 (slow 2.5)$ every 3 ((2/5)<~)
+    $ sound "{rainn:3*7 rainn:3*5 <rainn:5*4 rainn:6(3,4)> rainn:2}/2" # release 0.2 # gain 1.5 # speed 1.0 # begin "<0.0 0.25 0.5 0.75>/5" # room 0.0
+  d3 $ gtfo $ every 9 (slow 2.5)$ every 3 ((2/5)<~)
+    $ sound "{rainn:2*7 rainn:2*5 <rainn:2*4 rainn:2(3,4)> rainn:2}/2" # gain 1.5 # release 0.5
+  d4 $ fuk $ every 9 (slow 2.5)$ every 3 ((2/5)<~)
+    $ sound "{[bd(3,7), ~ ~ ~ cp ~ ~ ~] [bd(3,5), ~ ~ cp ~ ~] <[bd(2,4), ~ ~ cp ~] [rbd(3,4), ~ ~ cp ~]> bd(3,8)}/2" # gain 1.5 # release 0.6

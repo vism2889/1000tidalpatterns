@@ -1,0 +1,25 @@
+-- pattern 96
+-- 09/05/2019
+
+cps(70/60)
+
+d1 $ every 19 (0.125 ~>)$ every 8 (# speed 0.9)
+  $ every 10 (const $ sound "~ ~ actor:50*2 <[~ actor:57*2]  ~ ~ [actor:60*2 actor:17] ~>" # gain 1.25 # speed 1.9# release 1.0 # orbit 1)
+  $ whenmod 16 8 (stut 8 0.125 0.25 . slow 2) $ every 17 (slip 0.125 0.25)$ every 12 ((within(0.75,1.0))(slow 2).(slip 0.25 0.125))
+  $ every 9 (rev. slip 0.25 0.125) $ every 3 (0.125 ~>)
+  $ sound
+    "[<[oszip:38(3,8), oszip:50([4 7]/3,8)] [~ ~ ~ oszip:20*2] oszip:50(5,8)>,<bd*4 bd:4(3,8) bd(5,8) [~ bd [~ bd] [~ bd]]>, <[~ ~ cp ~]/2 [~ ~ ~ [cp*2 ~]]/2 [~ [~ cp] ~ ~, ~ ~ actor:57*2 ~ ] actor:24(3,8)>,  <feel:7(3,8) feel:7(3,8) feel:8(3,8)>]"
+    # orbit 1 # release 0.8 # gain 1.5 # speed 1.75
+
+d2 $ every 5 (slow 2)$ every 7(slip 0.125 0.25)  $ every 3 (iter 4 ) $ every 7 (0.125 ~>)$ sound "[feel:6(3,8,<7 3 5>),feel:8([3 4 5 7]/3,8,5)]" # orbit 1 # gain 1.5 # release 0.25 # speed 1.5
+
+d3 $ (0.125~>)$ every 4 (rip 0.125 0.25) $ sound "[oshit:44(3,9,5),oshit:40*3, endall:2*4,cp*3]" # gain 1.20 # release 0.50 # orbit 0 # speed 1.70 # room 0.0 # crush 6
+
+
+d4 $ every 7 ((stut 8 0.125 0.25)) $ sound "[endall:54(3,8), <ostext:4 ostext:6 ostext:2>]/2" # release 2.0 # begin 0.25 # gain 1.5 # speed "<1.77 1.37 0.89 0.89 0.89 0.89>/2"
+
+
+d5 $ every 6 ((within(0.25, 1.0))(stut 8 0.125 0.25).rev)$ every 13 (rip 0.125 0.25)$ every 4 ( stut "8 4" 0.125 0.125)$ sound (samples "<[amencutup*8, aud*2] amencutup*8 [amencutup amencutup*4]>" (irand(32))) # release 0.2 # speed 1.75 # gain 1.5 # crush 6 # orbit 2
+
+
+d5 $ silence

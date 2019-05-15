@@ -1,0 +1,20 @@
+-- pattern 95
+-- 04/14/2019
+
+
+d2 $ note "[as4 [f4 as5] ~ fs3 ~ ~ [~ fs3 ~ as5] ~ [fs6 as6 fs6 as6]]/8" # midichan 6 # s "midi"
+
+d3 $ every 7 (slow 2)$ every 5 (iter 7)$ every 3 ((2/7)~>)$ every 9 ((3/7)~>)$ note "[<as7(4,7) as7(5,7,3) as7(3,7,6)>,as5 ~ ~ ~ ~ as5 [~ as5],f7(3,7,5),as6,as4(3,7)]" # midichan 8 # s "midi"
+
+startclock d3 $ slow 2 $ note "as5 fs6 f7 as4 as6 fs7 f8 as7" # midichan 8 # s "midi"
+
+startclock d3 $ note "[<as7*8 as7*6 as7*3 as7*2 as7*1>,as5*1,f7(3,8),as4(5,8),as6/2]" # midichan 8 # s "midi"
+
+d4 $ every 3 (# delaytime ( scale 0.0 0.70 "<[0.0 0.250] 0.125 0.0 0.0 [0.5 0.25 0.125 0.0]>/2"))$ sound (samples "<amencutup*8 [amencutup*4 feel*8 rainn:1] amencutup(3,8)>" (irand(32))) # gain 1.5 # orbit 1 # delayfeedback 1.0 # delay 0.5
+  |+| lpf (slow 8 $ scale 1000 6000 sine)  |+| speed (slow 8 $ scale 2.5 1.0 sine) # release 0.2
+
+
+d5 $ fuk $ sound "[feel:6([4 7 ]/3,8,4),feel:8(5,8)]" # orbit 2 # gain 1.5
+
+d7 $ control "[1 1 20 100]/8" # midicmd "control" # ctlNum 1 # midichan 3 # s "midi"
+d6 $ control "[1 50 1 [75]/2]/8" # midicmd "control" # ctlNum 2 # midichan 3 # s "midi"

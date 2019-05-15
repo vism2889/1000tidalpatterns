@@ -1,0 +1,273 @@
+-- Author:Morgan Visnesky (Morgantics)
+-- TOPLAP STREAM FEBRUAURY 17, 2019
+
+
+
+bps (95/60)
+
+d1 $ every 9 (slow 2.5)$ every 3 ((2/5)<~)
+  $ sound (samples "{glitch:2*5 <glitch:6*4 glitch:7(3,4)>,amencutup:5*5 feel:7*4,hh:1(3,5) hh:1(3,4),[bd ~ ~ ~ cp] [~ ~ glitch:2*2 ~]}" (irand(32))) # release 0.2 # speed 1.9 # gain 1.5
+
+d2 $ every 9 (slow 2.5)$ every 3 ((2/5)<~)
+  $ sound "{rainn:3*5 rainn:5*4}" # release 0.5 # gain 1.25 # speed 1.0
+
+d3 $ sound "cp*4" # speed 1.5 # gain 1.5
+
+
+
+
+
+d1 $ sound "glitch:2(3,8)" # gain 1.15 # release "<0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0>" # speed 0.5
+
+d4 $ sound "<mutantE:52 mutantE:50 mutantE:53 mutantE:56>/4" # gain 1.75
+
+d3 $ every 3 (0.25~>)$ fuk $ every 4 (fast 2)$ every 7 (fast 2)$ slow 2 $ sound "basst:4([3 7]/3,8)" # release 0.5 # speed "<0.7 1.0 1.22 0.78>" # room 0.2 # gain 0.9 # gain 1.1
+
+d2 $ fuk $ every 5 (twist 0.75 1.0 16)$ sound "[oulg:8([1 4]/3,8), oulg:2/2, aud:2([3 4]/5,8,3), <hh*8 ~ hh*4 ~ ~ hh*6>]" # release 0.2 # speed 1.0 # gain 1.1 # orbit 1
+
+d5 $ fuk $ every 3 (slow 2)$ every 3 (0.25 ~>)$ sound (samples "<[amencutup*4 ~] [amencutup*4 ~] [amencutup*4 ~] [~ amencutup*4 amenutup*2 ~][~ amencutup*4]>" (irand 32)) # release 0.2 # speed 2.5 # gain 1.15
+
+d5 $ silence
+
+
+d1 $ slow 2 $ sound "[gabba:5(3,8), feel:6([1 5]/5,8,3), hbd:5([3 4]/3,8)]" # gain 1.7
+
+
+d7  $ every 2 (0.125~>)$ whenmod 32 28 (|+| lpf (slow 8 $ scale 50 6000 sine) )$ every 3 (0.25~>)$ fuk $ whenmod 16 14
+  (const $whenmod 2 1 (rip 0.25 0.125)$ sound (samples "[<feel:6([4 7]/3,8) feel:6([4 5]/3,8,5)>,amencutup*8]" (irand(32))) # release 0.2 # speed 2.5 # orbit 0 # gain 1.5)
+  $ every 7 (rip 0.25 0.125) $ every 4 ((within(0.5, 0.75))(rep'' 4))
+  $ sound (samples "<[amencutup(3,8),feel:5([4 7]/3,8,4),feel:8(5,8), cp/2] amencutup*4>" (irand(32))) # orbit 0 # delay 1 # release 0.2 # speed "<2.0 2.5>/2" # gain 1.5
+
+
+bps (95/60)
+
+
+d4 $ silence
+
+
+do
+  d1 $ slow 2 $ whenmod 8 4 (fast 2)$ whenmod 32 16 (const
+      $ fuk $ stack [
+        whenmod 16 14 (const $ jux(iter 4) $ sound "<mutantE:65*8 feel:5*4>/2" # release 0.5 # speed 1.7)
+          $ every 2 ((within(0.5,1.0))(0.25~>))
+          $ every 3 ((jux(fuk)).(# accelerate 2).(slip 0.25 0.125))
+          $ sound "[<aud:6([7 4]/3,8,4) feel:5([3 7]/5,8,5)>,feel:8([3 4]/5,8),[~ ~ cp ~]]" # release 0.2 # gain 1.2,
+        whenmod 16 14 (const $ sound "~ ~ ~ ~") $ sound "hh*8" # speed 1.5 # release 0.2
+        ])
+    $ every 6 (0.25~>)
+    $ whenmod 24 20 (slow 2)
+    $ every 1 (# cut 2)
+    $ whenmod 8 4 (slow 2)
+    $ every 3 (iter 4)
+    $ stack [
+     every 2 ((jux(fuk)).(# accelerate 2).(slip 0.25 0.125))
+     $ seqPLoop [
+      (0,4, every 3 ((within(0.25,0.75))(spin "< 4  8>/4"))
+      $ sound (samples "feel:6 cp hh hh" 2) # orbit 0 # speed 2.5 # release 0.2 # delay 1),
+      (4,8, every 3 (jux (# accelerate 8))
+      $ sound (samples "feel:6 [aud:5] rm hh" 5) # orbit 0 # speed 2.5 # release 0.2 # delay 1),
+      (8,10, sound (samples "feel:8 glitch:2 hh oulg:2" 5) # orbit 0 # speed 2.5 # release 0.2 # delay 1 ),
+      (10,16, whenmod 8 4 (fast 2) $ sound "hh*8" # release 0.2 # gain 1.25),
+      (16,20, sound "~ ~ ~ ~")
+      ],
+      sound "feel:6([7 4]/3,8)" # gain 1.25 # release 0.2,
+      every 7 (# s "mutantE:9([7 4]/3,8,4)") $ sound "mutantE:9([7 4]/3,8,4)" # gain 1.25 # release 0.20 # speed "1.5 2.5 1.0",
+      sound "[hh hh glitch:2 glitch:2 ] ~ cp/4 ~" # gain 1.2 # release 0.1
+    ] # gain 1.15
+  d4 $ every 4 (fast 2)$ every 3 (iter 4)
+    $ every 7 (0.25~>)
+    $ every 4 (const $ jux(iter 4) $ sound "feel:6([3 4]/5,8)" # release 0.2 # speed 1.2 # gain 1.15)
+    $ sound "feel:6([4 7]/3,8)" # release 0.2 # speed 0.8 # gain 1.15
+  d3 $ gtfo $ slow 2 $ whenmod 8 4 (# speed 1.5)$ every 1 (|=| speed 0.72) $whenmod 16 14 (# speed 1.2)$ every 3 (jux(iter 4)) $ every 8 (const $ slip 0.25 0.125 $ sound "~ rainn:2*2" # speed 1.5 # gain 1.0)$ every 3 (0.25 ~>)
+    $ sound "rainn:6([7 5]/3,8,4)" # release 0.8 # gain 1.0 -- # room "<0.25 0.0 0.0 0.5 0.75 1.0 0.0 2.0>"
+  d5 $ every 3 (spin 4)$ sound "hh:8*8" # speed 1.5 # release 0.8 # gain 1.5
+
+do
+  d1 $ sound "[<aud:6([7 4]/3,8,4) feel:5([3 7]/5,8,5)>,feel:8([3 4]/5,8),[~ ~ cp ~]]" # release 0.2 # gain 1.2
+  d4 $ every 8 (0.25~>)$ sound "feel:6(3,8,4)" # release 0.2 # gain 1.25
+  d3 $ sound "rainn:4([7 5]/3,8,4)" # release 0.8 # gain 1.0 # room "<0.25 0.0 0.0 0.5 0.75 1.0 0.0 2.0>" # speed 0.72
+  d5 $ sound "hh:8*8" # speed 1.5 # release 0.8 # gain 1.25
+
+d6 $ slow 2 $ whenmod 16 14 (|+| speed 0.5)
+  $ whenmod 16 8 (|+| speed 0.5)
+  $ sound "<basst:5 [~ basst:5] [basst:5*2 [~ basst:5*2]] basst:5 basst:5*0.75>" # release 0.8 # gain 1.25 # speed "<0.7 0.8 1.2>"
+
+
+d5 $ silence
+
+--
+bps(190/80)
+
+
+d7  $ fuk $ every 4 (fast 2)$ every 2 (0.125~>)$ whenmod 32 28 (|+| lpf (slow 8 $ scale 50 6000 sine) )$ every 3 (0.25~>)$ fuk $ whenmod 16 14
+  (const $whenmod 2 1 (rip 0.25 0.125)$ sound (samples "[<feel:6([4 7]/3,8) feel:6([4 5]/3,8,5)>,amencutup*8]" (irand(32))) # release 0.2 # speed 2.5 # orbit 0 # gain 1.5)
+  $ every 7 (rip 0.25 0.125) $ every 4 ((within(0.5, 0.75))(rep'' 4))
+  $ sound (samples "<[amencutup(3,8),feel:5([4 7]/3,8,4),feel:8(5,8), cp/2] amencutup*4>" (irand(32))) # orbit 0 # delay 1 # release 0.2 # speed "<2.0 2.5>/2" # gain 1.5 $ speed 1.56
+
+d3 $ whenmod 16 8 (fuk)$ every 7 (rip 0.25 0.125) $ sound "[feel:6([4 7]/3,8,4), mutantE:66(3,8,4), [mutantE:65 glitch:2*4 mutantE:63 cp*2]/2]" # orbit 0 # gain 1.5 # release 0.
+
+d2 $ every 5 (iter 4)$ jux (# accelerate 2)$ fuk $ every 7 (0.125~>)$ every 3 (rip 0.25 0.125)$ sound "[rainn:2([4 7]/3,8),rainn:3([4 7]/5,8,5)]" # orbit 0 # gain 1.85 # release 0.5 # cut 2 # begin "<0.25 0.5>/4"
+
+
+--
+bps (95/60)
+
+d1 $ every 6 (0.125 ~>)$ whenmod 16 8 (# accelerate "<0.5 4>/2")$ whenmod 16 8 (iter 4 )$ every 5 (0.25 ~>)$ every 4 (slip 0.25 0.125)
+  $ every 3 (const $ within(0.5,0.75)(slip 0.25 0.125)$ sound "oulg:3 oulg:5 <[~ oulg:4] [oulg:6 aud:3]> [aud:2 oulg:6]")
+  $ every 4 (const $ sound "[amencutup:1 ~ [[amencutup:4 amencutup:8]] amencutup:8 mutantE:6/2 mutantE:7 [amencutup:5 amencutup:6] ~, ~ cp*2 ~ ~ ~ cp ~ ~,feel:8(5,8,3)]"
+  # release 0.2 # gain 1.5 # speed "<1.0 1.5 2.0 2.5>/2")
+  $ every 3 ((within(0.25,0.75))((slow 2).(iter 4).(0.25 ~>)).(|=| speed 2.5))
+  $ sound (samples "[amencutup*16,feel:5(3,8,4)]" (irand(32))) # release 0.2 # gain 1.5 # speed 1.5
+
+d1 $ every 6 (slip 0.25 0.125)$ every 3 (0.25~>)
+  $ sound "[<feel:6 [feel:6 aud:5]> < ~ aud:6> < ~ amencutup:4*2> hh amencutup:2 [amencutup:3 amencutup:4] cp [feel:6 hh],amencutup:1 amencutup:6 aud:5 ~]" # gain 1.55 # release 0.2 # speed 2.5
+
+d4 $ whenmod 16 8 (slow 2)$ sound "hh*16" # gain 1.5 # release 0.1 # speed 1.25
+d4 $ silenced
+startclock d2 $ whenmod 8 6 (const $ sound "<rainn:4 ~ >" # gain 1.25 # begin 0.0)$ every 3 (0.25~>)$ sound "rainn:4(3,8)" # gain 1.25 # release 1.0 # begin "<0.0 0.25 0.52 0.75>/2"
+
+
+
+d2 $ sound "rainn:4(5,8)" # release 0.2 # gain 1.5
+startclock d2 $ sound "[rainn:4]" # release 0.75 # gain 1.35 # begin "<0.0 0.25 0.5 0.75>"
+
+d2 $ sound "<rainn:5 rainn:2>" # gain 1.25
+d2 $ stut 16 0.5 0.75$ sound "<rainn:5(3,8) rainn:2>" # gain 1.5 # cut 2 # speed "<0.7 0.9 1.2 1.0>/4"
+startclock d2 $ every 2 (|=| release 1.5)$ every 2 (|=| s "rainn:4(3,8)")$ sound "<rainn:3(3,8)>" # gain 1.25 # begin "<0.0 0.25 0.5 0.75>"
+
+d3 $ sound "basst:5(3,8,4)" # release 0.5 # speed "<0.7 0.8 0.9 1.2>" # gain 1.5
+
+do
+  d1 $ silence
+  d2 $ silence
+  d4 $ silence
+  d3 $ silence
+  d4 $ silence
+  d5 $ silence
+  d6 $ silence
+  d7 $ silence
+
+
+
+d1 $ every 5 (pop4 "<0.25 0.125>" 1.0)$ every 6 (slip 0.25 0.125)$ every 3 (0.25~>)$ sound "[oulg:6([7 4]/3,8,5),<feel:6 [feel:6 aud:5]> < ~ aud:6> < ~ amencutup:4*2> hh amencutup:2 [amencutup:3 amencutup:4] cp [feel:6 hh],amencutup:1 amencutup:6 aud:5 ~]" # gain 1.55 # release 0.2 # speed 2.5
+startclock d2 $ stut "<[4 8 16 2 2] 16 8>" 0.5 0.72 $ sound "[rainn:0]" # release 0.75 # gain 1.5 # begin "<0.0 0.25 0.5 0.75>" # cut 2
+d4 $ whenmod 16 8 (slow 2)$ sound "hh*16" # gain 1.5 # release 0.1 # speed 1.25
+
+--
+bps (95/60)
+
+do
+  d1 $ every 2 ((4/12) ~>)$ sound "<[bd:6*3 [~ bd:6*3]] bd:6(2,6,3) bd:6(4,6,3)>" # gain 1.25 # release "<0.2 0.2 0.2 1.0>"
+  d2 $ every 5(jux ( iter 4))$ every 3 (# speed 1.5)$ fuk $ sound "rainn:2(2,6)" # release 3.0 # gain 1.35 # speed "<0.71 0.83 1.64>" # begin "<0.0>"
+  -- d2 $ every 2 (# accelerate 2)$ every 2 (slip 0.25 0.125)$ sound "rainn:2*1.5" # release 3.0 # gain 1.25 # speed 0.83
+  d3 $ sound "hh*12" # release 0.2 # gain 1.15 # speed 1.5
+  d4 $ fuk $ every 6 (slip 0.25 0.125)$ sound "<[~ ~ ~ cp ~ ~] bd>" # gain 1.25
+  d5 $ sound "basst:5" # speed "<1.5 0.9 0.8 1.0>" #
+  d6 $ every 7 ((within((1/3), 1.0))(rev . jux(iter 3)))$ every 2 (0.25~>)$ every 5 (slip 0.25 0.125)$ sound "rot rot:1 rot:2 rot rot:1 rot:2" # cut 2 # release 0.2 # gain 1.1 # speed 1.2
+  --d7 $ whenmod 16 8 (rev)$ sound (samples "<basst:6(2,6) basst:6*6> <basst:7(3,6) basst:7*6>" (irand(32))) # release 0.3 # gain 1.25 # speed "<1.2>"
+  d8 $ every 5 (iter 3)$ every 3 (0.25 ~>)$ sound "[feel:8([3 12 1 6]/3,6,3), feel:5([3 12 6]/2,6,4)]" # gain 1.2 # cut 2 # release 0.2 # speed 2.5
+
+
+do
+  d1 $ slow 4$jux(fuk)$ every 2 (fuk)$ fuk $ stack [
+    every 3 (0.25 ~>)$ sound "<bd:6(4,6) bd:6(2,6,3)>" # gain 1.25 # release "<0.2 0.2 0.2 1.0>",
+    -- every 2 (# release 0.2)$ every 2 (slip 0.25 0.125)$ sound "rainn:2*1.5" # release 3.0 # gain 1.35 # speed .83,
+    every 7 ((within((1/3), 1.0))(rev . jux(iter 3)))$ every 2 (0.25~>)$ every 5 (slip 0.25 0.125)$ sound "rot:2*1.5" # cut 2,
+    every 6 (slip 0.25 0.125)$ sound "<[~ ~ ~ cp ~ ~] bd>" # gain 1.25,
+    sound "hh*12" # release 0.2 # gain 1.15 # speed 1.5,
+    every 5 (iter 3)$ every 3 (0.25 ~>)$ sound "[feel:8([3 12 1 6]/3,6,3), feel:5([3 12 6]/2,6,4)]" # gain 1.2 # cut 2 # release 0.2
+    ]
+  d2 $ silence
+  d3 $ silence
+  d4 $ silence
+  d5 $ silence
+  d6 $ silence
+  d7 $ silence
+  d8 $ silence
+
+
+
+--
+bps (95/60)
+
+d1 $ every 5 ((slow 2).(stut 4 0.75 0.25).(# cut 2))$whenmod 16 14 (slip 0.25 0.125)$ interlace (every 3 (0.125 ~>) $ sound  "[feel:6(3,8,4),feel:5([3 4]5,8)]") (every 3 (jux(fuk)) $ every 3 rev $ sound  "[hh*8, feel:8([7 4]/3,8,3)]") # orbit 0 # speed 2.5
+d2 $whenmod 2 1 (slip 0.25 0.125)$ every 7 (iter 4)$ every 3 (0.25~>)$ sound "rm(3,8)" # speed 1.5 # orbit 0 # gain 1.5
+d3 $ every 2 (slow 2)$ every 3 (jux(iter 4))$ sound "glitch:2*16" # release 0.2 # gain 1.2
+d4 $ every 3 (0.125 ~>)$ sound "[gabba:2*4,gabba:1(3,8)]" # release 0.3 # gain 1.5
+d5 $ every 13 (slow 2)$ every 3 (0.125 ~>)$ every 5 ((within(0.5,0.75))(slow 2))$ every 4 ((within(0.5,0.75))(# accelerate 2))$ every 9 (slip 0.25 0.125)$ every 3 (0.25~>)$ sound "<[<research:109*2 hh*2> <research:75 <research:77*2 research:79*2> [~ research:77] ~ glitch:79> [glitch:3 <glitch:4 aud:2>] [bd ~ glitch:4 glitch:4]] [bd(3,8,4), atrp:4(3,8,5),atrp:8(3,8)]>" # release 0.20 # gain 1.75 # speed 0.5
+d6 $ fuk $ every 2 (0.125 ~>)$ every 7 (slip 0.25 0.125)$ sound "<research:43(3,8,4) research:44(3,8,4) research:45(3,8,4)>/3" # release 2.0 # gain 2.0 # speed 1.5
+
+
+d7 $ fuk $ every 7 (slip 0.25 0.125)$ every 5 (0.125~>) $ every 4 (iter 4)$ sound "<atrp:3*4 atrp:3([4 7]/3,8,4) [cp ~ [~ rm] atrp:3]> [glitch:10 ~ glitch:2 glitch:4*2]" # gain 1.25
+
+
+
+--
+bps (95/60)
+
+do
+  let sludge p = slow 1 p
+  -- d1 $ sludge$ whenmod 16 8 (jux (iter 4))$ every 3 (0.25 ~>)$ sound "[bd ~ ~ bd bd ~ ~ bd ~ ~ ~ ~ <bd ~> ~ <~ bd> ~]/2" # gain 1.15
+  d2 $ sludge$ every 5 (slow 4)$ fuk $ every 3 (0.25 ~>)$ sound "[~ cp cp ~ ~ cp ~ ~ cp ~ ~ ~ <~ cp> ~ ~ ~]/2" # speed 2.75
+  d3 $ sludge$ fuk $ every "<3 5>" (0.25 ~>)$ sound "[basst:9, ostext:32]/1.5" # release 0.7
+  d4 $ sludge$ every 3 (0.25 ~>)$ whenmod 16 8 (jux (# speed "< 1.0 1.5 2.5 1.0  2.5 0.5>"))$ sound "ostext:41/1.5" # release "<2.0 0.2>"
+  d5 $ sludge$ every 3 (|=| speed 0.75)$ sound "[research:1,research, ~ ~ ~ ~]/4" # release 2.0 # gain 1.75
+  d6 $ sludge$ every 9 (slow 4)$ every 7 (iter 4)
+    $ every 5 (twist 0.5 0.75 32)$ every "7 8" (|=| speed 2.5)
+    $ sound (samples "<amencutup*4 amencutup*8 <amencutup*4 amencutup*2 amencutup*8>>" (irand 32))
+    # release "<0.2 1.0 0.1 1.0>" # speed "<2.5 1.5>/2"
+  d7 $ sludge$ every 7 (slow 2)$ fuk $ every 3 (fast 2)
+    $ sound (samples "aud(3,8)" (irand 32 ))
+    # release 0.2 # speed 2.5
+
+
+
+-- 
+
+
+let slip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
+    slip' c d e a b p = within (d, e) (slow 2 . rev . stut c a b) p
+
+bps (95/60)
+
+do
+  d1 $ every 7 (slow 1.5)$ every 5 (slow 2)$ every 6 (jux(fuk))$ every 4 (# speed 1.5)
+    $ whenmod 10 5 ((slip' 5 0.4 1.0 0.25 0.125).(# s "[feel:6([3 5]/3,5), hh:6*5, feel:6(3,5), ~ ~ cp ~ ~]"))
+    $ every 3 ((slip 0.25 0.125).(# s "[hh:7*5, feel:6([4 7]/3,5), ~ ~ cp ~ ~]"))
+    $ sound "<[hh*4, feel:6([5 3 7]/3,8,5), ~ ~ cp ~ ]>" # gain 1.25 # release 0.5
+  d2 $ whenmod 16 8 (# speed 0.75)$ every 7 (slow 1.5)
+    $ whenmod 10 5 ((slip' 5 0.4 1.0 0.25 0.125).(# s "rocc:2*5"))
+    $ sound "rocc:2*2" # begin "<0.0 0.2 0.3 0.5 0.7>" # gain 1.25 # cut 2 # orbit 1
+
+d4 $ whenmod 10 7 (slip' 5 0.4 1.0 0.25 0.125)$ every 4 (slip 0.25 0.125)$ every 3 (0.20 ~>)$ every 7 (slow 1.5)$ every 5 (slow 2)$ sound "[bd:6(3,5), feel:8*10]" # gain 1.5 # orbit 1
+
+do
+  d1 $ every 6 (slow 1.75)$ every 7 (slow 1.5)
+    $ every 5 (slow 2)
+    $ every 6 (jux(fuk))$ every 4 (# speed 1.5)
+    $ whenmod 10 5 ((jux(iter 5)).(slip' 5 0.4 1.0 0.25 0.125).(# s "[feel:6([3 5]/3,5), hh:6*5, feel:6(3,5), ~ ~ cp ~ ~]"))
+    $ every 3 ((slip 0.25 0.125).(# s "[hh:7*5, feel:6([4 7]/3,5), ~ ~ cp ~ ~]"))
+    $ sound "<[hh*4, feel:6([5 3 7]/3,8,5), ~ ~ cp ~ ]>" # gain 1.25 # release 0.5
+  d2 $ every 6 (slow 1.75)$ every 7 (slow 1.5)
+    $ every 5 (slow 2)
+    $ every 6 (jux(fuk))$ every 4 (# speed 1.5)
+    $ whenmod 16 8 (# speed 0.75)$ every 7 (slow 1.5)
+    $ whenmod 10 5 ((slip' 5 0.4 1.0 0.25 0.125).(# s "rocc:1*5"))
+    $ sound "<rocc:1*4 rocc:4*2>" # begin "<0.0 0.2 0.3 0.5 0.7>" # gain 1.25 # orbit 1
+
+
+do
+  d1 $ every 9 (slow 1.75) $ every 10 (slow 0.75)$ every 6 (slow 1.75)$ every 7 (slow 1.5)
+    $ every 5 (slow 2)
+    $ every 6 (jux(fuk))$ every 4 (# speed 1.5)
+    $ whenmod 10 5 ((jux(iter 5)).(slip' 5 0.2 0.6 0.25 0.125).(# s "[feel:6([7 5 3]/3,5), hh:6*5, feel:6([4 7]/3,5), ~ ~ cp glitch:2 [~ glitch:2]]"))
+    $ every 3 ((slip 0.25 0.125).(# s "[hh:7*5, feel:6([4 7]/3,5), ~ ~ cp ~ ~]"))
+    $ sound "<[hh*4, feel:6([5 4 3 7]/3,8,5), glitch:2*2 ~ cp ~ ]>" # gain 1.25 # release 0.5 # orbit 1
+  d2 $ every 9 (slow 1.75) $ every 10 (slow 0.75)$ every 6 (slow 1.75)$ every 7 (slow 1.5)
+    $ every 5 (slow 2)
+    $ every 6 (jux(fuk))$ every 4 (# speed 1.5)
+    $ whenmod 16 8 (# speed 0.75)$ every 7 (slow 1.5)
+    $ whenmod 10 5 ((slip' 5 0.2 0.6 0.25 0.125).(# s "rocc:1(2,5)"))
+    $ sound "<rocc:1(3,8) rocc:4*2>" # begin "<0.0 0.2 0.3 0.5 0.7>" # gain 1.25 # orbit 1
+
+d3 $ sound "[~ ~ cp ~ ~]" # orbit 1 # gain 1.25

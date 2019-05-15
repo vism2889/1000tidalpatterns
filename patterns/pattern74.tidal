@@ -15,19 +15,20 @@ let inverse 1 = 0
     inverse 0 = 1
 
 do
-  let pat = " [0 0 0 1 0 1 1 1 0 1 0 0 1 1]/2"
+  let pat = " [0 1 0 1 0 1 1 1 0 1 0 0 1 1]/2"
   d1 $ gain pat # sound "bd"
-  d2 $ every 7 (twist (4/7) 1.0 14)$ fuk $ gain (inverse <$> (pat)) # sound "cp" # release 0.2
-  d3 $ sound "feel:5(4,7)"
-  d4 $ sound "gabba(<5 3 4>/2,7)"
+  d2 $ fuk $ every 7 (twist (4/7) 1.0 14)$ fuk $ gain (inverse <$> (pat)) # sound "cp" # release 0.2
+  d3 $ fuk $ sound "feel:5(4,7)"
+  d4 $ fuk $ sound "gabba(<5 3 4>/2,7)" # release 0.2
 
+d1 $ silence
 
-bps (95/120)
+bps (90/120)
 
 do
-  let pat = "[1*2 0 1*2 1 0 1 0*2 1 0*4 1 0 0*2 1 1]/2"
+  let pat = "[0*4 1*2 1 0 1*4 1 1*4 0*2 0*4 0*2 1 1*2 1 1*4]/4"
       func  p = every 60 (jux((slow 2).(# accelerate 4))) p
-  d1 $ every 3 ((1/14)~>)$ func $ fuk $ every 3 (slip (3/7) (1/7))
+  d1 $ fuk $ every 3 ((1/14)~>)$ func $ fuk $ every 3 (slip (3/7) (1/7))
     $ jux ( every 4 ( iter 7))$ fuk $ seqPLoop
     [
     (0,3,
@@ -37,7 +38,7 @@ do
       every 7 (twist (4/7) 1.0 14)$ fuk
       $ gain (inverse <$> (pat)) # sound "cp" # release 0.2,
       every 2 (# gain pat) $ sound "feel:5(4,7)",
-      sound "gabba(<5 3 4>/2,7)" # release "<0.1 0.5>/2"
+      sound "gabba(<5 3 4>/2,7)" # release "<0.1 0.5>/2" # speed 0.5
       ]),
     (4,8, every 7 (twist (4/7) 1.0 14)$ fuk
     $ gain (inverse <$> (pat)) # sound "cp" # release 0.2),
@@ -50,7 +51,7 @@ do
       ])
     ]
   d2 $ every 3 ((1/14) ~>)$ func $ every 7 (slip 0.25 0.125)$ every 5 ( (within ((4/7), (7/7))) (stut "<14>" 0.5 0.25)) $ every 4 (fast 2)$ sound "[research:38(3,7), research:40(5,7)]" # release "< 1.0 0.2 0.2 0.5>" # gain 1.75
-  d3 $ every 7 (slow 2)$ every 4 ((1/14) ~>)$ func $ every 12 (slip 0.25 0.125)$ fuk $ sound "[mutantE:39 mutantE:43 mutantE:41 ~ mutantE:52*2 ~ hh,mutantE:50(3,7)]" # release 2.0 # gain 1.9 # release "<[1.0 0.1 0.3 0.5 0.9 0.2 0.1] 0.2 0.5 1.0>/4" # cut 2
+  d3 $ fuk$ every 7 (slow 2)$ every 4 ((1/14) ~>)$ func $ every 12 (slip 0.25 0.125)$ fuk $ sound "[mutantE:39 mutantE:43 mutantE:41 ~ mutantE:52*2 ~ hh,mutantE:50(3,7)]" # release 2.0 # gain 1.9 # release "<[1.0 0.1 0.3 0.5 0.9 0.2 0.1] 0.2 0.5 1.0>/4" # cut 2 # speed 0.5
 
 d4 $ every 9 (slip (1/7) (1/14))$ every 4 ((1/14)~>)$ fast 2
   $ sound "bd <bd [~ bd]> ~ <cp [~ cp] [~ cp*2] ~ >/4 <~ cp [~ cp]>/3 ~ <~ [~ bd] bd>/3" # gain 1.30

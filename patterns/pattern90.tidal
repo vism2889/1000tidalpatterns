@@ -1,0 +1,50 @@
+-- pattern 90
+-- 02/20/2019
+
+
+
+--more time signature patter switching // messing with more haskell oriented programming in tidal
+
+let inverse 1 = 0
+    inverse 0 = 1
+
+do
+  let patIn3 = "[0*2 1 1 0 " ++ "1 0*2 1 0]"
+      pat = "0 1 0 1"
+  d1 $ gain patIn3 # sound "[bd]"
+
+
+putStr patIn3
+
+do
+  let patIn3 = "[0*2 1 1 0 " + "1 0*2 1 0]"
+  d1 $ gain patIn3 # sound "[bd]"
+
+
+do
+  let patIn3 = "[0*2 0.125*2 0.1 0.11*2 0 0.5 1]" + "[1 0*2 1 0]"
+      pat = patIn3 + "[0 0 1 1]"
+  d1 $ gain patIn3 # sound "[bd]"
+  d2 $ gain (inverse <$> (patIn3))  # sound "cp"
+
+d1 $ seqPLoop
+    [
+      (0,2, sound "cp")
+    ]
+
+stuff2
+
+let b = "5"
+
+
+
+do
+  let pat = "1 1 0 1 0 0 1"
+  let pat2 = "1 1 0 1 1"
+  let it = every 3 (# gain pat2)
+  let iit = every 3 (# gain (inverse <$> (pat)))
+  d1 $ fuk $ it $ gain pat # sound "bd"
+  d2 $ fuk $ iit $ gain (inverse <$> (pat)) # sound "cp"
+
+
+let wrap s e p = (p |% (e - s)) |+ s 

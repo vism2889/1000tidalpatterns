@@ -1,0 +1,99 @@
+-- pattern 93
+-- 03/15/2019
+
+
+bps (95/60)
+
+slip7 a b p = within ((2/7), (6/7)) (slow 2 . rev . stut 7 a b) p
+slip7'b a b p = within ((1/7), (3/7)) (slow 2 . rev . stut 7 a b) p
+slip7'e a b p = within ((5/7), (7/7)) (slow 2 . rev . stut 7 a b) p
+
+
+d1 $ sound "<[bd*2 bd cp,hh*3] [bd*2 bd bd cp,hh*4] [bd*2 bd bd bd cp,hh hh hh glitch:2 glitch:2]>/3" # orbit 2
+
+
+d1 $ every 3 (const $ sound "[bd*2 bd cp,hh*3]" # release 0.4)
+  $ every 4 (const $ sound "[bd*2 bd bd cp,hh*4]" # release 0.2)
+  $ every 7 (const $ sound "[bd*2 bd bd bd cp,hh hh hh glitch:2 glitch:2]" # release 0.2)
+  $ sound "cp*2" # orbit 1
+
+-- this
+
+startclock d2 $ fuk $ whenmod 14 7 (# begin "0.5")$ every 4 (slow 2)$ every 7 ((2/7)~>)$ every 3 (slip7 0.125 0.25) $ every 13 (#s "[actor:15(4,7,3),[feel:6(3,7) cp]]")$ every 7 (#s "actor:2(4,7)")$ sound "[actor:56(4,7),~ ~ ~ cp ~ ~ ~]" # release 1.0 # gain 1.5 # orbit 1
+d5 $ every 6 (fast 2 )$ fuk $ every 4 (slip7 0.125 0.25) $ every 3 ((2/7)~>)$ sound "<hbd:8(4,7) hbd:8(3,7)>" # release 0.8 # gain 1.25 # speed 0.95 # orbit 2 # cut 2
+
+--
+
+d3 $ fuk $ every 13 (fast 2)$ sound "feel:8*7" # room 0.0 # gain 1.25
+
+d4 $ sound "cords:1/2" # speed 0.87 # gain 1.5
+d4 $ sound "cords:1*7" # speed 0.96 # gain 1.5 # release 0.2
+
+
+d2 $ every 3 (fast 2)$ sound "actor:62(3,7)" # release 0.5 # begin 0.0 # gain 1.5
+
+d7 $ sound "basst:5(2,7)" # release 1.3 # speed "<0.9 1.2 0.97 1.67>" # gain 1.5 # orbit 1
+
+
+
+d1 $ silence
+d8 $ silence
+
+
+do
+  d8 $ fast 2 $ sound "rainn:3(4,7)" #cut 2 # begin 0.025 # gain 1.25 #orbit 3 -- # speed 1.5
+  d5 $ every 6 (fast 2 )$ fuk $ every 4 (slip7 0.125 0.25) $ every 3 ((2/7)~>)$ sound "<hbd:8(4,7) hbd:8(3,7)>" # release 0.8 # gain 1.25 # speed 0.95 # orbit 2 # cut 2
+  d2 $ silence
+  d3 $ silence
+  d6 $ silence
+  d1 $ silence
+
+
+do
+  d1 $ silence
+  d5 $ every 6 (fast 2 )$ fuk $ every 4 (slip7 0.125 0.25) $ every 3 ((2/7)~>)$ sound "<hbd:8(4,7) hbd:8(3,7)>" # release 0.8 # gain 1.25 # speed 0.95 # orbit 2 # cut 2
+  d3 $ fuk $ every 13 (fast 2)$ sound "feel:8*7" # room 0.0 # gain 1.25 # orbit 4
+  d8 $ fast 2 $ sound "rainn:3(4,7)" # cut 2 # begin 0.025 # gain 1.25 # orbit 3 # speed 1.5
+  startclock d2 $ whenmod 14 7 (# begin "0.5")$ every 4 (slow 2)$ every 7 ((2/7)~>)$ every 3 (slip7 0.125 0.25) $ every 13 (#s "[actor:14(4,7,3),[feel:6(3,7) cp]]")$ every 7 (#s "actor:2(4,7)")$ sound "[actor:8(4,7),~ ~ ~ cp ~ ~ ~]" # release 1.0 # gain 1.5 # orbit 1
+
+
+
+do
+  d1 $ silence
+  d5 $ jux(iter 7)$ fuk $ every 3 (fast 2 )$ fuk $ every 4 (slip7 0.125 0.25) $ every 3 ((2/7)~>)$ sound "<[hbd:8(4,7),glitch:2([4 5]/3,7)] hbd:8(3,7)>" # release 0.8 # gain 1.25 # speed 0.95 # orbit 2 # cut 2
+  d3 $ fuk $ every 13 (fast 2)$ sound "feel:8*7" # room 0.0 # gain 1.25 # orbit 4
+  d8 $ jux(iter 7)$ every 2 (slip7 0.125 0.125) $ every 3 ((2/7)~>)$ every 7 (slow 2)$ every 2 ((3/7)~>)$ sound "<rainn:3(4,7) rainn:5(3,7) rainn:3(2,7)>" # cut 2 # begin "<0.025 0.5 0.25 0.5>" # gain 1.25 # orbit 3-- # speed 1.5
+  d2 $ whenmod 14 7 (# begin "0.5")$ every 4 (slow 2)$ every 7 ((2/7)~>)$ every 3 (slip7 0.125 0.25) $ every 13 (#s "[actor:14(4,7,3),[feel:6(3,7) cp]]")$ every 7 (#s "actor:2(4,7)")$ sound "[actor:8(4,7),~ ~ ~ cp ~ ~ ~]" # release 1.0 # gain 1.5 # orbit 1
+  d7 $ sound "basst:5([4 7]/3,7)" # release 1.3 # speed "<0.9 1.2 0.97 1.67>" # gain 1.5 # orbit 1
+  --d6 $ sound "hbd:6" # speed 0.9 # gain 1.5
+
+
+do
+  d8 $ every 3 ((2/7)~>)$ sound "<gravitate*7 gravitate*14 [~ gravitate:3*7] [~ gravitate:4*2 ~ ~ ~ gravitate:7 gravitate:3]>" # begin "<0.0 0.25 0.5 0.75 0.0 0.25 0.75>*7" # release 1.0 # gain 1.25 # crush "6" # speed "1.0" # orbit 1
+
+  d8 $ sound "gravitate:2" # gain 1.25 # speed 1.25 # orbit 1
+
+
+
+do
+  d1 $ slip7 0.125 0.25$ fast 2
+    $ every 3 ((3/7)~>)
+    $ every 6 (slip7'b 0.125 0.25)
+    $ every 10 (slip7'e 0.125 0.25)
+    $ sound (samples "<amencutup*7 [amencutup ~ amencutup*2 amencutup ~ <amencutup*2 amencutup*2> [~ amencutup]]/2 amencutup*3.5>" (irand (32))) # gain 1.55 # speed "<2.5>" # release 0.3 # orbit 5
+  d8 $ every 2 (slip7 0.125 0.125) $ every 3 ((2/7)~>)$ every 7 (slow 2)$ every 2 ((3/7)~>)
+    $ sound "<rainn:3(4,7) rainn:5(3,7) rainn:3(2,7)>" # begin "<0.025 0.25 0.25 0.5>" # gain 1.25 # orbit 3 # cut 2 # crush "3" # speed "<1.5 1.75 1.0 1.5 1.0>"
+  d3 $ every 3 ((3/7)~>)$ sound "actor:8(3,7)" # gain 1.25 # orbit 2 # speed 1.5 # release 0.4
+  d5 $ sometimes (# delay 0)$ every 6 (slip7'b 0.125 0.25) $ sound "<[hbd:8*3.5 ~] hbd:8([3 5]/4,7)>" # gain 1.5 # delaytime "0.0125 0.00125" # delayfeedback 0.75 # delay 1 # orbit 1
+  --d6 $ sound "<hbd:6(3,7) ~>" # speed 0.9 # gain 1.5
+  d2 $ silence
+
+do
+  d1 $ silence
+  d2 $ silence
+  d3 $ silence
+  d4 $ silence
+  d5 $ silence
+  d6 $ silence
+  d7 $ silence
+  d8 $ silence
