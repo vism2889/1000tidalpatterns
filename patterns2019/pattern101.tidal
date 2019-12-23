@@ -1,0 +1,45 @@
+-- pattern 101
+--06/07/2019
+
+
+
+bps (95/60)
+
+d4 $ every 4 ( slow 2)
+  $ every "10 11" (|=| release 0.125)
+  $ every 4 (jux (iter 7))
+  $ every 9 (slip7'b 0.25 0.125)
+  $ every 7 (slip7 0.25 0.125)
+  $ n "<[c6 a4 f4 e4 c4 a4 e4] [c3 ~ a3*2 f4 ~ [~ e4] [c4*2 ~]] [f*7 ~]>"
+  # sound "<pluck>"
+  # crush 6
+  # voice 1
+  # sustain "<0.50 0.2 0.2 0.2 0.1 0.1>"
+
+d3 $ every 4 (slip7 0.25 0.125) $ sound "[<feel:8*7 feel:8*3.5>,feel:6([3 4]/4,7,5)]" # release 0.2 # gain 1.5
+
+d7 $ whenmod 15 13 (const $ sound "~ ~ ~ ~")$ fast 2 $ every 4 ( slow 2)
+$ every "10 11" (|=| release 0.125)$ every 4 (jux (iter 7))
+$ every 5 (slip7'b 0.25 0.125)
+$ every 3 (slip7 0.25 0.125)$ slow 2
+  $ sound
+  "<hbd:9 hbd:15> <~ [atrp:14 atrp:10]> glitch:2*2 <atrp:17*2 ~ ~ hbd:3 ~ ~ ~> <hbd:5 [hbd:5 <~ atrp:27*2>] bd cp> <~ ~ ~ ~ ~ ~ ~ bd> [<hbd:9 ~ ~ ~ ~> <~ ~ hbd:6 ~ ~ ~>]" # gain 1.5 # release 0.3
+  # room 0.0
+  # crush 3
+
+d2 $ every 7 (fast 2)$ every 4 ((3/7)~>)$ whenmod 14 7 (# sustain 0.10)$ every 14 (|+| n 2)$ n "a f e c f e <a f e c>"# s "supersquare"  # sustain 0.1 # crush 8
+
+d4 $ silence
+
+d9 $ every 4 (jux(iter 7))$ whenmod 14 7 (|+| n 2)$ fast 2$ n "a f e c f e a" # s "<supermandolin>" # sustain 0.2 # gain 1.5 # room "<0.0 0.0 0.0 0.0 0.25 0.25 0.0 0.5>" # lpf 10000
+
+
+
+
+
+
+
+
+
+
+d1 $ every 4 (jux(iter 4)) $ every 5 (slip7 0.25 0.125)$ fuk $ sound "feel:8*7" # gain 1.5 # orbit 0 # speed "<1.0 2.0 3.0>"

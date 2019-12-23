@@ -1,0 +1,21 @@
+-- pattern 119
+-- 09/02/2019
+
+bps (150/60)
+
+d1 $ s "{hbd(3,13), feel:5(4,9), hc [~ ho] ~ [~ bd] ~ ~ ~ ~ ~ }/2" # release 0.12
+
+
+d1 $ seqPLoop [
+  (0,5, s "[bd(3,5), hc(4,5), actor:3(3,5),feel:8(2,5)]"),
+  (5,12, every 2 ((2/7)~>) $ s "[bd(3,7), hc(4,7), actor:5(3,7)]"),
+  (12, 13, s "[bd*4 ~ ~ [~ bd], actor:7*4 ~ actor:5 ~]"),
+  (13, 15, every 2 (0.25~>) $ s "[bd(3,8,5), hc(5,8), actor:12(3,8,5)]"),
+  (15, 16, s "[bd*4 [~ bd ~ bd] bd [~ bd],actor:1*4 ~ ~ [~ actor:5]]"),
+  (16, 23, every 7 (slip7 0.125 0.25) $ every 4 ((2/7)~>) $ s "[bd(3,7), hc(4,7), actor:5(3,7)]"),
+  (23, 24, s "[bd*7, actor:30*7]"),
+  (24, 31, every 3 (0.25~>) $ s "[bd(4,7,5), actor:5(4,7,5)]" # release 1.2),
+  (31, 32, s "[actor:5*4]")
+]
+
+d2 $ whenmod 16 8 (# speed 1.2)$ sound "[shots:12, rocc:2]" # release 2.50 # begin 0.60 # gain 1.2

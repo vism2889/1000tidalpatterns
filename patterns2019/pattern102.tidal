@@ -1,0 +1,23 @@
+
+-- pattern 102
+-- 06/15/2019
+
+
+
+
+
+
+d1 $ sound "bd*2"
+
+
+
+d3 $ sound "[hh [~ hh] hh hh [~ hh] hh hh, bd(4,7,5),glitch, glitch:2(3,7)]" # gain 1.25 # speed 1.75
+
+d3 $ whenmod 14 7 (slow 2)$ every 9 (stut 14 0.25 0.125)$ every 10 (stut 14 0.25 0.25)$every 11 (stut 14 0.25 0.5)$ every 4 (fast 2)$ fuk $ every 5 (slip7'b 0.25 0.125)$ every 6 ((2/7)~>)
+  $ sound "[hh [~ hh] hh hh [~ hh] hh hh, bd(4,7,5),glitch, glitch:2(3,7), ~ <feel:5*3 ~ ~ ~> ~ <cp  ~ ~ feel:8*3> ~ ~ ~]" # gain 1.25 # speed 1.75
+
+d4 $ sound "rainn:2(4,7,5)" # release 0.5 # speed 1.2 # gain 1.5
+
+d5 $ every 4 (slip7 0.25 0.125)$ whenmod 14 7 (slow 2)$ every 9 (stut 14 0.25 0.125)$ sound (samples "amencutup*14" (irand(32))) # release 0.2 # gain 1.25
+
+d5 $ silence

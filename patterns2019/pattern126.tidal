@@ -1,0 +1,89 @@
+-- andre and morgan.tidal
+-- 05/19/2019
+
+-- midi below
+
+d3 $ slow  1 $ note "a3 f4 e1 c4 a5 f5 e5 ~ ~ f7 ~ ~ ~ ~" # midichan 3 # s "midi" # sustain 0.15 # gain 1.5
+
+d4 $ fast 2 $ (0.07~>)$ every 5 (slip 0.25 0.15)$ sound "[actor:2(4,7,5),feel:8(3,7),bd:10(4,7)]" # gain 1.2 # release 0.52 # room 0.5 # size 0.50  # lpf 5000
+d5 $ slow 2 $ note "<cs4 gs4>" # midichan 3 # s "midi" # gain 1.75 # sustain "<0.25 1.5>"
+
+d4 $ silence
+
+
+bps (70/60)
+
+d3 $ every 8 (rip 0.25 0.125)$ every 12 (fast 2)$ every 7 (const $ note "a2*8" # midichan 8 # s "midi")$ every 4 (0.25 ~>)$ every 3 (iter 4)$ note "[<a2(4,8,5) a2(5,8,5)>, <b2(3,8,5) b2(5,8,5)>, c2(5,8,7)]" # midichan 8 # s "midi"
+
+d2 $ every 17 ( (fast 2).(iter 4))$ every 7 ( fast 2)$ every 3 (iter 4)$ note "d2(3,8)" # midichan 8 # s "midi"
+
+
+d1 $ every 19 ( fast 2)$ every 9 ( fast 2)$ note "[e2(2,16),fs2([4 7]/3,8,5), f2([4 7]/3,8,5)]" # midichan 8 # s "midi"
+
+
+
+-- audio below
+do
+  d3 $ every "12 13 14" (slow 2)
+    $ every 18 (pop4 0.125 1.2)
+    $ whenmod 32 30 (jux(iter 4))
+    $ every 7 (0.25 ~>)
+    $ whenmod 19 17 (stut 8 0.125 0.0125)
+    $ every 15 (slip 0.25 0.125)
+    $ every 9 (fast 2)
+    $ sound "[<glitch:2(3,8,7) glitch:2([3 7]/5,8,3)>,<oshit:2([4 7]/3,8) oshit:7([5 4 7]/5,8,4)>,<feel:6([7 4]/5,8) glitch:3(3,8,7)>, <amencutup:4(3,8) amencutup:5(5,8)>]"
+    # release 0.1
+    # speed "<2.5 1.75>/2"
+    # gain 1.5
+    # room 0.0
+  d2  $ every 8 (slow 2)$ every 18 (pop4 0.125 1.2)$ every 9 (slip 0.25 0.125)$ sound "[plucc:14 plucc:16*2,plucc:30(3,8,5), <basst:5(3,8,7) basst:5(5,8,3) basst:5([4 7]/5,8,7)>]" # release 0.1 # gain 1.5 # speed "<1.5 1.75 1.5 2.5>"
+
+
+
+  d3 $ every "3 7 19" (0.25~>)
+    $ sound "[<research:70(3,8,7) research:58(3,8,7)>, research:66([4 7]/3,8), actor:15([4 7]/5,8,3)] <actor:9 actor:18>"
+    # release 0.25
+    # orbit 0
+    # gain 1.5
+    # begin 0.5
+    # speed 0.73
+
+
+d1 $ silence
+
+bps (90/60)
+
+d1 $ slow 2$ every 3 (iter 4)$ sound "<dreno:24(3,8,7)>" # release "<1.75>"  # speed 0.93 # begin 0.25
+
+d2 $ every 5 (0.25~>)$ sound "[dreno:9]" # release 1.0 # gain 1.5 # cut 2 # speed "<1.5 2.5>"
+
+d3 $ whenmod 16 14 (fast 2)
+  $ every 15
+    (const $ sound "~ [aud*2 aud:1 aud:3*4 amencutup:5*4]"
+    # release "0.12 0.25 0.25 0.7"
+    # speed 2.5
+    # gain 1.5)
+  $ every 7 ((slip 0.25 0.125).(#s "[feel:6, ~ ~ feelfx:2 ~]").(# release "0.2 1.0"))
+  $ every 5 (0.25~>)$ every 3 (#s "feel:5")
+  $ sound "<[bd feelfx:2 [~ bd] bd] [[~ bd] bd ~ [~ bd]]> "
+  # gain 1.5
+  # room 0.12
+  # speed 0.8
+  # crush 4
+
+d4 $ sound "~"
+
+d4 $ every 9 (0.125~>)$ fast 2$ sound "[glitch:2(5,8,7),dreno:37(3,8,5)]" # release 0.125 # speed 1.5 # gain 1.25
+
+d5 $ silence
+
+d5 $ whenmod 14 10 (const $ sound "<[ostext:23*3.5 [~ ostext:22]] [ostext:30*3 ostext:22] ostext:38*14>" # release 0.3 # gain 1.5 # speed 1.9 # begin 0.25)$ sound "<ostext:22 ostext:26 ostext:23 ostext:23>" # release 3.5 # gain 1.5 # speed 1.7
+
+d6 $ every 6 (slip 0.25 0.125)$ sound "~ ~ <cp [cp*2 ~] [~ cp]> <~ ~ ~ [cp*2 cp]>" # gain 1.5 # room 0.0
+
+d7 $ fast 2$ every 7 (slip 0.25 0.125)$ sound (samples "amencutup*8" (irand 32)) # release 0.2 # speed 2.5 # gain 1.2
+
+
+d8 $ fast 2 $ sound "<actor:5(3,8,5) actor:8(3,8,5)>" # speed 2.5 # release 0.4
+
+d6 $ silence

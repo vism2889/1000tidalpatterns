@@ -1,0 +1,38 @@
+-- pattern 120
+--09/14/2019
+
+
+
+let
+  e = every
+  r = release
+  sp = speed
+  yup = slip 0.25 0.125
+
+bps (190/60)
+
+d2 $ e 7 (0.25~>)$ e 6 (yup)$ e 4 (slow 2)$ s "[bd(3,8,5),hh(5,8), [~ glitch:4] rm*2 [~ glitch:2] <rm rm*2>]" # r 0.2 # sp "<1 2 2.3 1>"
+
+
+
+d1 $ whenmod 16 8 (# speed 1.2)$ sound "[heres:13/6, ~ heres:14/4]" # release 9.9 # begin 0.4
+
+d2 $ fuk $ every 4 (const $ sound "bassHit:7 bassHit:7" # speed 0.95)$ fuk $ sound "[bassHit:9(3,8)]/2" # gain 1.1 # speed 0.95
+
+d3 $ sound "[<actor:2(5,8) actor:9(3,8)>]" # release (slow 8 $ sine)
+
+d4 $ sound "[actor:40]/2"
+
+d5 $ every 3 (slow 2)$ fuk $ every 4 (slip 0.25 0.125) $ every 9 (slow 2 . (0.25~>))
+  $ sound "[<ho ho:2> <glitch:2 glitch:4*2> hc glitch:2, hh(3,8), cp(3,4)]" # release 1.07
+
+d6 $ every 12 (stut 8 0.25 "<0.125 0.25>") $ every 8 (# speed 3.0)$ fuk $ every 7 (slow 2 . slip 0.25 0.125) $ every 3 (0.25~>)
+  $ sound "[feel:6 ~ [cp ] feel:6 ~ ~ cp <~ ~ ~ feel:6>]/2" # gain 1.25 # speed 2.5
+
+d3 $ slow 2$ every 12 (slow 4)$ slow 1$ fuk $ every 7 (slow 2 . slip 0.25 0.125) $ every 5 (0.25~>)$ every 3 (slow 2)
+  $ sound (samples "oulg*8" (irand 32)) # release 0.5 # speed 2.3 # gain 1.3
+
+d4 $  every 12 (slow 4 . rev)$ fuk $ every 5 (jux(iter 4))$ every 9 (stut 8 0.25 0.125)$ every 7 (slip 0.25 0.125)
+  $ every 5 (0.25~>)$ sound "[[liquid ~ atrp:20 ~ ~ ~ ~ atrp:20] [atrp:3*2 feel:8 [~ cp ~ atrp:20] atrp:20*2] [atrp:20 liquid:1] [~ atrp:20 cp ~] liquid:10*2  [~ liquid:19 atrp:20 liquid:13] liquid:20 liquid:21,[div:34([3 5 2]/3,8)]*8]/4" # release "[1.0 1.0 0.2 0.2 1.2 0.2 0.2 0.61]/4" # gain 1.15
+
+d1 $ e 5 (# speed 5)$ sound "bd"

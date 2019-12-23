@@ -1,16 +1,24 @@
 -- pattern 68
 -- 09/02/2018
 
-bps (120/60)
+
+
+
+
+
+bps (10/60)
 
 
 d1 $ slow 2 $ sound "ostext:25" # speed 0.70
 
 d2 $ every 3 (slow 2)$ fuk $ every 5 (twist 0.25 0.75 26)$ slow 2 $ sound "[feel:6([5 3 4 7]/7,13), noiz:2(9,13),feel:5(8,13)]"
 
-d3 $ every 3 (slow 2)$ every 3 ((3/13)~>)$ slow 2 $ sound (samples "<aud*13 aud*26 oulg*26>" (irand 32)) # release 0.1 # gain 1.25
+d3 $ stut 8 0.25 0.125$ slow 2$ every 3 ((3/13)~>)$ slow 2 $ sound (samples "<aud*13 aud*26 oulg*26>" (irand 32)) # release 0.1 # gain 1.25 # room 0.5 # size 1.0
 
-d4 $ every 2 ( pop4 "<0.125 0.25>" 0.5)$ sound "cords:3" # speed 1.5 # gain 1.25
+d4 $ every 6 (|=| speed 2.5)$ every 2 ( pop4 "<0.125 0.25>" 0.5)$ sound "cords:3" # speed 1.5 # gain 1.25
+
+
+d5 $ every 9 (stut 8 0.25 0.125)$ every 7 (slip 0.25 0.125)$ every 6 (const $ sound "rot:2*6" # release 0.2 # speed 1.2)$ every 3 (fast 2)$ sound "rot rot:1 rot:2 ~" # room 1.0 # size 1.0
 
 d5 $ sound "[feel:6 ~ ~ ~ ~ ~ cp ~ ~ ~ ~ ~ ]/2" # gain 1.5
 

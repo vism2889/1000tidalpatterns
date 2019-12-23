@@ -1,0 +1,33 @@
+-- pattern 124
+-- 11/06/2019
+
+
+bps (160/60)
+
+d2 $ s "[div:13]/2" # release 2.0 # speed 1 # gain 1.2
+
+d3 $ every 3 (0.25~>)$ sound "div:1(<[2 5] 3 7>/3,8,5)" # speed 1.2 # release 0.2
+
+d4 $ sound "bd(3,8)" # gain 1.2
+
+d5 $ sound "[feel:6(3,8), feel:5(5,8)]"
+
+d7 $ every 7 (within(0.25, 0.5)(# s "ho").(# release 1.0))$ sound "hc*8" # release 0.2 # gain 1.0
+
+d6 $ jux (iter 4)$ s "[div:13]" # release 2.0 # speed 1.6 # gain 1.2
+
+--
+
+d1 $ sound "modub:11/4" # release 5.0 # gain 1.5 # room 0.5 # size 0.8 # speed "<1.0 1.0 1.35 0.9>/4"
+
+d2 $ sound "modub:35/4" # release 1.5 # gain 1.5 # speed 1.2 # begin 0.01 # room 0.5
+
+d3 $ every 9 (0.25~>)$ every 3 (slip 0.25 0.125)$ sound "[hc*2 ~ cp ~]/2" # gain 1.5 # release 0.2 # room 0.0
+
+d4 $ sound "[basst:5(3,8)]/2" # release 0.9 # gain 1.4 # speed 0.9
+
+
+
+d2 $ every 3 (0.25~>)$ sound "[modub:35 ~ ~ modub:35 ~ ~ modub:35 ~]/2" # release 1.5 # gain 1.5 # speed "<1.2 1.5 1.2 1.2 0.9 1.7>/2" # begin 0.01 # room 0.5
+
+d5 $ every 7 (0.25~>)$ every 5 (slip 0.125 0.25 )$ sound "[div ~ ~ ~ ~ div:25 [atrp:2 glitch:2] [~ atrp:3]]/2" # release 0.2 # gain 1.5 # room 0.0

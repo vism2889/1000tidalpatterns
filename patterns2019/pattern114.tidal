@@ -1,0 +1,92 @@
+-- pattern 114
+-- 07/11/2019
+
+
+bps (120/60)
+
+
+
+
+let bdpat1 p = struct "[t ~ ~ ~, ~ ~ ~ ~, ~ ~ ~ ~, ~ ~ ~ ~]/4" p
+    bdpat2 p = struct "[t ~ ~ t ~ ~ t ~ t ~ ~ t ~ ~ t ~]/4" p
+    bdpat3 p = struct "[[< t ~> t] ~ [t ~] t ~ ~ [~ <t ~>] ~ <t ~ [~ t]> ~ <~ t ~ [~ t]> <~ ~ t> ~ ~ <t [t]> ~]/4" p
+    pop7 a b p = stut' 7(a) (|*| speed b) p
+    pop9 a b p = stut' 9(a) (|*| speed b) p
+    pop13 a b p = stut' 13(a) (|*| speed b) p
+    grainn a b p = (striate (a) . (|*| speed b)) p
+    smash p = superimpose ((slow 2).(0.25~>)) p
+
+let smashh a p = stut' 7(a) ((|+| lpf 1000).(|+| speed 0.5)) p
+    verbb a p = stut' 7(a) ((|+| room 0.05).(|+| crush 0.2)) p
+    pow p = someCyclesBy 0.125 (stut 7 0.25 0.125) p
+
+    head [8,2,3,4,5]
+
+
+
+
+
+d1 $ sound "amencutup(3,8)" # release 0.2 # gain 1.2 # room 0.5 # crush 4
+
+d1 $ stut 8 0.25 0.125 $ every 3 (const $ bdpat2 $ sound "bd" # gain 1.5)$ bdpat3 $ sound "bd" # gain 1.5
+
+d2 $ smashh 0.0125 $ sound "cp(3,7)" # lpf 6000
+
+d3 $ smashh "< 2 0.0125>" $ sound "feel:6(4,7)" # lpf 500 # release 0.2 # gain 1.25 # room 0.0 # size 0.0
+
+d7 $ silence
+
+t4(xfadeIn 8) $ pow $ whenmod 9 4 (slow 2)
+  $ every 3 (smashh 2)
+  $ every 7 (slip7 0.25 0.125)
+  $ every 5 (slip7'b 0.25 0.125)
+  $ every 13 (slip7 0.25 0.25)
+  $ sound (samples "<amencutup*7 [amencutup*14 amencutup*7]/2 [amencutup*7 amencutup*3.5]>" (irand(32)))
+  # release 0.1
+  # gain 1.35
+  # speed 2.5
+
+t5(xfadeIn 8) $ every 5 (slip7'e 0.25 0.125)$ pow $ every 5 ( const $ sound "gravitate:3(4,7)" # gain 1.25 # speed 1.2)
+  $ every 2 ((1/7)~>)
+  $ sound "<gravitate:1(3,7)? gravitate:1(4,7)?>"
+  # gain 1.25
+  # release 1.0
+  # begin 0.15
+  # speed 1.2
+
+t5(xfadeIn 8) $ every 6 (slip7 0.25 0.125)$ every 5 ( const $ sound "gravitate:1(4,7)" # gain 1.25 # speed 1.2)
+  $ every 2 ((1/7)~>)
+  $ sound "<gravitate:1(3,7) gravitate:1(4,7) gravitate:1([4 5]/3,7)>"
+  # gain 1.25
+  # release 1.0
+  # begin 0.15
+  # speed 1.0
+
+d6 $ every 6 (stut 7 0.25 0.125)$ every 4 (slow 2)
+  $ every 5 (const $ sound "feel:6(4,7)" # release 0.2 # gain 1.5)
+  $ sound "feel:6(4,7)?"
+  # release 0.2
+  # gain 1.5
+
+d7 $ whenmod 28 14 (const $ struct "[~ t t t ~ t ~ t t t ~ t ~ t]" $ sound "feel:8")
+$ every 4 (const $ struct "[t ~ t t ~ t t ~ t t ~ t t ~]" $ sound "feel:8" # hpf 5000)
+$ every 3 (fast 2)
+$ sound "feel:8*7"
+# release 0.2 # cut 2 # hpf 9000
+
+d8 $ every 15 (const $ sound "~ ~ ~ cp ~ ~ ~"
+                      # gain 1.3
+                      # room 0.0
+                      # size 0.0)
+  $ every 7 (const $ sound "<[~ ~ ~ cp*2 ~ ~ ~] [~ ~ ~  ~ ~ cp*2 ~]>"
+                      # gain 1.2)
+  $ sound "~ ~ ~ cp ~ ~ ~"
+  # gain 1.2
+  # room 0.0
+  # size 0.0
+
+
+d9 $ sound "basst:5 ~ basst:5 ~ ~ ~ ~ " # gain 1.25 # begin 0.1 # release 1.2 # lpf 200 # speed "<1.0 1.0 1.2 0.7>"
+
+
+d3 $ sound "basst:1" # release "<0.01>"

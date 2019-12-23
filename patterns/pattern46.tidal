@@ -18,7 +18,7 @@ d3 $ every 3 (knut)$ fuk $ every 3 (fast 2)$ sound "[rot(3,8),~ rot:1 rot:2 rot:
 
 d4 $ sound "feel:6(3,8)" # gain 1.35 # release "[0.2 1.0]/4"
 
-d6 $ sound "cords:2" # gain 1.35 # speed "[0.7 1.7]/8"
+d6 $ sound "cords:2" # gain 1.35 # speed "[0.7 1.7]/8" # room 0.0
 
 d5 $ every 7 (stut 8 0.95 0.5)$ every 4 (knut)$ sound "base:1 base:2 base:3 base:4 base:5 base:6 base:7 base:8" # release 0.5 # gain 1.5
 

@@ -1,0 +1,19 @@
+-- pattern 112
+-- 07/05/2019
+
+
+bps (120/60)
+
+hushV
+
+do
+  d1 $ slow "<1 2 1 2 2 2 2 1.42 1.42>"$ every 5 (iter 7)$ sound "actor:1 actor:24 actor:23 actor:27 actor:5 actor:6 actor:7" # release "<0.10 0.2 0.5 0.1 0.1 0.1 0.1 0.1>"
+  d2 $ slow "<2 2 2 2 2 2 2 1.42 1.42>"$ every 4 (slip7 0.25 0.125)$ sound "<feel:6(4,7) feel:6(4,7) feel:6(4,7) feel:6(4,7) feel:6(4,7) feel:6(4,7) feel:6(4,7,5) ~ ~ >" # gain 1.5 # release 0.02
+  d3 $ slow "<1 2 1 2 1 1 2 1.42 1.42>"$ sound "<feel:8*7 feel:8(4,7,5)>" # release 0.025
+  d4 $ slow "<1 2 1 2 1 1 2 1.42 1.42>"$ sound "<actor:3 ~ actor:12 ~ ~ ~ actor:17 [cp*7] [cp*3.5]>" # gain 1.1 # release 0.2
+  d5 $ slow "<2 2 2 2 2 2 2 1.42 1.42>"$ n "<[[cs3] fs3 g3 as3 fs3 ~ <[~ fs3] ~ ~ fs4 cs4 ~>]>"
+    # sound "<supersaw>"
+    # voice 1
+    # sustain 0.10 # gain 1.15 # lpf 600
+  d6 $ slow "<1 2 2 2 2 2 2 1.42 1.42>"$ sound "<[glitch:2*7 ~] ~ ~ ~ ~ ~ ~ [glitch:4*3.5 ~] >" # gain 1.52 # release 0.2
+  d7 $ slow "<1 2 1 2 1 1 2 1.42 1.42>"$ sound "research:16" # release 2.0

@@ -1,0 +1,47 @@
+-- pattern 109
+-- 07/04/2019
+
+
+let slip13 a b p = within ((4/13), (12/13)) (slow 2 . rev . stut 13 a b) p
+
+bps (75/60)
+
+d1 $ whenmod 26 13 (slow 2)$ every 7 (const $ sound "~")$ every 15 (slip13 0.25 0.125)
+  $ every 9 (slip13 0.25 0.25)
+  $ every 6 (jux(iter 13))
+  $ sound "[<bd(8,13) bd(9,13)>, feel:8(9,13), <cp(2,13) cp(1,13) cp(1,13) cp(9,13,5)>,feel:6(4,13)]"
+  # release 0.2
+  # cut 2
+  # room 0.0
+  # size 0.25
+  # gain 1.2
+
+d2 $ every 7 (const $ sound "~")$ every 9 (slip13 0.25 0.125)
+  $ every 3 ((4/13)~>)
+  $ sound "gravitate:3(9,13,12)"
+  # release 0.2
+  # gain 1.2
+  # speed "<1.0 1.2 [1.2 1.2 1.2 1.4] 1.2 1.4 1.2>"
+  # crush 5
+
+d3 $ every 3 ((4/13)~>)
+  $ every 3 (stut 13 0.25 "<0.0125>")
+  $ sound "[[aud:2, feel:6] bd  ~  bd ~ feel:6 ~ hh ~ aud:4 glitch:2 hh feel:8]"
+  # release 0.2
+  # gain 1.2
+  # speed 1.2
+
+d4 $ every 6 (slip13 0.25 0.125)$ every 5 (within((7/13),(12/13))(fast 2))$ whenmod 13 8 (|+| n 3)
+  $ every "1" (|=| release 0.125)
+  $ n "<[c3 [a4, f3] f4 e4 c4 a4 [e4,c3] a3 c3 f3 e3 a3 d3] [c3 a4 f4 e4 a3 c3 e3 f3 d3 c4 a4 e4 a3]>"
+  # sound "<supersaw>"
+  # voice 1
+  # sustain 0.1 # gain 1.25 # lpf 2000
+
+
+
+
+
+
+
+d1 $ sound "{bd(8,13), hh(4,7)}"

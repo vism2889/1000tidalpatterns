@@ -1,0 +1,6 @@
+-- pattern 0125
+
+bps (160/60)
+d1 $ every 4 (slow 2)$ jux (iter 4)$ every 3 (slip 0.125 0.25)$ sound "[basst:5(3,8), feel:8(5,8), feel:6([4 7 ]/3,8,5)]" # release 0.9 # speed "<1.0 0.5 [0.8 0.4 0.3 0.9]>"
+
+d2 $ jux (iter 4)$ sound "gravitate:2(3,8)" # release 0.5 # gain 1.2

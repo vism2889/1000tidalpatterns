@@ -1,0 +1,103 @@
+-- pattern 118
+-- august 23 2019
+
+bps (190/60)
+
+let slip7 a b p = within ((2/7), (6/7)) (slow 2 . rev . stut 7 a b) p
+    slip7'b a b p = within ((1/7), (3/7)) (slow 2 . rev . stut 7 a b) p
+    slip7'e a b p = within ((5/7), (7/7)) (slow 2 . rev . stut 7 a b) p
+    slip5 a b p = within ((2/5), (5/5)) (slow 2 . rev . stut 5 a b) p
+    slip3 a b p = within ((1/3), (2/3)) (slow 2 . rev . stut 3 a b) p
+
+d1 $ seqPLoop [
+  (0,0.5, sound "bd*4"),
+  (0.5, 1.0, sound "~ ~ ~ bd*2"),
+  (2,3, sound "bd*3"),
+  (2,3, sound "hh*3"),
+  (3,5, sound "bd*5"),
+  (3,5, sound "hh(3,5)"),
+  (5,8, sound "bd(4,7)"),
+  (5,8, sound "hh(4,7)"),
+  (8,10, sound "bd*7")
+] # release 0.2
+
+
+d1 $ fuk $ seqPLoop [
+  (0,0.5, sound "bd*4"),
+  (0,0.5, sound "actor:1*4" # release 0.5),
+  (0.5, 1.0, sound "~ ~ ~ bd*2"),
+  (0.5,1.0, sound "~ ~ ~ actor:1*2" # release 0.5),
+  (2,3, sound "bd*3"),
+  (2,3, sound "actor:12*3"),
+  (2,3, sound "hh*3"),
+  (3,5, sound "bd*5"),
+  (3,5, sound "actor:12*5"),
+  (3,5, sound "hh(3,5)"),
+  (5,8, sound "bd(4,7)"),
+  (5,8, sound "[hh(4,7)"),
+  (5,8, sound "actor:2(4,7)" # release 0.2),
+  (8,10, sound "bd*7")
+]
+
+d1 $ fuk $ whenmod 10 5 (every 3 (slip7 0.125 0.25))$ seqPLoop [
+  (0,0.5, sound "bd*4"),
+  (0,0.5, sound "actor:29*4" # release 0.5),
+  (0.5, 1.0, sound "~ ~ ~ bd*2"),
+  (0.5,1.0, sound "~ ~ ~ actor:26*2" # release 0.5),
+  (2,3, sound "bd*3"),
+  (2,3, sound "actor:12*3"),
+  (2,3, sound "[hh*3, hc*1.5]"),
+  (3,5, sound "bd*5"),
+  (3,5, sound "actor:12*5"),
+  (3,5, sound "hh(3,5)"),
+  (5,8, sound "bd(4,7)"),
+  (5,8, sound "[hh(4,7), hc(3,7)]"),
+  (5,8, sound "actor:2(4,7)" # release 0.2),
+  (8,10, sound "bd*7")
+]
+
+d1 $ fuk $ whenmod 10 5 (every 5 (slip7 0.125 0.25))$ seqPLoop [
+  (0,0.5, sound "bd*4"),
+  (0,0.5, sound "actor:29*4" # release 0.5),
+  (0.5, 1.0, sound "~ ~ ~ bd*2"),
+  (0.5,1.0, sound "~ ~ ~ actor:26*2" # release 0.5),
+  (2,3, sound "bd*3"),
+  (2,3, sound "actor:12*3"),
+  (2,3, sound "[hh*3, hc*1.5]"),
+  (3,5, sound "bd*5"),
+  (3,5, sound "actor:12*5" # release 0.2 # begin 0.5),
+  (3,5, sound "hh(3,5)"),
+  (5,8, sound "bd(4,7)"),
+  (5,8, sound "[hh(4,7), hc(3,7)]"),
+  (5,8, sound "actor:2(4,7)" # release 0.2),
+  (8,10, sound "bd*7"),
+  (2,3, sound "bassHit:6" # release 2.0),
+  (4,4.5, sound "[bassHit:8(3,5)]" # release 0.20),
+  (8,8.25, sound "[bassHit:18]*2 ~ ~ ~" # release 1.0)
+  ] # gain 1.4 # lpf 10000
+
+
+d2 $ slow 1$ whenmod 20 10 (# speed 1.2)$ slow 2 $ sound "rainn:4" # release 4.0 # end 0.9 # gain 1.2 # hpf "< 250 500 1000 1500 2000 2500 2700 4000  4500 5000>"
+
+d2 $ whenmod 20 10 (# speed 1.2)$ slow 2 $ sound "rainn:4" # release 4.10 # end 0.9 # gain 1.3 # lpf 10000
+
+startclock d2 $ whenmod 20 10 (# speed 0.9)$ slow 2 $ sound "shots" # release 4.0 # end 0.9 # gain 1.2
+
+
+d2 $ fuk $ seqPLoop [
+  (0,1, slow 2 $ sound "shots" # release 0.50),
+  (2,3, slow 2 $ sound "shots*3" # release 0.20),
+  (3,4, sound "shots*5" # release 0.20),
+  (5,5.5, sound "shots*7" # release 0.20),
+  (9.75,10, sound "shots*7" # release 2.7)
+]
+
+hushV
+
+d2 $ whenmod 20 10 (# speed 1.2)$ slow 2 $ sound "shots(3,7)" # release 0.50
+
+d1 $ silence
+
+d2 $ silence
+
+d1 $ every 4 (slip7 0.25 0.25)$ fuk $ sound "[bd(4,7), hc(3,7), atp(3,7,8)]" # gain 1.1

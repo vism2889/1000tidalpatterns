@@ -70,7 +70,7 @@ do
 d1 $whenmod 16 8 (pop4 0.125 0.5)$ slow 8 $ sound "mutantE:11 mutantE:12" # gain 1.75 # speed "<1.0 0.7 0.5 0.4>"
 
 d2 $ fuk $ every 4 (iter 3)$ sound "mutantE:15*2  mutantE:16 mutantE:25" # gain 1.75
-d1 $ silence
+d3 $ silence
 
 d3 $ whenmod 64 32 (|=| speed "<0.75 1.5>/4")$ sound "<mutantE:26 mutantE:36 mutantE:38 [mutantE:43 mutantE:44]>" # gain 1.75
 
@@ -123,7 +123,7 @@ do
 
 do
   d6 $ slow 4 $ fuk $ pop4 0.125 1.5$ slow 4$ whenmod 16 8 (|=| speed "<0.5>")$ slow 2 $ sound "<research:44 research:43>" # gain 1.75 # speed 0.75
-  d1 $ every 7 (pop4 0.125 1.5)$ every 5 (twist 0.5 0.75 32)$ slow 2$ every 5 (iter 4) $ every 7 (0.25 ~>)$ sound "[gabba:5([3 5]/3,8), feel:6([4 5]/5,8,3),<feel:8*8 feel:8*4>]" # gain 1.5
+  d1 $ fuk $ every 7 (pop4 0.125 1.5)$ every 5 (twist 0.5 0.75 32)$ slow 2$ every 5 (iter 4) $ every 7 (0.25 ~>)$ sound "[gabba:5([3 5]/3,8), feel:6([4 5]/5,8,3),<[feel:5*4 [~ glitch:2]] feel:8*4>]" # gain 1.5
   d2 $ every 5 (pop4 0.125 1.5)$ fuk $slow 4 $ every 3 (0.25 ~>)$ sound (samples "<amencutup*8 amencutup*4 amencutup*4 <amencutup*4 amencutup*8>>" (irand 32))  # gain 1.5 # speed 1.5
   d5 $ fuk $ every 3 (iter 4) $ every 7 (0.25 ~>)$ sound "<basst:4([7 3]/<3 5>,8) basst:4([3 5]/5,8,3)>" # release 0.5 # gain 1.5 # speed "<1.0 1.2 0.9 0.7>"
 

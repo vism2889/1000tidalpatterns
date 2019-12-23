@@ -1,0 +1,68 @@
+-- pattern 107
+-- 06/27/2019
+
+
+
+
+let stackk p= slow 2 $ every 3 (slip7 0.25 0.125) p
+
+bps (90/60)
+
+d2 $ slow 2 $ stut' 7 0.25 (# speed "{1.2 1.4 1.5 1.7, 2.0}") $ sound "{bd sn hh bd bd ~ ~}" # release 0.2
+
+d3 $ fast 2 $ every 4 (const $ sound "{atrp:3 feel:6 bd ~ ~ ~ ~, bd cp bd}" # release 0.2 # gain 1.5)
+
+
+d3 $ sound "{atrp:8 ~ ~ ~ feel:8 ~ ~ ~, bd cp bd hh ~ ~ hh}%8" # gain 1.5 # release 0.2 # speed 1.2
+
+d4 $ every 5 (within(5/7,1.0)(slow 2).(# speed 1.5))$ every 3 (stut "<[7 3.5] [14 3.5]>" "<0.25 0.125 0.175>/3" "<0.125 0.25 0.75 >/3")$ sound "[feel:8(4,7),feel:5(3,7,5),bd(4,7,5)]" # release 0.3
+
+
+
+bps (150/60)
+
+
+t1 (xfadeIn 7)$ every 9 (jux(iter 7))$ every 9 (slip7'e 0.25 0.125)$ every 5 ((2/7)~>)$ every 12 (slip7 0.25 0.125)$ seqPLoop [
+  (0,7, sound "uniq:89 ~ bd uniq:89 ~ bd cp" # speed 1.5),
+  (7,14, every 4 (# cut 2) $ sound "bd ~ ~ uniq:89 cp bd uniq:89" # speed 1.5),
+  (14,21, every 4 (# cut 2) $ sound "uniq:89 ~ cp bd uniq:89 ~ cp" # speed 1.5),
+  (0,14, sound "feel:8(4,7)" # release 0.2 # speed 1.5),
+  (14,21, sound "<feel:5(5,7) feel:5(4,7) feel:5(4,7) feel:5(3,7) feel:5(4,7,5) feel:5(3,7) feel:5(4,7,5)>" # release 0.2),
+  (21,24.5, slow 2 $ every 4 ((2/7)~>)$ sound "[<~ uniq:89 bd> <bd bd ~> ~ <~ cp> uniq:89 ~ ~ < ~> uniq:89 <bd ~> <[cp] uniq:89> <uniq:89 ~> bd ~]" # release 0.7),
+  (24.5, 28, slow 2 $ every 4 ((2/7)~>)$ sound "[uniq:89 bd ~ <~ cp> uniq:89 cp ~ <[uniq:89] ~> uniq:89 <bd ~> <[cp] uniq:89> uniq:89 bd ~]" # cut 2),
+  (28, 31, slow 2 $ stut 7 0.25 0.125 $ every 4 ((2/7)~>)$ sound "[uniq:89 bd ~ <~ cp> uniq:89 cp ~ <[uniq:89] ~> uniq:89 <bd ~> <[cp] uniq:89> uniq:89 bd ~]" # release 0.5 # speed 1.5),
+  (31, 35, slow 2 $ stut 7 0.25 "<0.25 0.5 1.0>" $ every 4 ((2/7)~>)$ sound "[uniq:89 bd ~ <~ cp> uniq:89 cp ~ <[uniq:89] ~> uniq:89 <bd ~> <[cp] uniq:89> uniq:89 bd ~]" # release 0.5 # speed 1.5),
+  (35, 36, stut 7 0.25 1.5 $ sound "cp ~ ~ ~ ~ ~ ~"),
+  (36,37, sound "~ ~ ~ ~ ~ ~ ~"),
+  (37, 38, stut 7 0.25 0.125 $ sound "~ ~ ~ ~ ~ cp cp*2" # release 0.2),
+  (38,45, stut 7 0.25 0.125 $ sound "<uniq:89 bd(4,7,5)>" # speed 0.75),
+  (38,45, sound "feel:8(4,7,5)"),
+  (0,28,  gtfo $whenmod 48 24 (# release 0.37) $ sound "<gravitate:3(4,7,5) gravitate:3(4,7,5) gravitate:3(4,7,5) gravitate:4(4,7,5)>" # release 0.25 # gain 1.5 # begin "<0.0 0.50 0.25 0.75>" # speed 1.0),
+  (28,45,  gtfo $whenmod 48 24 (# release 0.37) $ sound "<gravitate:3(4,7,5)>" # release 0.25 # gain 1.2 # begin "<0.0 0.50 0.25 0.75>" # speed 1.5)
+] # release "<0.12 0.2 1.5 0.2 0.7 0.8 1.0>/7" # lpf 8000
+
+d3 $ every 6 ((slip7'b 0.25 0.125).(# cut 2))$ every 8 ((2/7)~>)$ sound "[glitch:2(4,7,5),gravitate:7(4,7,5)]" # gain 1.2# lpf 600 # release 0.5
+
+d3 $ silence
+
+
+d2 $ every 15 (jux(iter 7))$ every 9 (jux(iter 7))$ every 7 (slip7'b 0.25 0.125)$ every 3 ( slow 2)$ every 5 ((2/7)~>)$ sound "feel:6(4,7,5)" # gain 1.25 # release 0.2 # speed 1.5 # crush 5
+
+
+
+d1 $ every 3 (stut 7 0.25 0.125)$ every 3 ((2/7)~>) $ seqPLoop [
+  (0,7, sound "uniq:89 ~ bd uniq:89 ~ bd cp" # speed 1.5 ),
+  (7,14, every 4 (# cut 2) $ sound "bd ~ ~ uniq:89 cp bd uniq:89" # speed 1.5 ),
+  (0,14, sound "<gravitate:3(2,7) gravitate:3(2,7) gravitate:3(2,7) [gravitate:3(4,7,5)]>" # gain 1.5 # release 0.5 # begin "<0.35 0.75>"),
+  (0,14, sound "<~ ~ ~ [feel:6(4,7,5)]>" # gain 1.5 # release 0.5)
+] # room 0.0 # size 0.0
+
+d2 $ sound "bd" # gain 1.5
+
+
+
+d1 $ stut 7 0.25 0.125 $ sound "<cp uniq:89> <uniq:89 bd> <~ cp> <~ bd ~> <cp ~> <~ bd> <bd> ~"
+
+d1 $ slow 2 $ every 4 ((2/7)~>)$ sound "[<~ uniq:89 bd> <bd bd ~> ~ <~ cp> uniq:89 ~ ~ < ~> uniq:89 <bd ~> <[cp] uniq:89> <uniq:89 ~> bd ~]" # release 0.7
+
+d1 $ sound "[<bd uniq:89> <bd ~> <~ bd> <uniq:89 [uniq:89 bd] ~> <cp ~ bd uniq:89 cp ~> <~ bd cp> <~ bd ~ cp>]" # gain 1.0 # release 1.0

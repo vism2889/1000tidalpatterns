@@ -8,11 +8,11 @@ bps(120/60)
 
 d1 $ sound "bd"
 
-d1 $ every 2 ( stut (slow 2 $(range 2 8 tri)) 0.125 0.25)$ sound "bd*4" # orbit 1
+d1 $ every 2 ( stut (slow 2 $(scale 2 8 sine)) 0.125 0.25)$ sound "bd*4" # orbit 0
 
 d1 $ every 4 (0.25~>)$ sound "[< oshit*8 [oshit*4] ostext:9 ~>,ostext:6]" # nudge (scale 0 1 $ slow 4 $ sine) # release 0.82 # orbit 1 # gain 1.2
 
-d2 $ sound "feel:6*2 [hh hh ~ feel:5]" # gain 1.5 # release 0.2 # orbit 1
+d2 $ sound "feel:6*2 [hh hh ~ feel:5]" # gain 1.5 # release 0.2 # orbit 0
 
 d1 $ every 2 (slow 2)$ fast 2 $ sometimes (spaceOut ([1,0.75..0.50] ++ [0.25,0.75..1])) $ sound "[oshit:19*4, ~ ~ cp ~]" # orbit 1 # release 0.8
 
@@ -21,13 +21,13 @@ d2 $ sound "bd(3,8)" # orbit 1 # gain 1.5
 
 bps (95/60)
 
-slip7 a b p = within ((2/7), (6/7)) (slow 2 . rev . stut 7 a b) p
-slip7'b a b p = within ((1/7), (3/7)) (slow 2 . rev . stut 7 a b) p
-slip7'e a b p = within ((5/7), (7/7)) (slow 2 . rev . stut 7 a b) p
+let slip7 a b p = within ((2/7), (6/7)) (slow 2 . rev . stut 7 a b) p
+    slip7'b a b p = within ((1/7), (3/7)) (slow 2 . rev . stut 7 a b) p
+    slip7'e a b p = within ((5/7), (7/7)) (slow 2 . rev . stut 7 a b) p
 
 
 do
-  d1 $ every 6 (jux(iter 7))
+  d2 $ every 6 (jux(iter 7))
     $ every 18 (slow 2)
     $ every 9 (within(5/7,7/7) (stut 7 0.5 0.25))
     $ every 6 (slip7'b 0.25 0.125)
@@ -39,20 +39,19 @@ do
     (14, 28, sound "actor:2(5,7)" # cut 2),
     (7, 26, sound "[actor:23(2,7), glitch:2(3,7),feelfx:4 glitch:2*2 [~ glitch:2] cp ~ glitch:5 feelfx:12]" # release "<0.2..1.0  0.2 1.0>" # cut 2)
     ]
-    # orbit 3
     # speed 1.0
 
-d2 $ whenmod 14 7 (fast 2)$ every 7 (within(2/7,7/7) (stut 7 0.5 0.25))$ every 9 (slip7'b 0.25 0.125)$ every 11 (slip7 0.25 0.125) $ sound "feel:8(3,7)" # orbit 1 # gain 1.5 # release 0.2
+d2 $ slow 2$ whenmod 14 7 (fast 2)$ every 7 (within(2/7,7/7) (stut 7 0.5 0.25))$ every 9 (slip7'b 0.25 0.125)$ every 11 (slip7 0.25 0.125) $ sound "feel:8(3,7)" # orbit 0 # gain 1.0 # release 0.2
 
 
 
-d3 $ every 9 ((2/7)~>)
+d3 $ slow 2 $ every 9 ((2/7)~>)
   $ every 5 (jux(iter 7))
   $ every 5 (within(2/7,7/7) (stut 7 0.5 0.125))
   $ every 12 (slip7'b 0.25 0.125)
-  $ every 15 (slip7 0.25 0.125) 
+  $ every 15 (slip7 0.25 0.125)
   $ sound "<plucc:19(4,7) plucc:17(3,7) [plucc:16*2 plucc:17 ~ ~ plucc:17 ~ [~ plucc:25],plucc:30(5,7,6)] [plucc:19(4,7,5),plucc:30(5,7,3),plucc:41(4,7,6)]>"
-  # orbit 2
-  # gain 1.25
+  # orbit 0
+  # gain 1.0
   # release 0.2
   # speed 1.5

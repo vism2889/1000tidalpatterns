@@ -9,6 +9,19 @@ let frac a p =  when ((elem a).show)(within (0.25, 1.0) (slow 4 . stut 16 0.95 0
 
 -- pattern
  startclock d2 $ frac '3' $ faux $ ifp ((== 0).(flip mod 8))(within (0.75, 0.95) (slow 8 . stut 4 0.75 0.25))(# coarse "0")
-  $ sound "[feel:6([5 3]/3,8), feelfx noiz:1 noiz:2 hc, trp:19*4? trp:13*4?]" # gain 1.69
+  $ sound "[feel:6([5 3]/3,8), feelfx? noiz:1 noiz:2 hc, trp:19*4? trp:13*4?]" # gain 1.69
+
+
+bps (190/60)
+
+d1 $ every 4 (slip 0.125 0.25)$ fuk $ sound "[bd:2(3,8), hh(5,8), rm(5,8,7)]"
 
 hush
+
+
+d1 $ n "a5(3,7)" #midinote
+
+d1 $ slow 4 $ s "VOV:4" # release 0.2 # gain 1.2
+
+
+d1

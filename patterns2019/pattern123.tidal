@@ -1,0 +1,18 @@
+
+
+-- pattern 123
+-- november 3 2019
+
+
+
+
+d3 $ slow 2 $ note "c3 d3 e3 f3 a3 b3 c4 b4" # midichan 4 # s "midi" # sustain 0.35
+
+
+d3 $ every 3 (slow 2) $ note "[a3 d3]" # midichan 4 # s "midi" # sustain 0.1
+
+
+
+d4 $ sound "gravitate:2(3,8)" # release 00.5
+
+d5 $ sound "feel:6(3,8)"

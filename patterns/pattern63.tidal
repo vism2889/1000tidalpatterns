@@ -21,7 +21,7 @@ do
   d1 $ ball $ sound "noiz:9([4 7]/5,8,3)" # release 0.2 # gain 1.5 # room 0.0
   d2 $ ball $ slow 2 $ stack [
     every 6 (|=| s "aud")$ fuk $ every 4 (slow 2)$ every 3 (0.25 ~>) $ every 7 (twist 0.75 1.0 16)$ sound (samples "<amencutup*8 amencutup*4 noiz*8 glitch*8>" (irand 32)) # release 0.1 # gain 1.5,
-    gtfo $ sound "[feel:6([5 4]/3,8), feel:8([3 5 7]5,8), noiz:10([4 3 5]/3,8)]" # release 0.1 # gain 1.75
+    gtfo $ sound "[feel:6([5 4]/3,8), feel:8([3 5 7]5,8), noiz:10([4 3 5]/3,8)]" # release 0.01 # gain 1.75
     ]
   d3 $ gtfo $ ball $ sound "ostext:22 ostext:25" # release 1.0 # gain 1.5 # speed 1.5
   startclock d4 $ ball $ sound "<ostext:35 ostext:20>/2" # gain 1.25 # release 3.0 # speed "<1.75 0.75 0.75 1.5>" # begin "<0.2 0.5 0.75>" # room 0.0

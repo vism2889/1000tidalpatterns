@@ -1,0 +1,38 @@
+-- pattern 111
+-- 07/05/2019
+
+hushV
+bps (150/60)
+
+startclock d1 $ every 6 (slip 0.25 0.125)$ seqPLoop [
+  (0,3, n "<c3 f3 e3>"
+    # sound "<supersaw>"
+    # voice "<1>"
+    # sustain 1.0 # gain 1.25),
+  (0,1.25, sound "[bd [~ ~] ~ bd <~ bd> ~ [~ bd] ~ ~]" # gain 1.25 # room 0.0 # size 0.0),
+  (1.25,2.5, sound "[[feel:6*2 ~ ~ ~ ~ ~ ~ ~], bd(3,8,5)]" # release 0.2 # gain 1.25),
+  (2.5,3, sound (samples "amencutup*16" (irand(32))) # release 0.2 # speed 2.5),
+  (3,4, sound "cp" # gain 1.0 # room 1.0 # size 1.0),
+  (0,3, whenmod 16 8 (|+| n 3) $ fast 2
+    $ every "1" (|=| release 0.125)
+    $ n "<[c3 a4 f4 e4 c4 a4 e4 a3] [c3 a4 f4 e4 c4 a4 e4 a3]>"
+    # sound "supersaw"
+    # voice 1
+    # sustain 1.0 # gain 1.25),
+  (5,6, sound "cp*2 ~ ~ ~ ~ ~ ~ ~" # room 0.0 # size 0.0),
+  (5,8, whenmod 16 8 (|+| n 3) $ fast 2
+    $ every "1" (|=| release 0.125)
+    $ n "<[c3 a4 f4 e4 c4 a4 e4 a3] [c3 a4 f4 e4 c4 a4 e4 a3]>"
+    # sound "supersaw"
+    # voice 1
+    # sustain 1.0 # gain 1.25),
+  (8,15, whenmod 16 8 (|+| n 3) $ fast 2
+    $ every "1" (|=| release 0.125)
+    $ n "<[c3 a4 f4 e4 c4 a4 e4 a3] [c3 a4 f4 e4 c4 a4 e4 a3]>"
+    # sound "<supermandolin>"
+    # voice 1
+    # sustain 1.0 # gain 1.5),
+  (5,15, sound (samples "amencutup*16" (irand(32))) # release 0.9 # speed 2.5 # gain 1.2),
+  (8,15, sound "[feel:6(3,8,5)]" # gain 1.25# release 0.2),
+  (15,16, sound "cp" # gain 1.0 # room 1.0 # size 1.0)
+  ]

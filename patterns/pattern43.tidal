@@ -1,6 +1,8 @@
 -- pattern 43
 -- 6/15/2018
 
+
+
 d1 $ fast 2 $ every 7 (fast 2)$ every 3 (twist 0.25 0.5 8)$ fuk
   $ sound "[feel:6 feel:2 [<[hh feel:6 trp:4 noiz:3] [feel:8 feel:6*2 feel:5 feel:5] [~ ~ feel:8 ~, feel:6(4,8)]>] ~,noiz:3*4 ~ glitch:2*2 ~]/4" # gain 1.25 # release 0.2
 

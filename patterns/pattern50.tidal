@@ -20,17 +20,17 @@ d2 $ every 2 (slow 2)$ fuk $ every 12 (twist 0.75 1.00 8)$ seqPLoop
   (10,31,sound "~ ~ ~ ~"),
   (31,32, sound "hh*16" # release 0.1 ),
   (32,40, sound "[feel:8(2 3 4 5 6 7,8), glitch:6(3,8,5)]" # release 0.2)
-  ] # gain 1.75 # orbit 1
+  ] # gain 1.75 # orbit 0
 
 
 -- d3 $ gtfo $ sound "cords([16 5 4 3]/3,8,5)" # release 0.2 # room 0.0 # speed 1.7 # gain 1.1
 
 d3 $ every 16 (const $ sound "~ ~ ~ research:57*2" # gain 1.75 # speed 1.0)$ slow 4 $ sound "research:57" # release 8.0 # gain 1.75  # speed 0.75
 
-d6 $ gtfo $ every 8 (twist 0.0 1.0 16 . (|=| release 0.2))$ whenmod 16 8 (const $ sound "stab:8([3 4 8 3]/5,8,5)" # gain 1.5 # release 0.20 # speed 0.75)$ every 4 (|=| release 0.1)$ sound "stab:10([16? 4 5 3]/3,8,5)" # speed 0.75 # gain 1.5  # release 0.1
+d6 $ every 8 (twist 0.0 1.0 16 . (|=| release 0.2))$ whenmod 16 8 (const $ sound "stab:8([3 4 8 3]/5,8,5)" # gain 1.5 # release 0.20 # speed 0.75)$ every 4 (|=| release 0.1)$ sound "stab:10([16? 4 5 3]/3,8,5)" # speed 0.75 # gain 1.5  # release 0.1
 
 
-d4 $ every 5 (slow 2)$ fukd $ every 7 (|=| speed 0.76)$ every 8 (twist 0.25 1.0 4)$ sound "basst:1([3 5 7 16],8,5)?" # release 0.1
+d4 $ every 5 (slow 2)$ every 7 (|=| speed 0.76)$ every 8 (twist 0.25 1.0 4)$ sound "basst:1([3 5 7 16],8,5)?" # release 0.1
 
 d5 $ whenmod 32 16 (slow 2)$ every 7 (slow 2 . (within(0.75, 1.0)(stut 8 0.75 0.25))) $ every 4 (iter 4)$ sound (samples "< amencutup*8  ~ ~ amencutup*4 amencutup*8 ~ amencutup*8? amencutup*16 amencutup*16? amencutup*16 >" (irand 32)) # release "0.2 0.5 0.2 0.1 0.1 0.2 0.2 0.5 0.8" # speed 2.5 # gain 1.5 # orbit 0
 

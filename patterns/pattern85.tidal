@@ -21,15 +21,15 @@ do
     (|*| gain 1.25) $ every 4 (0.125~>)$ gain pat # sound "[bd]" # release 0.5 # speed 1.2,
     every 3 (0.125 ~>)$ every 5 (slip 0.25 0.125)$ gain (inverse <$> (pat)) # sound "cp" # release 0.2,
     every 7 ((slow 2 ).(slip 0.25 0.125))$ whenmod 8 4 (|=| gain pat)$ gain (inverse <$> (pat)) # sound "feel:5" # release 0.2,
-    gtfo $ gain pat # sound "<rot rot:1 rot:2>" # release 0.4 # gain 1.12,
+    gain pat # sound "<rot rot:1 rot:2>" # release 0.4 # gain 1.12,
     every 7 (slip 0.25 0.125) $ (|*| gain 1.25) $ gain (inverse <$> (pat)) # sound "mutantE:64" # release 0.30 # speed "<0.7 1.0 0.5>",
     every 8 (slip 0.25 0.125) $ fast 2 $ every 5 (const $ sound "hh*2 hh*4" # release 0.2 # speed 2.5 # gain 1.5)$ sound "<[~ hh ~ hh] [hh ~ ~ [hh] ~ hh hh ~]>" # release 0.2 # speed 2.75 # gain 1.5,
     every 1 (const $ gain pat # sound "basst:5" # release 0.95 # gain 1.15 # speed "<0.8 0.9 1.2>")$ sound " ~ ~ ~ ~"
-    ] # orbit 1
+    ]
 
-d1 $ slow 2$ every 9 ((within(0.25,0.5))(fast 2))$ every 4 ((within(0.75,1.0))(fast 2))$ every 3 (0.25~>)$ whenmod 4 1 (slip 0.25 0.125)
+d1 $ every 9 ((within(0.25,0.5))(fast 2))$ every 4 ((within(0.75,1.0))(fast 2))$ every 3 (0.25~>)$ whenmod 4 1 (slip 0.25 0.125)
   $ every 7 (0.25<~)$ every 5 (0.125~>)
-  $ sound "<[<[rot rot:1 rot:2 rot] rot(3,8) rot:1(3,8)>, bd(3,8), hh(3,8), [rm hh] [~ rm] cp ~] [<rot:1(3,8) rot:2(5,8) ~ >,bd(3,8), [hh rm] ~ cp ~]>" # release 0.1 # gain 1.15 # orbit 1
+  $ sound "<[<[rot rot:1 rot:2 rot] rot(3,8) rot:1(3,8)>, bd(3,8), hh(3,8), [rm hh] [~ rm] cp ~] [<rot:1(3,8) rot:2(5,8) ~ >,bd(3,8), [hh rm] ~ cp ~]>" # release 0.1 # gain 1.15
 
 d2 $ silence
 

@@ -1,0 +1,209 @@
+-- vytear set
+
+
+bps (190/60)
+
+d1 $ whenmod 32 24 (loopAt 2 . chop 8 . (# release 1.5))$ every 3 (0.25~>)$ loopAt 16 $ chop 16 $ s "tears:6" # gain 1.75
+
+d1 $ loopAt 16 $ chop 16 $ s "tears:6" # gain 1.75 # speed "<1.0>"
+
+d2 $ loopAt 16 $ chop 8 $ s "tears:15" # gain 1.75 # speed "<1.0>" # lpf 2000
+
+d3 $ s "div:38*2" # speed "<1.0 1.2 1.68 0.90>" # release 1.0 # begin 0.2
+
+s (samples "amencutup" (irand(32)))
+
+d1 $ every 5 ( slip 0.25 0.125)$ s "[<tears:7 ~ [tears:7 ~ ~ tears:7]> <~ [~ tears:7]> <tears:7 [~ ~ ~ tears:7] [~ tears:7]> <~ [~ tears:7]>]/2" # gain 1.65 # release 0.8
+
+d1 $ every 3 (fuk)$ every 5 ( slip 0.25 0.125)$ s "[<[tears:10 tears:11] tears:12 [tears:10 ~ tears:65 tears:7] [~ tears:10 tears:65*2 <~ hc*2>]> <~ [tears:64 [tears:9 tears:65]]> <tears:7 [hc tears:64 ~ tears:7] [~ tears:7]> <~ [~ tears:7]>]/2" # gain 1.65 # release 0.8
+
+
+d2 $ s "[tears:22 tears:26, ~ tears:30 tears:31 [tears:32 ~ tears:40 tears:41]]" # release 0.4 # gain 1.75
+
+d3 $ fuk $ every 3 (slip 0.25 0.125)$ sound "<[tears:68 tears:65] <tears:71 [[tears:71*2 ~] tears:71 tears:74 tears:72]> tears:72 [[tears:73 ~] tears:72 ]>" # release 0.9 # gain 1.6
+
+d4 $ fuk $ s "[hc/1.5]" # release 0.2 # gain 1.3
+
+t9 (xfadeIn 8)  $ fuk $ whenmod 16 8 (slow 2)$ every 13 ((within(0.5,1.0)(slow 1.5)))$ every 16 (# s "aud")$ fuk $ whenmod 8 2 (stut 8 0.25 0.125)$ every 5 (slow 2)$ every 7 (0.25~>)$ every 3 (slip 0.125 0.25)$ sound (samples "<amencutup*8 amencutup*4>"(irand(32))) # release 0.2 # speed "<3.5 2.5 4.0>" # gain 1.4
+
+d6 $ every 9 (slow 2)$ every 7 (slip 0.25 1.25) $ every 3 (stut 8 0.25 0.125)$ s "[<<tears:76 tears:17*2 ~> <tears:70*2 <tears:70 ~ [~ tears:4*2 ]> [tears*2 ~]> [tears:61 tears:60 ~ ~]> <tears:74 ~ [tears:29*2] tears:31*2> ~ tears:76?]" # release 0.2 # gain 1.35
+
+d7 $ s "[basst:5 ~ ~ <basst:5 ~ > <~ basst:5> ~ ~ basst:5]/2" # gain 1.5 # release 0.6 # speed "<0.70 0.9 0.9 0.9 0.76>"
+
+d8 $ s "[<~ [~ tears:30] tears:42> <[~ tears:41]> < ~ tears:31> <[~ ~ ~ tears:41] [~ tears:35] tears:45> [~ tears:34] [tears:29 ~ [~] tears:36] ~ <~ tears:41 ~>]/4" # release 1.2 # gain 1.35 # speed 2.5
+
+d9 $ whenmod 32 24 (# release 0.5)$ every 3 (0.25~>)$ fast 1$ every 12 (stut 8 0.25 "<0.125 0.25>") $ every 8 (# speed 0.950)$ every 7 (slow 2 . slip 0.25 0.125) $ every 3 (0.25~>)
+  $ sound "[<feel:6 [feel:6 feel:8*2]> ~ [hc ] <feel:6> feel:8 <~ tears:47 tears:48> tears:42 <~ tears:45 ~ feel:6 [tears:51*2]>]/2" # gain 1.5 # speed 1.5
+
+d9 $ every 7 (0.125~>)$ every 1 (# release 0.2)$ every 3 (0.25~>)$ fast 1$ every 12 (stut 8 0.25 "<0.125 0.25>") $ every 8 (# speed 0.950)$ every 7 (slow 2 . slip 0.25 0.125) $ every 3 (0.25~>)
+  $ sound "[<bd:6 [feel:6 feel:8*2]> ~ [hc ] <bd:5> feel:8 <~ tears:47 tears:48> tears:42 <~ tears:45 ~ feel:6 [tears:51*2]>]/2" # gain 1.5 # speed 1.5
+
+
+d8 $ slow 2$ s "tears:73 tears:72 tears:71 tears:69" # gain 1.3 # release 1.2
+
+
+
+
+
+
+bps (190/60)
+---------
+
+startclock d1 $ loopAt 16 $ chop 16 $ s "tears:6" # gain 1.75 # speed "<1.0>"
+
+d2 $ loopAt 16 $ chop 16 $ s "tears:15" # gain 1.75 # speed "<1.0>" # lpf 2000
+
+d1 $ every 3 (0.25~>)$ s "[tears:6 ~ ~ <tears:6> <~ tears:6> ~ ~ <[tears:6*2] ~>]/2" # begin "<0.125 0.25 0.5 0.0 0.8>" # release 2.0 # gain 1.75 # speed 0.75 # lpf 10000
+
+d3 $ every 7 (0.25~>)$ every 4 (0.25~>)$ fuk $ every 3 (slip 0.25 0.125)$ sound "<[tears:68 tears:65] <tears:71 [[tears:71*2 ~] tears:71 tears:74 tears:72]> tears:72 [[tears:73 ~] tears:72 ]>" # release 0.9 # gain 1.6
+
+d9 $ every 7 (0.125~>)$ every 1 (# release 0.2)$ every 3 (0.25~>)$ fast 1$ every 12 (stut 8 0.25 "<0.125 0.25>") $ every 8 (# speed 0.950)$ every 7 (slow 2 . slip 0.25 0.125) $ every 3 (0.25~>)
+  $ sound "[<bd:6 [feel:6 feel:8*2]> ~ [hc ] <bd:5> feel:8 <~ tears:47 tears:48> tears:42 <~ tears:45 ~ feel:6 [tears:51*2]>]/2" # gain 1.5 # speed 1.5
+
+d9 $ fuk $ whenmod 32 24 (# release 0.5)$ every 3 (0.25~>)$ fast 1$ every 12 (stut 8 0.25 "<0.125 0.25>") $ every 8 (# speed 0.950)$ every 7 (slow 2 . slip 0.25 0.125) $ every 3 (0.25~>)
+  $ sound "[<feel:6 [feel:6 feel:8*2]> ~ [hc ] <feel:6> feel:8 <~ tears:47 tears:48> tears:42 <~ tears:45 ~ feel:6 [tears:51*2]>]/2" # gain 1.5 # speed 1.5
+
+
+d8 $ s "[<~ [~ tears:30] tears:42> <[~ tears:41]> < ~ tears:31> <[~ ~ ~ tears:41] [~ tears:35] tears:45> [~ tears:34] [tears:29 ~ [~] tears:36] ~ <~ tears:41 ~>]/4" # release 1.2 # gain 1.35 # speed 2.5
+
+d7 $ s "[basst:5 ~ ~ <basst:5 ~ > <~ basstd:5> ~ ~ basst:5]/2" # gain 1.5 # release 0.6 # speed "<0.70 0.9 0.9 0.9 0.76>"
+
+d7 $ every 3 (0.25~>)$ s "[basst:5*2 ~ basst:5 <basst:5 ~ > <~ basst:5> basst:5 <[basst:5*2] [~ basst:5]> basst:5]/4" # gain 1.5 # release 0.2 # speed "[1.70 1.0 1.9 0.9 1.7 0.9 1.3 0.76]/2"
+
+do
+  d1 $ loopAt 16 $ chop 16 $ s "tears:6" # gain 1.75 # speed "<1.0>" # lpf 10000
+  d9 $ fuk $ every 10 (slip 0.125 0.25)$ every 7 (0.125~>)$ every 1 (# release 0.2)$ every 3 (0.25~>)$ fast 1$ every 12 (stut 8 0.25 "<0.125 0.25>") $ every 8 (# speed 0.950)$ every 7 (slow 2 . slip 0.25 0.125) $ every 3 (0.25~>)
+    $ sound "[<bd:6 [feel:6 feel:8*2]> ~ [hc ] <bd:5> feel:8 <~ tears:47 tears:48> tears:42 <~ tears:45 ~ feel:6 [tears:51*2]>]/2" # gain 1.65 # speed 1.5
+  d3 $ fuk $ every 3 (slip 0.25 0.125)$ sound "<[tears:68 tears:65] <tears:71 [[tears:71*2 ~] tears:71 tears:74 tears:72]> tears:72 [[tears:73 ~] tears:72 ]>" # release 0.9 # gain 1.6
+  -- d4 $ silence
+
+
+
+do
+  d1 $ every 3 (0.25~>)$ s "[tears:6 ~ ~ <tears:6> <~ tears:6> ~ ~ <[tears:6*2] ~>]/2" # begin "<0.125 0.25 0.5 0.0 0.3 0.65 0.7 0.9 0.125 0.8>" # release 2.0 # gain 1.85 # speed "0.75 0.5 1.0 1.5 0.75 1.0"
+  d4 $ every 5 (slip 0.25 0.125)$ every 3 (slow 2)$ every 7 (|=| s "gabba")
+    $ slow "<1.0 2.0>/3.5"
+    $ whenmod 15 12 ((slow 32).(stut "<64 32>/2" 0.25 0.125).(|=| speed 2.5))
+    $ sound (samples "<amencutup*8 [amencutup*4 amencutup*2]>" (irand(32)))
+    # release 0.12
+    # gain 1.5
+    # orbit 0
+    # speed "<3.5 [2.5 2.3 4.0] [2.7 6.0]>"
+    # room 0.0 # size 0.0
+  d7 $ s "[basst:5 ~ ~ <basst:5 ~ > <~ basst:5> ~ ~ basst:5]/2" # gain 1.5 # release 0.6 # speed "<0.70 0.9 0.9 0.9 0.76>"
+  d9 $ silence
+
+d7 $ silence
+d9 $ silence
+--------
+d1 $ fuk $ every 4 (fast 2)$ every 3 (0.25~>)$ s "<VOV:19>" # gain 1.75 # speed "<1.0 0.75>" # release 0.9 # begin "<0.0 0.2 0.3 0.4 0.5 0.6 0.7 0.8>"
+
+t4 (xfadeIn 8) $ fuk $ every 8 (slip 0.25 0.125)$ every 3 (slow 2)$ every 7 (|=| s "gabba")
+  $ slow "<1.0 2.0>/3.5"
+  $ whenmod 15 12 ((slow 32).(stut "<64 32>/2" 0.25 0.125).(|=| speed 2.5))
+  $ sound (samples "<amencutup*8 [amencutup*4 amencutup*2]>" (irand(32)))
+  # release 0.12
+  # gain 1.5
+  # orbit 0
+  # speed "<3.5 [2.5 2.3 4.0] [2.7 6.0]>"
+  # room 0.0 # size 0.0
+
+
+
+d6 $ every 15 (stut 8 0.25 0.125)$ every 7 (0.25~>)$ slow 2 $ every 13 ((slow 2).(striate 2).(|=| speed 2.5))
+  $ fuk
+  $ every 4 ((slow 2).(pop4 0.25 "<0.75 1.0>/3"))
+  $ every 7 (|=| delaytime 0.025)
+  $ sound "[feel:6([4 7]/5,8,4),bd/2, atrp:10([3 5 7]/4,8), <glitch:2([5 8]/3,8,4) feel:8([5 8]/3,8,4)>/2]"
+  # orbit 0
+  # delay 0
+  # delayfeedback "< 0.0 >"
+  # delaytime "<0.0>"
+  # room 0.0--"<1.0 1.0 1.0 0.2 1.0 0.5>/6"
+  # speed "<1.0 1.0 1.5 2.0 [2.7 2.3 2.9]>/4"
+  # release "<0.2 1.0>/2"
+  # gain 1.25
+
+d5 $ (0.01~>) $ slow 2 $ every 6 (slip 0.25 0.125)$ every 8 (0.125~>)$ every 3 (0.25~>)$ sound "{<hbd:9(3,8) hbd:9(5,8,7) [hbd:9 ~ hbd:9 ~ ~ ~ ~ ~]>,glitch:2*8}" # release 0.2 # speed 0.95 # gain 1.0 # orbit 0
+
+d5 $ silence
+d4 $ silence
+d9 $ silence
+
+oneshot d2 $ sound "VOV:7 VOV:9" # release 40 # begin 0.5 # speed 1.0
+
+oneshot d1 $ sound "VOV:7 VOV:13" # release 20 # begin 0.55 # speed 1.7
+
+oneshot d1 $ jux (slow 2)$ sound "[VOV:3 VOV:1,VOV:8]" # release 30 # begin 0.25 # speed 1.0
+
+
+
+------------
+
+d1 $ every 3 (fuk)$ every 5 ( slip 0.25 0.125)$ s "[<[tears:10 tears:11] tears:12 [tears:10 ~ tears:65 tears:7] [~ tears:10 tears:65*2 <~ hc*2>]> <~ [tears:64 [tears:9 tears:65]]> <tears:7 [hc tears:64 ~ tears:7] [~ tears:7]> <~ [~ tears:7]>]/2" # gain 1.55 # release 0.8
+
+
+  -- song break                         ------------------------------------------
+hushV
+bps (95/60)
+
+d6 $ sound "<ostext:32 ostext:31 ostext:58*7>" # release "<2.0 2.0 0.25>" # begin 0.25 # gain 1.5 # speed "<1.0 1.0 1.0 0.73 0.90 0.93 1.0>" # crush 4
+
+d6 $ fuk $ every 9 (slip7 0.125 0.25)
+  $ sound "<[research:26(3,7),ostext:31(4,7)] [research:27([7 5]/4,7)]>"
+  # release "<1.0 0.125>"
+  # gain 1.45
+  # begin "<0.0 [0.15 0.25 0.55 0.0 0.3 0.12 0.9]>"
+  # speed "0.9 1.0 1.0 1.2 1.75"
+
+do
+  startclock d2 $ fuk $ slow 1
+    $ every 4 ( slow 2)
+    $ every "10 11" (|=| release 0.125)
+    $ every 6 (|=| speed 1.7)$ every 4 (jux (iter 7))
+    $ every 13 (slip7'b 0.25 0.125)
+    $ every 7 (slip7 0.25 0.125)
+    $ seqPLoop [
+    (0,13, every 7 (slow 2)
+      $ every 9 (iter 7)
+      $ every 5 ((2/7)~>)
+      $ fast 2 $ sound "<feel:6(4,7)>"
+      # release 0.2
+      # gain 1.25),
+    (0, 13, every 4 ((2/7)~>)
+      $ sound "<uniq:4(4,7) [uniq:4 ~ ~ [~ uniq:4]  uniq:4 ~ [~ uniq:4]] uniq:4(3,7)>"
+      # release 0.5
+      # room 0.0
+      # gain 1.1),
+    (0,13, sound "<uniq:9 < ~ uniq:8(8,14) uniq:8(3,7) uniq:8([3 6]/5,7)> ~ < ~ uniq:9(4,7)> uniq:9([3 6]/5,7)>" # gain 1.2),
+    (7, 13.5,  every 13 (slow 1.75)
+      $ every "4 7" (slow 2)
+      $ every 9 ((2/7)~>)$ every 5 (fast 2)
+      $ sound "glitch:2*7" # release 0.2),
+    (13,14, sound "~ ~ ~ cp ~ ~ ~"
+    # room 1.7
+    # gain 1.15),
+    (14,15, sound "~ actor:4*2 ~ ~ [~ actor:5] actor:7 glitch:2*3"
+    # release 0.5
+    # gain 1.25)
+    ] # room 0.50 # size 0.0 # speed 0.5
+  --d4 $ silence
+  --d6 $ silence
+
+d2 $ silence
+hushV
+
+  d3 $ silence
+
+  d9 $ jux(iter 7)$ fuk $ every 3 (#s "feel:5")
+    $ every 5 (jux(slow 2))
+    $ every 6 (slow 2)
+    $ every "6 14 17" (const $ sound "~ ~ ~ ~")
+    $ every 15 (slip7'b 0.25 0.125 )
+    $ sometimes (|=| release 0.2)
+    $ fast 2
+    $ sound "<feel:8(4,7) <feel:8*7 feel:8*3.5> feel:8(3,7)>" # gain 1.25 # release 0.2 # speed 1.7 # room "<0.2 0.5 1.5 1.0>" # size 0.0
+
+  d3 $ jux(iter 7)$ fuk $ stut 7 0.25 0.125$ every 8 (jux(iter 7))$ every 6 ((2/7)~>)
+    $ every "6 9 5" (fast 7)
+    $ sound "<actor:12 actor:18 actor:19 actor:20 actor:21 actor:22 actor:23>" # release 0.29 # gain 1.35

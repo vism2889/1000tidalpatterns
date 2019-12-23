@@ -1,0 +1,84 @@
+-- pattern 99
+--05/24/2019
+
+
+let slip7 a b p = within ((2/7), (6/7)) (slow 2 . rev . stut 7 a b) p
+    slip7'b a b p = within ((1/7), (3/7)) (slow 2 . rev . stut 7 a b) p
+    slip7'e a b p = within ((5/7), (7/7)) (slow 2 . rev . stut 7 a b) p
+
+mutaneE
+dreno
+plucc
+research
+actor
+
+hushV
+
+bps (95/60)
+
+d1 $ every 4 ((2/7)~>)
+  $ sound "<uniq:4(4,7) [uniq:4 ~ ~ [~ uniq:4]  uniq:4 ~ [~ uniq:4]] uniq:4(3,7)>" # release 0.5
+
+d4 $ sound "<uniq:9 <uniq:8(3,7) uniq:8([3 6]/5,7)> ~ < ~ uniq:9(4,7)> uniq:9([3 6]/5,7)>"
+
+d5 $ every 5 (fast 2)$ sound "glitch:2*7" # release 0.2
+
+
+
+do
+  d9 $ slow 1
+    $ fuk
+    $ every 4 ( slow 2)
+    $ every "10 11" (|=| release 0.125)
+    $ every 6 (|=| speed 1.7)$ every 4 (jux (iter 7))
+    $ every 9 (slip7'b 0.25 0.125)
+    $ every 7 (slip7 0.25 0.125)
+    $ seqPLoop [
+    (0,13, every 7 (slow 2)
+      $ every 9 (iter 4)
+      $ every 5 ((2/7)~>)
+      $ fast 2 $ sound "feel:6(4,7)"
+      # release 0.2
+      # gain 1.25),
+    (0, 13, every 4 ((2/7)~>)
+      $ sound "<uniq:4(4,7) [uniq:4 ~ ~ [~ uniq:4]  uniq:4 ~ [~ uniq:4]] uniq:4(3,7)>"
+      # release 0.5
+      # room 0.0),
+    (0,13, sound "<uniq:9 < ~ uniq:8(8,14) uniq:8(3,7) uniq:8([3 6]/5,7)> ~ < ~ uniq:9(4,7)> uniq:9([3 6]/5,7)>"),
+    (7, 13.5,  every 13 (slow 1.75)
+      $ every "4 7" (slow 2)
+      $ every 9 ((2/7)~>)$ every 5 (fast 2)
+      $ sound "glitch:2*7" # release 0.2),
+    (13,14, sound "~ ~ ~ cp ~ ~ ~"
+    # room 1.7
+    # gain 1.15),
+    (14,15, sound "~ actor:4*2 ~ ~ [~ actor:5] actor:7 glitch:2*3"
+    # release 0.5
+    # gain 1.25)
+    ]
+  --d4 $ silence
+  --d6 $ silence
+
+  d1 $ silence
+
+  d9 $ every 3 (#s "feel:5")
+    $ every 5 (jux(slow 2))
+    $ every 6 (slow 2)
+    $ every "6 14 17" (const $ sound "~ ~ ~ ~")
+    $ every 15 (slip7'b 0.25 0.125 )
+    $ sometimes (|=| release 0.2)
+    $ fast 2
+    $ sound "<feel:8(4,7) <feel:8*7 feel:8*3.5> feel:8(3,7)>" # gain 1.25 # release 0.012 # speed 1.7
+
+  d3 $ every 8 (jux(iter 7))$ every 6 ((2/7)~>)
+    $ every "6 9 5" (fast 7)
+    $ sound "<actor:12 actor:18 actor:19 actor:20 actor:21 actor:22 actor:23>" # release 0.2 # gain 1.35
+
+  d6 $ sound "<ostext:32 ostext:31 ostext:58*7>" # release "<2.0 2.0 0.25>" # begin 0.25 # gain 1.25 # speed "<1.0 1.0 1.0 0.73 0.90 0.93 1.0>"
+
+  d9 $ fuk
+    $ sound "<[research:26(3,7),ostext:31(4,7)] [research:27([7 5]/4,7)]>"
+    # release "<2.0 0.125>"
+    # gain 1.45
+    # begin "<0.0 [0.15 0.25 0.55 0.0 0.3 0.12 0.9]>"
+    # speed "0.9 1.0 1.0 1.2 1.75"

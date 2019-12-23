@@ -1,0 +1,34 @@
+-- pattern 122
+-- 10/07/2019
+
+
+
+
+
+
+bps (190/60)
+
+d5 $ every 3 (fast 2)$ every 9 (1.25<~)$ every 13 (0.75~>)$ every 4 (0.25~>)$ s "[< gits:3 [<actor:7*2 ~>,<~ ~ ~ actor:10>] bassHit:1 [~ bassHit:3*2] bassHit:7 [<bassHit:10 bassHit:8> bassHit:9*2]>, <[~ ~ ~ bassHit:19*2] ~ [~ ~ ~ bassHit:27] ~>]" # release 0.2 # gain 1.8 # speed 1.0 # begin 0.75
+
+d1 $ every 3 (slow 2)$ whenmod 12 8 (jux(iter 4) )$ fuk $ every 4 ((# speed 3.0) . rev . stut 8 0.125 0.25)$ every 7 (slip 0.25 0.125)$ every 8 (0.125~>)$ every 3 (0.25 ~>)
+  $ s "[div [~ hc] <tears:5 [~ tears:7*2] glitch:2 div:16> <feel:6 [~ div]> [div:1 tears:7] [<~ div> , <~ [hc div:1]>] <hc div:1> < tears:7 hc*2 tears:9>, feel:8*2 tears:15 [~ feel:8] [glitch:2 hc] ~ ~ div:29 actor:2 ~ ~ feel:8 ~ ~ hh feel:8 [~ feel:5]]/4" # release 0.2 # speed 2.5
+
+d2 $ jux (iter 4) $ s "[div:27 div:33]/2" # release 2.0 # speed 1 # gain 1.2
+
+d8 $ silence
+
+d3 $ fuk $ slow "<1 1 2>" $ every 5 (0.75<~)$ every 7 (slip 0.25 0.125)$ every 3 (0.25~>)
+  $ s (samples "<actor*4 actor(3,8) actor(5,8) actor*4 actor*8 ~ ~ actor actor(6,8,4)>" (irand 62)) # release "<0.1 0.1 0.7>" # gain 1.25
+
+d4 $ s "[basst:5 ~ ~ basst:5 ~ ~ ~ ~ ]/2" # release 0.5 # gain 1.5
+
+
+d6 $ every 5 (slow 2)$ every 7 (# speed 1.2)$ fast 1  $ every 3 (0.25~>)$ s "[<[gt*2 gt*3] gt(3,8) gt gt*2 gt gt(5,8,3)>]/2" # release 1.0 # begin "<[0.53 0.12 0.78 0.34 0.45 0.64 0.83 0.44]*2 <0.58 [0.2 0.4]> [0.25 0.9] [0.76 0.65] 0.6 [0.4 0.9] 0.3 [0.33 0.7]>/2" # gain 1.55 # speed "<0.8>" # room 0.4 # size 0.8
+
+d7 $ fast 2$ s "[tears:6]/2" # release 2.0 # begin "<0.1 0.8 0.4 0.3>/2" # gain 1.52 # speed 0.75
+
+
+
+d8 $ slow 2 $ every 5 (0.25~>)$ sound "feel:6(3,8,5)" # release 0.2 # gain 1.3 # speed 0.9
+
+gits:20

@@ -1,0 +1,36 @@
+-- pattern 116
+-- august 12 2019
+
+
+
+d1 $ sound "anime:3" # release 2.75 # gain 1.2 # speed 1.0
+
+d2 $ sound "[liquid:5(5,7), <liquid:18([1 0 4]/6,7,5)>, <div:6(3,7) div:6(4,7)>, div:7(3,7)]" # release 0.2 # gain 1.2 # speed 2.5
+
+d3 $ sou
+
+hushV
+
+bps (160/60)
+
+d1 $ fast 1$ jux(iter 4)$ sound "eryka:24(3,8)" # release 0.5 # speed "<1.5 1.5 1.5 1.7>/2" # gain 1.1 # cut 2
+
+d2 $ sound "feel:6/2"
+
+d5 $ sound "<eryka:31 eryka:31 eryka:31 eryka:31(5,8)>" # release 1.7 # speed 1.7 # gain 1.2
+
+
+d1 $ sound "liquid ~" # speed 1.5
+d2 $ sound "~ liquid:2 liquid:3 liquid:4" # speed 1.5 # release 0.2
+
+d3 $ every 4 (slow 2)$ every 5 (jux(iter 4))$ every 9 (stut 8 0.25 0.125)$ every 7 (slip 0.25 0.125)$ every 3 (0.25~>)$ sound "[[liquid ~ atrp:20 ~ ~ ~ ~ atrp:20] [atrp:3*2 feel:8 [~ cp ~ atrp:20] atrp:20*2] [atrp:20 liquid:1] [~ atrp:20 cp ~] liquid:10*2  [~ liquid:19 atrp:20 liquid:13] liquid:20 liquid:21,[div:34([3 5 2]/3,8)]*8]/4" # release "[1.0 1.0 0.2 0.2 1.2 0.2 0.2 0.61]/4" # gain 1.15
+
+d4 $ sound "div:38 ~ [~ div:38] ~" # gain 1.2 # lpf 600 # speed "<1.0 1.0 1.3 1.0 1.7 1.0 1.0>"
+
+d2 $ slow 2$ every 6 (fast 2)$ sound "[<feel:6(3,8) feel:6(5,8)>, ~ feel:8 ~ feel:8]" # gain 1.5 # release "<0.01 0.01 0.1 0.01 0.2>"
+
+d3 $ every 3 (slip 0.125 0.25) $ every 6 (0.25~>)$ sound "[liquid liquid:2 [~ div:13,~ bd] <bd [~ bd]>,<liquid:7(7/3,8) liquid:7(3,8) liquid:8(3,8) liquid:18(2/3,8)>]" # release 0.2 # gain 1.3 # speed 0.75 # cut 2
+
+bps (200/60)
+
+d4 $ sound "[hbd*2 rave:7 hbd:1*2 rave:7,hbd:15*3]" # release 0.2

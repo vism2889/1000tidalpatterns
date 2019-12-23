@@ -22,11 +22,11 @@ d8 $ whenmod 64 32 (# s "amencutup")$ fuk $ whenmod 32 16 (slow 2)$ every "7 13"
 
 d1 $ every "7 13" (slow 2)$ slow 2 $ sound "basst:5([7 4 2]/3,8,7)" # orbit 1 # gain 1.25 # release 0.50 # speed "<1.0 0.9 1.2 1.5>/3"
 
-d9 $ every 3 (pop4 0.125 "<0.50 0.75 2.0 3.0>/4")$ fuk $ sound "[feel:8*8,feel:6([4 7 ]/3,8,4)]" # orbit 3 # gain 1.5 # release 0.2
+d9 $ every 3 (pop4 0.125 "<0.50 0.75 2.0 3.0>/4")$ fuk $ sound "[feel:8*8,feel:6([4 7 ]/3,8,4)]" # orbit 0 # gain 1.5 # release 0.2
 
 
 d5 $ every 3 (|=| speed 0.5)$ fuk $ whenmod 32 16 (slow 2)$ every "7 13" (slow 2)
-  $ every 2 (0.25~>)$ sound "[mutantE:60 mutantE:61 mutantE:64 ~,mutantE:65([4 7]/3,8,4)]" # orbit 2 # gain 1.5 # release 0.2
+  $ every 2 (0.25~>)$ sound "[guzz:1 mutantE:61 mutantE:64 ~,mutantE:65([4 7]/3,8,4)]" # orbit 0 # gain 1.5 # release 0.2
 
 d4 $ every 3 (const $ control (_discretise 128 $ slow 8 (scale 0 127 $ (sine1))) # midicmd "control" # ctlNum 1 # midichan 3 # s "midi") $ sound " ~ ~ ~ ~" -- drumrack reverb
 
@@ -35,3 +35,7 @@ d6 $ control "[1 50 1 [75]/2]/8" # midicmd "control" # ctlNum 2 # midichan 3 # s
 
 
 d2 $ every 9 (const $ sound "rainn(3,8)" # release 1.0 # room 0.5)$ every 6 (# s "rainn:3")$ sound "rainn:2" # orbit 3 # speed "<1.0 1.0 1.0 1.5>"
+
+d1 $ every 3 (slip 0.125 0.25)$ every 4 (iter 4)$ sound "guzz(3,8)" # speed 1.2 # gain 1.5 # release 0.5 # begin 0.5
+
+d2 $ sound "guzz:8"

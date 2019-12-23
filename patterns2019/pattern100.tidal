@@ -1,0 +1,29 @@
+-- pattern 100
+-- 06/02/2019
+
+
+
+
+d2 $ whenmod 15 10 (const $ sound "~ ~ ~ ~")$ every 9 (jux(iter 7))
+  $ fuk
+  $ every 9 (const $ sound " ~ ~ ~ ~ ~ ~ ~")
+  $ whenmod 14 12 (iter 7)
+  $ every 5 (slip7'b 0.25 0.125)
+  $ sound "[<hbd:3(3,7) hbd:3(4,7,5)>, actor:5 ~ ~ ~ ~ [~ actor:10] < ~ cp*2>]"
+  # release 0.8
+  # gain 1.25 # cut 2
+
+d2 $ every 5 (fast 2) $ sound "feel:8(4,7)" # gain 1.35
+
+d3 $ sound "hh*14" # gain 1.25 # release 0.2
+
+d5 $ sound "feel:6([3 4]/3,7,5)" # release 0.2 # gain 1.35
+
+d6 $ every 9 (const $ sound "actor:20 ~ [~ hbd:9] [actor:10 actor:19] hbd:9*2 glitch:2*2 [~ hbd:9]" # release 0.2)$ sound "~ ~ ~ ~ ~ ~ ~" # release 0.12 # crush 3
+
+d6 $ silence
+
+
+d7 $ every 6 ( |=| speed 1.5)$ every 5 (|=| speed 1.7)$ sound "rainn:2(3,7)" # gain 1.35 # release 1.5
+
+d7 $ slow 2 $ sound "rocc:4*3.5" # release 2.0 # gain 1.5 # speed 0.7

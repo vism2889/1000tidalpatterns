@@ -25,4 +25,6 @@ startclock d3 $seqP [(0,7, pop3 0.125 1.0 $ sound "feelfx/2" # cut 2 # speed 0.7
 
 d1 $ sound "feel:5"
 
+d3 $ silence
+
 hush

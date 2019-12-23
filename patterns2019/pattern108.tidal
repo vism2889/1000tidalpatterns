@@ -1,0 +1,21 @@
+
+
+bps (180/60)
+
+d1 $ sound "[bd ~ ~ bd ~ ~ <~ ~ bd ~> <~ bd ~ [feel:6 bd]>]/2" # gain 1.5
+
+d1 $ sound "<bd:5 <bd bd:3*2> ~ [feel:6, ~ [~ bd:5] ~ [~ bd]]>" # gain 1.5
+
+d2 $ slow 2$ every 17 (0.125~>)$ every 3 (0.25~>)$ every 7 (jux(iter 4))$ fast 2 $ sound "feel:8 glitch:2 <feel:5> hh:5" # release 0.2 # gain 1.2 # speed "<2.5 1.0>/3"
+
+d3 $ slow 2$ whenmod 8 6 (slow 2)$ every 5 (slip 0.25 0.25)$ every 4 (0.25~>)$ sound "[<[aud:2, <hbd:7 hbd:8 [hbd:8*2]>] [aud:2 <glitch:2 glitch:2*2>]> <glitch:2 [feel:8 feel:5] [feel:8 aud:6]> <amencutup:6 [~ amencutup:6] [ amencutup:5 amencutup:4]> <amencutup:5 [feel:8 feel:5]> [<amencutup:4 [~ amencutup:8]>] amencutup:3 <amencutup:2 ~ [feel:8 aud:3]> <aud:2 ~ ~>]/2" # speed 2.5 # gain 1.5 # release 0.3
+
+d4 $ whenmod 16 8 (|+| n 3)$ slow 2
+  $ every "1" (|=| release 0.125)
+  $ n "<[c3 a4 f4 e4 c4 a4 e4 a3] [c3 a4 f4 e4 c4 a4 e4 a3]>"
+  # sound "<supersaw>"
+  # voice 1
+  # sustain 1.0 # gain 1.25
+
+  # sustain "<0.50 0.2 0.2 0.2 0.1 0.1>" # gain 1.5
+d4 $ silence

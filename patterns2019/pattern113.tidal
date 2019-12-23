@@ -1,0 +1,35 @@
+-- pattern 113
+
+
+bps (95/60)
+
+let bang p = struct ("[t ~ ~ t ~ ~ t ~ t t ~ ~ t ~ ~ ~]/2") p
+    bangc p = struct("[~ ~ t ~ t ~ ~ t ~ ~ t ~ ~ t ~ ~]/2") p
+    bangh p = struct("<[t t t t t t t t t t t t t t t t] [t t t t*2] [t t t t t t t t] [t t t t t t t t t t t t t t t t] [t t t t] [t t t*2 t t t t t]>") p
+
+d1 $ every 3 (bang . slow 2)$ bang $ sound "[feel:6]" # release 0.2 # gain 1.25
+
+d2 $ every 7 (slip 0.25 0.125)$ every 3 (iter 4)$ bangc $ sound "actor:3" # release 0.2
+
+
+d3 $ every 8 (fast 2 )$ stack [
+  every 4 (0.25~>) $ every 3 (bangc . slow 2)$ bang $ sound "[hbd:6]" # speed 0.5 # gain 1.2 # release 0.5,
+  every 7 (slip 0.25 0.125)$ every 3 (iter 4)$ bangc $ sound "<actor:3 actor:3 actor:3 actor:5 actor:7>" # release "<0.2 0.2 0.2 0.8 0.8>" # gain 1.12
+]
+
+
+
+t4 (xfadeIn 8) $ whenmod 16 8 (stut 8 0.25 "<0.125 0.0125 0.125 0.25 0.5>")$ every 7 (slip 0.25 0.125) $ stack [
+    bangh $ sound "feel:8" # release  0.2,
+    every 4 (fast 2) $ every 6 (0.25~>)$ sound "feel:5(3,8)" # release 0.2,
+    every 2 (const $ sound "~ ~ cp ~") $ sound "~"
+    ] # gain 1.30 # lpf 10000
+
+
+d5 $ bangc $ sound "<research:37 research:37 research:37 research:36>" # release 1.90 # room 0.5 # size 0.5 # gain 1.7 # cut 2
+
+
+d1 $ every 2 (0.25~>)$ bangc $ sound "sequential:7 sequential:6" # speed 1.5 # gain 1.5
+
+
+d1 $ struct (every 3 inv "t f t*2 f") $ sound "cp"

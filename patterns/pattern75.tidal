@@ -12,36 +12,63 @@ let stitch7 p = ( (within ((1/7), (7/7))) (stut "<14>" 0.5 0.125)) p
 
 bps (190/60)
 
-d3 $ every 7 (|=| s "gabba")
+t4 (xfadeIn 8) $ every 8 (stut 8 0.25 "<0.125 0.25 0.75>")$ every 3 (slow 2)$ every 7 (|=| s "gabba")
   $ slow "<1.0 2.0>/3.5"
   $ whenmod 15 12 ((slow 32).(stut "<64 32>/2" 0.25 0.125).(|=| speed 2.5))
-  $ sound (samples "amencutup*8" (irand(32)))
+  $ sound (samples "<amencutup*8 [amencutup*4 amencutup*2]>" (irand(32)))
   # release 0.12
-  # gain 1.25
-  # orbit 1
-  # speed 2.5
+  # gain 1.2
+  # orbit 0
+  # speed "<3.5 [2.5 2.3 4.0] [2.7 6.0]>"
+  # room 0.0 # size 0.0
 
 
-d1 $ slow 2 $ every 13 ((slow 2).(striate 2).(|=| speed 2.5))
+
+d6 $ slow 2 $ every 15 (stut 8 0.25 0.125)$ every 7 (0.25~>)$ slow 2 $ every 13 ((slow 2).(striate 2).(|=| speed 2.5))
   $ fuk
   $ every 4 ((slow 2).(pop4 0.25 "<0.75 1.0>/3"))
   $ every 7 (|=| delaytime 0.025)
   $ sound "[feel:6([4 7]/5,8,4),bd/2, atrp:10([3 5 7]/4,8), <glitch:2([5 8]/3,8,4) feel:8([5 8]/3,8,4)>/2]"
-  # orbit 1
-  # delay 1
-  # delayfeedback "< 0.75 >"
+  # orbit 0
+  # delay 0
+  # delayfeedback "< 0.0 >"
   # delaytime "<0.0>"
-  # room "<0.0 0.0 0.0 0.2 0.0 0.5>/6"
-  # speed "<1.0 1.0 1.5 2.0>/4"
+  # room 0.0--"<1.0 1.0 1.0 0.2 1.0 0.5>/6"
+  # speed "<1.0 1.0 1.5 2.0 [2.7 2.3 2.9]>/4"
   # release "<0.2 1.0>/2"
 
-d2 $ whenmod 16 8 (const $ every 3 (0.25~>) $ jux (iter 4) $ sound "<[mutantE:36([9 7 5]/3,8,4)] mutantE:42([4 3 2]/5,8,7)>" # release 0.2 # orbit 2 # gain 1.5)
-  $ sound "<mutantE:56 mutantE:38 mutantE:39 ~ >/2" # orbit 2 # gain 1.5
+-- sorry that my stream keeps haveing the audio break up!!!!
 
-d3 $ sound "gravitate:1" # orbit 3 # gain 1.5
 
-d2 $ jux(iter 4)$ sometimes (|=| speed 1.5)$ sound "<rainn:3 rainn:2>/4" # orbit 3 # gain 1.25
+d2 $ whenmod 16 8 (const $ every 3 (0.25~>) $ jux (iter 4) $ sound "<[mutantE:36([9 7 5]/3,8,4)] mutantE:42([4 3 2]/5,8,7)>" # release 0.2  # gain 1.5)
+  $ sound "<mutantE:56 mutantE:38 mutantE:39 ~ >/2"  # gain 1.5 # speed 3.5 # release 0.2
 
-d4 $ sound "gravitate:6" # orbit 3 # release 0.7 # gain 1.25
+d7 $ sound "gravitate:1"  # gain 1.5
+
+d7 $ every 9 (stut 8 0.25 0.125)$ jux(iter 4)$ sometimes (|=| speed 1.5)$ sound "<rainn:5 rainn:2>"  # gain 1.25 # room 0.0 # size 0.0 # crush 7
+
+t7 (xfadeIn 8) $ whenmod 16 8 (|=| speed 0.7)$ every 5 (slow 4)$ every 2 (slip 0.125 0.25) $ every 3 (stut 8 0.25 0.25)$ whenmod 14 7 (# speed 2.0)$ sound "gravitate:6(3,8)"  # release 0.7 # gain 0.8 # speed 2.5 # room 0.50 # size 0.0
 
 d3 $ silence
+d5 $ silence
+
+
+
+d3 $ every 3 (fast 2)$ slow 4 $ note "<[a2 f4 e1 c4 a3 f2 e5 f7] [a3 f4 e1 c4 a5 f4 e2 f3]>" # midichan 3 # s "midi" # sustain "<0.1 0.25>"
+d4 $ note "<[a2 f4 e1 c4 a3 f2 e5 f7] [a3 f4 e1 c4 a5 f4 e2 f3]>" # midichan 4 # s "midi" # sustain "<0.5>"
+d6 $ (0.001~>) $ every 9 (slip 0.125 0.25)$ every 4 (iter 4) $ every 7 (0.25~>)$ slow 2$ sound "[feel:6(3,8,5), glitch:2(3,8,7)]" # release 0.5 # gain 1.12 # orbit 3
+
+d1 $ control "[1 50 1 [75]/2]/8" # midicmd "control" # ctlNum 2 # midichan 4 # s "midi"
+d2 $ control "[1 50 1 [75]/2]/2" # midicmd "control" # ctlNum 3 # midichan 4 # s "midi"
+
+d7 $ every 12 (const $ sound "~ ~ ~ ~")$ every 7 (# sustain 1.0)$ slow 2$ note "[<a3(3,8,5)  a4(3,8,5) a4(3,8,5)  a3(3,8,5) gs3(3,8,5) f2(3,8,5) gs2(3,8,5) gs3(3,8,5)>]" # midichan 4 # s "midi" # sustain 0.51 # gain 1.5
+
+d5 $ (0.01~>) $ slow 2 $ every 6 (slip 0.25 0.125)$ every 8 (0.125~>)$ every 3 (0.25~>)$ sound "{<hbd:9(3,8) hbd:9(5,8,7) [hbd:9 ~ hbd:9 ~ ~ ~ ~ ~]>,glitch:2*8}" # release 0.2 # speed 0.95 # gain 0.7
+
+
+d1 $ every 3 (slip7 0.25 0.125)$ sound "bd(3,7)"
+
+d1 $ every 8 (const $ sound "~")$ every 9 (iter 4)$ every 6 (0.25~>)$ every 8 (slip 0.125 0.25)$ sound "<[bd ~ ~ bd sn:3 ~ ~ ~] [bd ~ bd [~ rm hh hh:2] sn:3 bd [~ glitch] <[feel:5 glitch:2] [feel:5 feel:8 glitch:2 glitch]>]>/4" # speed 2.5 # gain 1.5
+d2 $ sound " ~ [glitch:2 ~ rm ~] ~ <glitch:2>" # release 0.12 # speed 2.0
+
+d3 $ every 8 (0.25~>)$ sound "<[feel:6 ~ [~ feel:6] feel:6 ~ feel:6 ~ ~] [feel:6 [~ feel:6] ~ ~ feel:6 ~ feel:6 ~]>/2" # release 0.12 # gain 1.5 # speed 0.9

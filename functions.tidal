@@ -7,6 +7,9 @@ let startclock d p = do
                         now <- getNow
                         d $ (pure (nextSam now)) ~> p
 
+
+
+
 let oneshot d p = startclock d $ seqP [(0, 1, p)]
     sc = startclock
 
@@ -36,3 +39,12 @@ let filler p = every 3 (within (0.0, 0.50)(slow 2 . rev . stut 8 0.95 0.25)) $ e
     maven a b c p = stut' 4(a) (|*| coarse b ) $ stut' 4(1) (|*| speed c ) p --ex: $ maven 0.125 0.2 0.4
     realAF p = every 3 (slow 2) $ someCyclesBy 0.125 (stut 8 0.95 0.25) $ every 16 (within (0.5,0.75)(slow 4 . striate 16)) p
     verbPat  = room "0.0 0.0 0.8 0.0 0.0 0.0 0.2 0.0"
+
+let slip7 a b p = within ((2/7), (6/7)) (slow 2 . rev . stut 7 a b) p
+    slip7'b a b p = within ((1/7), (3/7)) (slow 2 . rev . stut 7 a b) p
+    slip7'e a b p = within ((5/7), (7/7)) (slow 2 . rev . stut 7 a b) p
+
+let slip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
+    slip' c d e a b p = within (d, e) (slow 2 . rev . stut c a b) p
+
+let slip6 a b p = within ((2/6), (6/6)) (slow 2 . rev . stut 6 a b) p

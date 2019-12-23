@@ -1,0 +1,20 @@
+-- pattern 115
+
+
+
+bps (120/60)
+
+
+d1 $ every 3 ((2/14)~>)$ sound "<[feel:8(4,7)][feel:8][feel:8 feel:5] feel:8>" # release "<0.01 0.2 0.1 0.03>" # room "<0.0 0.0 0.2 0.8>" # size "<0.0 0.2 0.3 0.8>" # gain 1.2
+
+d2 $ sound "basst:6" # gain 0.9 # speed "<1.1 1.3>/4"
+
+d7 $ silence
+
+d3 $ every 9 ((2/14)~>)$ every 4 ((3/7)~>)$ sound "{bass2:3(3,7), bass3:3*3}" # begin 0.0 # speed 0.8 # release 0.2
+
+d5 $ every 8 ((2/14)~>)$ every 3 ((2/7)~>)$ sound "{<hbd:9(4,7) hbd:9(2,7) [hbd:9 ~ hbd:9 ~ ~ ~ ~]>,glitch:2*7}" # release 0.2 # speed 2.5
+
+
+
+d7 $ every 4 (fast 2)$ stut 8 0.25 0.125 $ every 5 ((2/7)~>)$ every 3 (slip7 0.25 0.125)$ sound "<[rot rot:1 rot:2  ~ rot:2 rot:1 rot] rot(3,7) rot:1(4,7) rot:2(5,7)>" # release "<0.5 0.5 0.5 0.5 0.1 0.7 0.7 0.8>" # gain 1.2 # speed "<3 2 1.2 0.5 0.7 0.63 1.34 2.3 0.7 2.4 0.7>" # room 0.0 # size 0.0
